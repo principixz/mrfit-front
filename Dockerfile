@@ -7,22 +7,25 @@ WORKDIR /app
 # Copiar los archivos necesarios para instalar dependencias
 COPY package.json package-lock.json ./
 
-# Instalar las dependencias
-RUN npm install
+# Instalar Angular CLI versión 12 globalmente
+RUN npm install -g @angular/cli@12
+
+# Instalar las dependencias del proyecto
+RUN npm install --legacy-peer-deps
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
 
-# Construir la aplicación Angular para producción
-RUN npm run build -- --output-path=dist/mrfit-front --configuration production
+# Construir la aplicación Angular en modo producción
+RUN ng build --configuration production --output-path=dist/mrfit-front
 
-# Etapa 2: Copiar los archivos a un servidor Nginx configurado
+# Etapa 2: Servir la aplicación con Nginx
 FROM nginx:1.21
 
-# Copiar la configuración de Nginx si se necesita personalizar
+# Copiar la configuración personalizada de Nginx (asegúrate de que nginx.conf exista)
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copiar los archivos de construcción al directorio Nginx configurado
+# Copiar los archivos construidos al directorio Nginx configurado
 COPY --from=build /app/dist/mrfit-front /usr/share/nginx/html
 
 # Exponer el puerto 80
