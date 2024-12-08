@@ -13,8 +13,8 @@ RUN npm install -g @angular/cli@12.2.12
 # Instalar las dependencias del proyecto con compatibilidad forzada
 RUN npm install --legacy-peer-deps
 
-# Instalar date-fns para resolver dependencias faltantes
-RUN npm install date-fns@2.29.3 --save
+# Instalar date-fns con compatibilidad forzada para resolver dependencias faltantes
+RUN npm install date-fns@2.29.3 --legacy-peer-deps
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
