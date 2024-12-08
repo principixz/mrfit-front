@@ -10,11 +10,14 @@ COPY package.json package-lock.json ./
 # Instalar Angular CLI versión 12 globalmente
 RUN npm install -g @angular/cli@12.2.12
 
-# Forzar la instalación de las dependencias del proyecto
-RUN npm install --legacy-peer-deps --force
+# Instalar las dependencias del proyecto con compatibilidad forzada
+RUN npm install --legacy-peer-deps
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
+
+# Instalar select2 manualmente (si no se instala automáticamente con npm install)
+RUN npm install select2
 
 # Construir la aplicación Angular en modo producción
 RUN ng build --configuration production --output-path=dist/mrfit-front
