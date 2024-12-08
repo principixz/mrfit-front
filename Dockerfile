@@ -16,8 +16,14 @@ RUN npm install --legacy-peer-deps
 # Instalar date-fns con compatibilidad forzada para resolver dependencias faltantes
 RUN npm install date-fns@2.29.3 --legacy-peer-deps
 
+# Instalar select2 y resolver cualquier dependencia faltante
+RUN npm install select2 --legacy-peer-deps
+
 # Copiar el resto de los archivos del proyecto
 COPY . .
+
+# Verificar que las dependencias estén presentes
+RUN ls node_modules/select2
 
 # Construir la aplicación Angular en modo producción
 RUN ng build --configuration production --output-path=dist/mrfit-front
