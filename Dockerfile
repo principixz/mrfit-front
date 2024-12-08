@@ -11,7 +11,7 @@ COPY package.json package-lock.json ./
 RUN npm install -g @angular/cli@12
 
 # Instalar las dependencias del proyecto
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps && npm audit fix
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
