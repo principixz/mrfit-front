@@ -1,0 +1,57 @@
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Reporte de Ventas por empleado</h2>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="formulario" novalidate>
+                <div class="row">
+                    <div class="col-md-3">
+                        
+                        <select2  [value]="data" displaySearchStatus="always"> </select2>
+                    </div>
+                   <div class="col-md-8">
+                   <div class="form-group">
+                       <label>Rango de Fecha</label>
+                       <input
+                     type="text"
+                     ngxDaterangepickerMd
+                    (datesUpdated)="datesUpdated($event)"
+                
+                    [showCustomRangeLabel]="true"
+                    [alwaysShowCalendars]="true"
+                    [ranges]="ranges"
+                    formControlName="desde"
+                    (rangeClicked)="event_seleccion($event)"
+                    opens="right"
+                    placeholder="Seleccionar rango "
+                    [locale]="{applyLabel: 'Aceptar', format: 'DD/MM/YYYY',direction: 'ltr'}"
+                    [(ngModel)]="selected" class="form-control datepicker-calendar-icon"/>
+                
+                    </div>
+                   </div>
+           
+                
+                
+                <div class="col-md-2">
+
+                  <!--<button style="margin-top: 30px;" (click)="generarpdf()" class="btn btn-brand btn-info">
+                        Generar
+                    </button>-->  
+                </div>
+                </div>
+
+
+                <br>
+
+               <div class="row">
+                 <div class="col-md-12">
+                    <div style="width: 100% !important;
+                    margin: 0 auto;
+                    display: block;" [chart]="chart"></div>
+                 </div>
+               </div>
+            </form>
+        </div>
+    </div>
+</div>

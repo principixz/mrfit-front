@@ -1,0 +1,144 @@
+<form [formGroup] = "form" (submit)="onSubmit()">
+    <input type="hidden" formControlName="producto_id">
+  <div class="row">
+      <div class="col-md-12">
+        <h5 style="font-weight: bold;font-size: 25px;">{{titulo}}</h5>
+      </div>
+     </div>
+  
+     <br>
+     <mat-card> 
+  <div class="row">
+
+    <div class="col-md-3">
+        <div class="card-body">
+            <div class="m-t-30"> <img id="preview" [src]="imageURL" class="img-circle" style="width: 120px;height: 120px;">
+               
+            </div>
+
+        </div>
+
+        <div class="card-body"> 
+          <div class="col-md-12">                                  
+                     <label>Imagen</label>
+                     <input type="file"  accept="image/*" (change)="showPreview($event)" id="imagen" name="imagen">
+                 </div>
+               
+          </div>
+    </div>
+    <div class="col-md-9">
+      
+        <div class="row">
+        <div class="col-md-4">
+       
+          <mat-form-field style="width: 100% !important;" appearance="outline">
+            <mat-label> Codigo Barra</mat-label>
+            <input matInput formControlName="codigo_barra"  >
+           
+            <mat-error >
+                Campo requerido
+               </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label> Codigo Referencia</mat-label>
+              <input matInput formControlName="codigo_referencia"  >
+             
+              <mat-error >
+                  Campo requerido
+                 </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-2">
+       
+              <mat-form-field appearance="outline" style="width: 100% !important;" >
+                <mat-label>Moneda</mat-label>
+                <mat-select  required formControlName="tipo_moneda" >
+                  <mat-option *ngFor="let moneda of lista_moneda" [value]="moneda['id']">{{moneda['descripcion']}}</mat-option>
+                 
+                </mat-select>
+                <mat-error >
+                  Campo requerido
+                 </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-md-2">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label>monto</mat-label>
+              <input matInput formControlName="moneda"  type="number" step="0.01" >
+             
+              <mat-error >
+                  Campo requerido
+                 </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <mat-select formControlName="categoria"  required>
+                <mat-option>
+                  <ngx-mat-select-search  placeholderLabel="Buscar Categoria....."  ></ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let categoria of lista_categoria" [value]="categoria['categoria_producto_id']">{{categoria['categoria_producto_descripcion']}}</mat-option>
+               
+              </mat-select>
+             
+              <mat-error >
+                  Campo requerido
+                 </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label>Stock Minimo</mat-label>
+              <input matInput formControlName="stock_minimo"  >
+             
+              <mat-error >
+                  Campo requerido
+                 </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label>Unidad Medida</mat-label>
+              <mat-select  required formControlName="unidad" >
+                <mat-option *ngFor="let unidad of lista_unidad_medida" [value]="unidad['id']">{{unidad['descripcion']}}</mat-option>
+              </mat-select>
+              <mat-error >
+                Campo requerido
+               </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width" style="width: 100% !important;" appearance="outline">
+              <mat-label>Descripcion</mat-label>
+              <textarea matInput placeholder="" formControlName="descripcion" ></textarea>
+            </mat-form-field>
+            </div>
+  
+      </div>
+      <br>
+    
+   
+    </div>
+
+  
+
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <button [disabled]="!form.valid || !estado"  id="basic"  style="color: white;background-color: #039be5;" type="submit" mat-button >
+       {{texto_boton}}
+      </button>
+
+      <button id="basic"  routerLink="/principal/venta/registrar_plato" type="button" mat-button  style="color: white;background-color: red;">
+      Cancelar
+      </button>
+    </div>
+</div>
+</mat-card>
+  </form>

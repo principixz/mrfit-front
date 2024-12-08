@@ -1,0 +1,92 @@
+.imagen{
+    height: 200px;
+    width: 400px;
+}
+
+.cerrar{
+  color: black;
+  padding: 5px 10px 5px 10px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.titulo{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 12px;
+  white-space: normal;
+}
+.taman{
+  width: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.boton_agregar{
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+.example-radio-group {
+display: flex;
+flex-direction: column;
+margin: 15px 0;
+}
+
+.example-radio-button {
+margin: 5px;
+}
+
+.srcoll_precios{
+height: 120px;
+overflow-y: scroll;
+}
+
+.mat-dialog-container  {
+padding: 0px !important;
+
+}
+.container_stock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .taman{
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .imagen{
+        height: 200px;
+        width: 100% !important;
+    }
+    
+  }
+
+

@@ -1,0 +1,240 @@
+::ng-deep  .mat-button-toggle-checked i{
+    background-color: #2dada7 ;
+    color: #ffffff !important;
+    line-height: 0px !important; 
+    display: contents !important;
+}
+.imagen_emty{
+  width: 250px;
+  display: block;
+}
+.flex_imagen{
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+.texto_empty{
+ font-weight: bold;
+ text-transform: uppercase;
+}
+
+::ng-deep .mat-button-toggle-label-content {
+    line-height: 0px !important;
+    padding: 12px 10px 10px 10px !important
+  }
+
+  ::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 0px !important;
+  }
+
+
+
+  ::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 0px !important;
+  }
+
+
+  ::ng-deep .mat-button-toggle-checked {
+    background-color: #2dada7;
+    color: #ffffff !important;
+    line-height: 0px !important;
+  }
+
+  ::ng-deep .mat-button-toggle i {
+    display: none !important;
+  }
+  ::ng-deep   .mat-button-toggle-checked i {
+    background-color: #2dada7;
+    color: #ffffff !important;
+    line-height: 0px !important;
+    display: contents !important;
+  }
+  .tab-pane {
+    border-left: 1px solid #ddd !important;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px 5px 5px;
+    padding: 10px;
+}
+
+.bordered-tab-contents > .nav-tabs {
+    margin-bottom: 0;
+}
+
+
+.example-box1 {
+  padding: 10px;
+  width: 100%;
+  height: 120px !important;
+  border: solid 1px #ccc;
+  color: white;
+  background-color: #e53935;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  margin: 10px;
+  z-index: 1;
+
+}
+
+.example-box {
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  height: 120px !important;
+  border: solid 1px #ccc;
+  color: white;
+  background-color: #2e7d32;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+
+  z-index: 1;
+
+}
+
+
+.seleccionar{
+  border: 3px solid black !important;
+}
+.example-box2 {
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  height: 120px !important;
+  border: solid 1px #ccc;
+  color: white;
+  background-color: #01579b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+
+  z-index: 1;
+
+}
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+@media only screen and (max-width: 600px) {
+  .example-box1 {
+    padding: 10px;
+    width: 120px;
+    height:120px !important;
+    border: solid 1px #ccc;
+    color: white;
+    background-color: #e53935;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    margin: 10px;
+    z-index: 1;
+
+  }
+
+  
+  .example-box {
+    padding: 10px;
+    margin: 10px;
+    width: 120px;
+    height: 120px !important;
+    border: solid 1px #ccc;
+    color: white;
+    background-color: #2e7d32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+
+    z-index: 1;
+
+  }
+  .hidden {
+    display: none;
+}
+
+
+  .example-box2 {
+    margin: 10px;
+    padding: 10px;
+    width: 120px;
+    height: 120px !important;
+    border: solid 1px #ccc;
+    color: white;
+    background-color: #01579b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+
+    z-index: 1;
+
+  }
+
+}
+
+.cuerpo_lista::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+  opacity: 0.5;
+}
+.cuerpo_lista::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  opacity: 0.5;
+}
+.cuerpo_lista::-webkit-scrollbar-track {
+
+  background-color: #F5F5F5;
+  opacity: 0.5;
+}
+
+.cuerpo_lista::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+  opacity: 0.5;
+}
+.cuerpo_lista::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  opacity: 0.5;
+}
+.cuerpo_lista::-webkit-scrollbar-track {
+
+  background-color: #F5F5F5;
+  opacity: 0.5;
+}
+
+
+
+.bar {
+
+ 
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 15px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, max-content);
+}
+
+.icon {
+  font-size: x-large;
+  text-align: center;
+  width: 25%;
+}
+
+.text {
+  width: 100%;
+}

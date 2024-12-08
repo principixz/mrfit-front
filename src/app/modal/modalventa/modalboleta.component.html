@@ -1,0 +1,10 @@
+    <h3 mat-dialog-title>Documento </h3>
+    <div mat-dialog-content>
+ 
+      <iframe width="320px" height="650px" *ngIf="cargar" [src]="url_dato | safe"></iframe>
+    
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">Cerrar</button>
+
+      </mat-dialog-actions>

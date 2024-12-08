@@ -1,0 +1,162 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 style="font-weight: bold; font-size: 25px;">{{ titulo }}</h5>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <!-- Inicio de los campos organizados usando Flexbox -->
+          <div class="flex-row">
+            <!-- DESCRIPCIÓN -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Descripción</mat-label>
+                <input matInput formControlName="descripcion">
+                <mat-error *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched">
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <!-- PRECIO MENSUAL -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Precio Mensual</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="precio_mensual"
+                  (keypress)="validateDecimal($event)"
+                  (blur)="formatDecimal('precio_mensual')"
+                >
+                <mat-error *ngIf="form.get('precio_mensual')?.errors?.required && form.get('precio_mensual')?.touched">
+                  Campo requerido
+                </mat-error>
+                <mat-error *ngIf="form.get('precio_mensual')?.errors?.pattern && form.get('precio_mensual')?.touched">
+                  Solo se permiten números con hasta dos decimales
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <!-- TIPO DURABILIDAD -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Tipo Durabilidad</mat-label>
+                <mat-select formControlName="tipo_durabilidad" (selectionChange)="verificarDurabilidad()">
+                  <mat-option *ngFor="let tipo of tipoDurabilidad" [value]="tipo.value">
+                    {{ tipo.label }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <!-- DURACIÓN -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>{{ duracionLabel }}</mat-label>
+                <input matInput type="number" formControlName="meses" min="1">
+                <mat-error *ngIf="form.get('meses')?.invalid && form.get('meses')?.touched">
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <!-- TIPO DE PERIODO -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Tipo de Periodo</mat-label>
+                <mat-select formControlName="tipo_periodo" (selectionChange)="verificar()">
+                  <mat-option *ngFor="let tipo of tipoPeriodo" [value]="tipo.value">
+                    {{ tipo.label }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <!-- FECHA INICIO -->
+            <div class="flex-item" *ngIf="form.get('tipo_periodo')?.value === '02'">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Fecha Inicio</mat-label>
+                <input matInput [matDatepicker]="pickerInicio" formControlName="fecha_inicio" [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+                <mat-error *ngIf="form.get('fecha_inicio')?.invalid && form.get('fecha_inicio')?.touched">
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- FECHA FIN -->
+            <div class="flex-item" *ngIf="form.get('tipo_periodo')?.value === '02'">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Fecha Fin</mat-label>
+                <input matInput [matDatepicker]="pickerFin" formControlName="fecha_fin" [min]="form.get('fecha_inicio')?.value || minDate">
+                <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFin></mat-datepicker>
+                <mat-error *ngIf="form.get('fecha_fin')?.invalid && form.get('fecha_fin')?.touched">
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Mensaje de error para fechas -->
+            <div class="flex-item" *ngIf="form.errors?.fechaFinAnteriorAFechaInicio && form.get('fecha_fin')?.touched">
+              <mat-error>La Fecha Fin debe ser posterior a la Fecha Inicio.</mat-error>
+            </div>
+  
+            <!-- CATEGORÍA MEMBRESÍA -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Categoría Membresía</mat-label>
+                <mat-select formControlName="categoria_membresia" (selectionChange)="estadocategoria()">
+                  <mat-option *ngFor="let categoria of categoriaMembresia" [value]="categoria.value">
+                    {{ categoria.label }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <!-- CANTIDAD PERSONAS -->
+            <div class="flex-item" *ngIf="form.get('categoria_membresia')?.value === '02'">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Cantidad Personas</mat-label>
+                <input matInput type="number" formControlName="cantidad_personas" min="02">
+                <mat-error *ngIf="form.get('cantidad_personas')?.invalid && form.get('cantidad_personas')?.touched">
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <!-- ESTADO -->
+            <div class="flex-item">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado">
+                  <mat-option value="1">Activo</mat-option>
+                  <mat-option value="0">Inactivo</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- Fin de los campos organizados usando Flexbox -->
+  
+          <br>
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+              <button [disabled]="!form.valid || !estado"  id="basic"  style="color: white;background-color: #039be5;" type="submit" mat-button >
+               {{texto_boton}}
+              </button>
+  
+              <button id="basic"  routerLink="/principal/mantenimiento/categoriaproducto/lista" type="button" mat-button  style="color: white;background-color: red;">
+              Cancelar
+              </button>
+            </div>
+      </div>
+        </mat-card>
+      </div>
+    </div>
+  </form>

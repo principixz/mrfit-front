@@ -1,0 +1,269 @@
+<ngx-loading-bar height="6px" color="#43a047"></ngx-loading-bar>
+<ngx-ui-loader></ngx-ui-loader>
+<div class="main-wrapper" [ngClass]="{ 'main-wrapper--navigation-open': mainNavigationOpened }">
+    <nav class="main-navigation">
+      <asm-angular-sidebar-menu
+        *ngIf="menuConfService.menu$ | async as menu"
+        [menu]="menu1"
+        [mode]="currentSidebarMode"
+        [unAuthorizedVisibility]="'hidden'"
+        [role]="currentRole"
+        [search]="currentSearch"
+        toggleIconClasses="fa fa-angle-left"
+        iconClasses="fa fa-circle-o"
+      >
+      <div class="logo-final">
+        <img src="../assets/icon.png" style="width: 45px;height: 45px; "> <label
+         style="margin-left:20px;color: #b8c7ce;font-weight: bold;font-size: 17px;margin-top: 0px;">JJINGENIEROS</label>
+      </div>
+       <div class="input-search" [ngClass]="{ 'input-search--focus': inputSearchFocus }">
+          <input
+            matInput
+            placeholder="Buscar..."
+            type="text"
+            (keyup)="currentSearch = $any($event.target).value"
+            (focusin)="inputSearchFocus = true"
+            (focusout)="inputSearchFocus = false"
+          />
+          <i class="fa fa-search"></i>
+        </div>
+      </asm-angular-sidebar-menu>
+    </nav>
+    <header class="main-header">
+      <i class="sidebar-toggle fa fa-bars" style="background-color: white !important;" (click)="mainNavigationOpened = !mainNavigationOpened"></i>
+
+      <nav style="width: 100% !important;margin: 0 !important;padding: 0px 10px 0px 10px;" class="navbar navbar-light bg-light">
+        <div style="margin: 0 !important;padding: 0px;" class="container-fluid">
+      
+          <div class="d-flex">
+          
+          
+
+            <ul class="nav navbar-nav ml-auto">
+               <li  placement="bottom right">
+              <button routerLink="/principal/venta/Venta_mesa"   mat-icon-button  aria-label="Example icon-button with a menu">
+
+              <mat-icon   matBadgeColor="warn">table_restaurant</mat-icon>
+              
+            </button>
+            </li>
+              <li   placement="bottom right">
+                <button routerLink="/principal/venta/Pedido/0/1/Delivery"  mat-icon-button  aria-label="Example icon-button with a menu">
+
+                <mat-icon     matBadgeColor="warn">local_shipping</mat-icon>
+                
+              </button>
+              </li>
+              <li  style="margin-right: 10px; z-index: 1000 !important;" placement="bottom right">
+                <button (click)="aumntar()" mat-icon-button [matMenuTriggerFor]="menu12" aria-label="Example icon-button with a menu">
+
+                <mat-icon   [matBadge]="cantidad_notificaciones" matBadgeColor="warn">notifications</mat-icon>
+                
+              </button>
+                <mat-menu #menu12 style="width: 100%;">
+                  <div  *ngIf="listanotificacion.length==0" class="notificacion">
+                    <div class="d-flex justify-content-center" style="margin-top: 50px;">
+                     <div class="row">
+                       <img style="width: 100px;height: 100px;" src="./../../assets/notificacion.png"/>
+                     </div>
+                  
+   
+                    </div>
+   
+                     <div class="d-flex justify-content-center" style="margin-top: 30px;">
+                           <div class="row">
+                         <h6 style="display: block;color: #1565C0;font-family: 'Helvetica';">No Han llegado</h6>
+                      
+                       
+                         </div>
+                     </div>
+   
+                     
+                     <div class="d-flex justify-content-center" style="margin-top: 0px;">
+                       <div class="row">
+                         <h6  style="display: block;color: #1565C0;font-family: 'Helvetica';">Nuevas notificaciones</h6>
+                     </div>
+                 </div>
+   
+                 <div class="d-flex justify-content-center" style="margin-top: 10px;">
+                   <div class="row">
+                     <h6  style="display: block;color: black;font-family: 'Helvetica';font-size:9px;padding-right: 20px;padding-left: 20px;">
+                       Aqui podrás ver tus notificaciones de tus ventas </h6>
+                 </div>
+                 </div>
+                </div>
+               
+                </mat-menu>
+                  <!--<div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBasic2">
+                    <div *ngIf="listanotificacion.length!=0" class="notificaciones">
+                    <mat-list>
+                      <div mat-subheader style="font-weight: bold;">NOTIFICACIONES NUEVAS</div>
+                      <mat-list-item 
+                      
+                      class="sleccionar_notificacion" style="cursor: pointer;" *ngFor="let notifica of listanotificacion">
+                        <mat-icon mat-list-icon>account_circle</mat-icon>
+                        <div mat-line class="titulo_notificacion">{{notifica.titulo}}</div>
+                        <div mat-line class="descripcion_notificacion"> {{notifica.descripcion}} </div>
+                        <div class="sub_notificacion" >{{ notifica.fecha }}</div>
+                        <mat-divider></mat-divider>
+                      </mat-list-item>
+                    
+                    
+                    </mat-list>
+                  </div>
+      
+      
+                   <div  *ngIf="listanotificacion.length==0" class="notificacion">
+                       <div class="d-flex justify-content-center" style="margin-top: 50px;">
+                        <div class="row">
+                          <img style="width: 100px;height: 100px;" src="./../../assets/notificacion.png"/>
+                        </div>
+                     
+      
+                       </div>
+      
+                        <div class="d-flex justify-content-center" style="margin-top: 30px;">
+                              <div class="row">
+                            <h6 style="display: block;color: #1565C0;font-family: 'Helvetica';">No Han llegado</h6>
+                         
+                          
+                            </div>
+                        </div>
+      
+                        
+                        <div class="d-flex justify-content-center" style="margin-top: 0px;">
+                          <div class="row">
+                            <h6  style="display: block;color: #1565C0;font-family: 'Helvetica';">Nuevas notificaciones</h6>
+                        </div>
+                    </div>
+      
+                    <div class="d-flex justify-content-center" style="margin-top: 10px;">
+                      <div class="row">
+                        <h6  style="display: block;color: black;font-family: 'Helvetica';font-size:9px;padding-right: 20px;padding-left: 20px;">
+                          Aqui podrás ver notificaciones sobre tus ventas y otras novedades</h6>
+                    </div>
+                    </div>
+                   </div>
+                  </div>-->
+
+
+               
+                <!--<mat-icon style="margin: 7px 10px 0px 10px;" matBadge="15" matBadgeColor="warn">notifications</mat-icon>-->
+              </li>
+
+              <li _ngcontent-xcx-c1="" class="nav-item dropdown open show" dropdown="" placement="bottom right">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+
+                  <mat-icon style="font-size: 30px;"   >account_circle</mat-icon>
+                  
+                </button>
+               <!-- <a _ngcontent-xcx-c1="" [matMenuTriggerFor]="menu"  class="nav-link" data-toggle="dropdown" dropdowntoggle="" role="button" aria-expanded="true">
+                  <img _ngcontent-xcx-c1="" alt="admin@bootstrapmaster.com" class="img-avatar" src="https://app.elpobrecito.com/public/imagen-default.png">
+                </a> -->
+
+                  <mat-menu #menu="matMenu">
+                 
+                  <button mat-menu-item routerLink="/principal/mantenimiento/registrocomprobante" >
+                    <mat-icon>settings  </mat-icon>
+                    <span>Configuración</span>
+                  </button>
+                  <button (click)="salir()" mat-menu-item>
+                    <mat-icon>power_settings_new</mat-icon>
+                    <span>Cerrar Sesión</span>
+                  </button>
+                </mat-menu>
+                  <!---<div _ngcontent-xcx-c1="" aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right show" 
+                  style="left: auto; right: 0px; top: 100%; transform: translateY(0px);"><div _ngcontent-xcx-c1="" class="dropdown-header text-center">
+                    <strong _ngcontent-xcx-c1="">admin</strong></div><div _ngcontent-xcx-c1="" class="divider">
+
+              </div><a _ngcontent-xcx-c1="" class="dropdown-item" href="#"><i _ngcontent-xcx-c1="" class="fa fa-lock"></i> Cerrar Sesion</a></div>-->
+            </li>
+        
+                  <li class="nav-item dropdown"  placement="bottom right">
+                   
+                   <!--<div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                       
+                        <div class="dropdown-header text-center"><strong>{{usuario}}</strong></div>
+                        <div class="divider"></div>
+                        <a class="dropdown-item" (click)="salir()" href="#"><i class="fa fa-lock"></i> Cerrar Sesion</a>
+           
+                     </div>--> 
+                  </li>
+               <!-- <li class="nav-item d-md-down-none"><a href="#" class="nav-link"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a></li>-->
+            </ul>
+          </div>
+        </div>
+      </nav>
+     <!--<mat-form-field appearance="fill">
+        <i matSuffix class="fa fa-chevron-down"></i>
+        <mat-label>Sidebar Mode</mat-label>
+        <mat-select [(value)]="currentSidebarMode">
+          <mat-option [value]="sidebarModes.EXPANDED">Expanded</mat-option>
+          <mat-option [value]="sidebarModes.EXPANDABLE">Expandable</mat-option>
+          <mat-option [value]="sidebarModes.MINI">Mini</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <i matSuffix class="fa fa-chevron-down"></i>
+        <mat-label>Role</mat-label>
+        <mat-select [(value)]="currentRole">
+          <mat-option [value]="undefined">Disabled</mat-option>
+          <mat-option value="">None</mat-option>
+          <mat-option [value]="roles.ADMIN">Admin</mat-option>
+          <mat-option [value]="roles.EDITOR">Editor</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <i matSuffix class="fa fa-chevron-down"></i>
+        <mat-label>Visibility</mat-label>
+        <mat-select value="disabled" #visibility>
+          <mat-option value="hidden">Hidden</mat-option>
+          <mat-option value="disabled">Disabled</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <i matSuffix class="fa fa-chevron-down"></i>
+        <mat-label>Menu Lang</mat-label>
+        <mat-select [value]="lang" (selectionChange)="onLangChange($event)">
+          <mat-option value="en">En</mat-option>
+          <mat-option value="fr">Fr</mat-option>
+          <mat-option value="es">Es</mat-option>
+        </mat-select>
+      </mat-form-field>--> 
+    </header>
+    <main class="main-content overflow-auto" >
+      
+      <router-outlet #mainfocus></router-outlet>
+    </main>
+  </div>
+  
+
+<!--<asm-angular-sidebar-menu [menu]="menu"></asm-angular-sidebar-menu>-->
+<!--
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+ 
+        <i  (click)="visibleSidebar1 = true" class="pi pi-bars"></i>
+        
+   </div>
+    
+    <div class="p-toolbar-group-right">
+        <p-button icon="pi pi-search"></p-button>
+        <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+    </div>
+</p-toolbar>
+
+<p-sidebar  [(visible)]="visibleSidebar1" [transitionOptions]="'100ms'" [baseZIndex]="10">
+    <h1 style="font-weight:normal">Left Sidebar</h1>
+    <p-button type="button" (click)="visibleSidebar1 = false" label="Save" styleClass="p-button-success"></p-button>
+    <p-button type="button" (click)="visibleSidebar1 = false" label="Cancel" styleClass="p-button-secondary"></p-button>
+</p-sidebar>-->
+
+<!--
+<p-menubar [model]="items" styleClass="align-right"> 
+    <div>
+        <input type="text" pInputText placeholder="Search">
+        <button type="button" pButton label="Logout" icon="pi pi-power-off" style="margin-left:.25em"></button>
+    </div>
+</p-menubar>-->

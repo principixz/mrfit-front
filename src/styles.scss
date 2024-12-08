@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'styles/variables';
+@import 'styles/material';
+@import 'simple-keyboard/build/css/index.css';
+@import '~normalize.css/normalize.css';
+@import '~prism-themes/themes/prism-vs.css';
+
+* {
+  box-sizing: border-box;
+}
+
+.v-align-middle { 
+  vertical-align: middle;
+} 
+
+.modal_precio .mat-dialog-container  {
+ padding: 0px !important;
+    
+}
+.mat-dialog-content{
+  max-height: 90vh !important;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-weight: 300;
+  color: #495057 !important;
+  font-size: 14px;
+  font-family: $font-family;
+}
+
+pre[class*='language-'] {
+  border: none;
+  border-left: 10px solid #dee2e6;
+  background: #fff;
+  margin: 0 0 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 2.5rem 0 1rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  color: inherit;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+p {
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.table__documentation {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+
+  td,
+  th {
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  td {
+    pre[class*='language-'] {
+      border: none;
+      margin: 0;
+    }
+  }
+}
+
+.d-none {
+  display: none !important;
+}
+
+
+.dark-modal .modal-content {
+  /*background-color: #292b2c;
+  color: white;*/
+ width: 95% !important; 
+
+  margin: auto;
+}
+.dark-modal .modal-xl {
+  max-width: 95% !important;
+
+
+}
+
+.cdk-overlay-container {
+  z-index: 99999999999999; 
+}
+.dark-modal .close {
+  //color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="modal-header">  <h3 style="font-weight: bold;" class="modal-title" id="myModalLabel">Abrir Caja</h3>
+
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="modal.close(false)">×</button>
+  
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div formArrayName="inicio_caja" style="width: 100%;">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label style="font-weight: bold;">Inicio caja fisica</label>
+            <input type="number" value="0" id="inicio_caja_fisica" width="100%" [formControlName]="0" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label style="font-weight: bold;">Inicio caja virtual</label>
+            <input type="number" value="0" id="inicio_caja_virtual" width="100%" [formControlName]="1" class="form-control">
+          </div>
+        </div>
+        </div>
+     
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" [disabled]="button_disabled"  class="btn btn-info" id="abrir_caja">{{button_descripcion}}</button>
+  </div>
+</form>

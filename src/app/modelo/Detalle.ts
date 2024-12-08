@@ -1,0 +1,21 @@
+export class Detalle{
+    idprecio:number;
+    precio:number;
+    cantidad:number;
+    nombre:string;
+    adicionales:number;
+    adicional_descripcion:string;
+    comentario:string;
+    foto:string;
+   constructor(idprecio:number,precio:number,cantidad:number,
+    nombre:string,adicionales:number,adicional_descripcion:string,comentario:string,foto:string){
+     this.idprecio=idprecio;
+     this.precio=precio;
+     this.cantidad=cantidad;
+     this.nombre=nombre;
+     this.adicionales=adicionales;
+     this.adicional_descripcion=adicional_descripcion
+     this.comentario=comentario;
+     this.foto=foto;
+   }
+}

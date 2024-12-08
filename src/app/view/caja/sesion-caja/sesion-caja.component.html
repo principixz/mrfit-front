@@ -1,0 +1,221 @@
+
+<mat-card>
+    <div class="row">
+     <div class="col-md-12">
+       <h2> Sesión de Caja</h2>
+     </div>
+    </div>
+    <div class="row">
+     <div class="col-md-2">
+     <button class="btn-block" style="background-color: #ffb22b;color: white;" (click)="openDialog()"  mat-raised-button >Arqueo</button>
+     </div>
+
+     <div *ngIf="estadosesioncaja==2  || estadosesioncaja==3 || estadosesioncaja==-1;else elseBlock" class="col-md-10">
+       <!-- <button class="btn-block" style="background-color: #509d44;color: white;" mat-raised-button >Abrir caja</button>-->
+       <h4 class="lead">Usted no tiene permiso de abrir caja</h4>
+        </div>
+
+        <ng-template #elseBlock>
+          <div  class="col-md-2">
+            <!-- <button class="btn-block" style="background-color: #509d44;color: white;" mat-raised-button >Abrir caja</button>-->
+            <button  *ngIf="estado_caja==2;else elseBlock2" 
+            class="btn-block" (click)="cerrar_sesion()"
+            style="background-color: #509d44;color: white;" mat-raised-button >Abrir caja</button>
+            <ng-template #elseBlock2>
+            <button (click)="open()"  class="btn-block" style="background-color: red;color: white;" mat-raised-button >Cerrar caja</button>
+
+            </ng-template>
+             </div>
+        </ng-template>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel card-view panel-primary">
+                <div class="panel-heading">
+                    <div class="pull-left" style="text-align: center;">
+                     <h4 style="margin-bottom: 0px;padding-bottom: 0px;align-content: center;  padding: 20px 15px !important;" > Caja Fisica el {{fecha_actual | date:'fullDate'}}</h4>
+                   </div>
+                   <div class="clearfix"></div>
+                 </div>
+                 <div class="panel-body">
+                     <div style="width: 100%;text-align: center;">
+                        <h3 style="font-weight: bold;font-size: 23px;">S/ {{cajafisica  | number:'1.2'}}</h3>
+                     </div>
+                    <input type="hidden" name="ingresosf" id="ingresosf" value="0.00">
+                    <input type="hidden" name="cajafisica" id="cajafisica" value="361">
+                    <input type="hidden" name="cajavirtual" id="cajavirtual" value="362">
+                    <div class="row">
+                     <div class="col-md-6">
+                                   Ingresos: <label>S/  {{cajaingf | number:'1.2'}}</label>
+                     </div>
+                     <div class="col-md-6">
+                       Egresos: <label>S/ {{cajaegrf | number:'1.2'}}</label>
+                     </div>
+           
+           
+                   </div>
+                 </div>
+                 <div class="panel-heading">
+                  <div class="pull-left">
+                    <h3 style="  padding: 20px 15px !important;margin-bottom: 0px;padding-bottom: 0px;">{{mov_f}} Transacciones</h3>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+         </div>
+         <div class="col-md-6">
+            <div class="panel card-view panel-success">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                     <h4 style="margin-bottom: 0px;  padding: 20px 15px !important;"> Caja Virtual el  {{fecha_actual | date:'fullDate'}} </h4>
+                   </div>
+                   <div class="clearfix"></div>
+                 </div>
+                 <div class="panel-body">
+                     <div style="width: 100%;text-align: center;">
+                        <h3 style="font-weight: bold;font-size: 23px;">S/ {{cajavirtual  | number:'1.2'}}</h3>
+                     </div>
+                    <input type="hidden" name="ingresosf" id="ingresosf" value="0.00">
+                    <input type="hidden" name="cajafisica" id="cajafisica" value="361">
+                    <input type="hidden" name="cajavirtual" id="cajavirtual" value="362">
+                    <div class="row">
+                     <div class="col-md-6">
+                                   Ingresos: <label>S/  {{cajaingv | number:'1.2'}}</label>
+                     </div>
+                     <div class="col-md-6">
+                       Egresos: <label>  {{cajaegrv | number:'1.2'}}</label>
+                     </div>
+           
+           
+                   </div>
+                 </div>
+                 <div class="panel-heading">
+                  <div class="pull-left">
+                   <h3 style="margin-bottom: 0px;padding-bottom: 0px;  padding: 20px 15px !important;">{{mov_v}} Transacciones</h3>
+                 </div>
+                 <div class="clearfix"></div>
+               </div>
+              </div>
+         </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>Formas de Pago</th>
+                    <th>Transacciones</th>
+        
+                    <th>Ingreso(0)</th>
+                    <th>Egreso(0)</th>
+                    <th>Total</th>
+        
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let info of pagos_mov">
+                    <td>{{info["descripcion"]}}</td><td>{{info["transacciones"]}}</td>
+                    <td>S/ {{info["ingreso"] | number:'1.2'}}</td><td>S/ {{info["egreso"] | number:'1.2'}}</td><td>S/ {{info["total"] | number:'1.2' }}</td>
+                  </tr>
+                   <!--<tr><td>POS VISA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                    <tr><td>VISA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                    <tr><td>CHECKE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>  -->        
+                     <tr>
+                    <td colspan="4">Total Neto</td>
+                    <td><b style="font-weight: bold;font-size: 15px;">S/ {{total |  number:'1.2'}}</b></td>
+                  </tr>
+                </tbody>
+        
+              </table>
+            </div>
+          </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default card-view panel-refresh">
+              <div class="refresh-container">
+                <div class="la-anim-1"></div>
+              </div>
+              <div class="panel-heading">
+                <div class="pull-left">
+                  <h4 style="margin-bottom: 0px;padding-bottom: 0px;">Caja Fisica</h4>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+      
+              <div class="panel-wrapper ">
+                <div [chart]="chart"></div>
+             <!-- <highcharts-chart 
+                [Highcharts]="Highcharts"
+                [options]="chartOptions"
+              
+                style="width: 100%; height: 300px; display: block;"
+              ></highcharts-chart>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- <highcharts-chart 
+        [Highcharts]="Highcharts"
+        [options]="chartOptions"
+      
+        style="width: 100%; height: 400px; display: block;"
+      ></highcharts-chart>-->
+      </div>
+
+
+
+
+      <div class="col-md-4">
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default card-view panel-refresh">
+              <div class="refresh-container">
+                <div class="la-anim-1"></div>
+              </div>
+              <div class="panel-heading">
+                <div class="pull-left">
+                  <h4 style="margin-bottom: 0px;padding-bottom: 0px;">Caja Virtual</h4>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+      
+              <div class="panel-wrapper ">
+                <div [chart]="chart1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- <highcharts-chart 
+        [Highcharts]="Highcharts"
+        [options]="chartOptions"
+      
+        style="width: 100%; height: 400px; display: block;"
+      ></highcharts-chart>-->
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</mat-card>
+
+

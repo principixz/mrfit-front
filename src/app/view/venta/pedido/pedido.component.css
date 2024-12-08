@@ -1,0 +1,210 @@
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.toggle_cliente{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.fab-container {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  
+    > div {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 5px;
+  
+      button {
+        margin-bottom: 17px;
+      }
+    }
+  }
+  ::ng-deep ngb-modal-backdrop {
+    z-index: 1050 !important;
+  }
+  .fab-toggler {
+    float: right;
+    z-index: 100;
+  }
+#cuerpo1{
+    height: 430px !important;overflow: auto !important;
+                overflow-x:hidden!important;
+}
+.caja_pedido{
+
+    height: 250px;
+}
+.satu{
+    color: RED;
+}
+.contenedor{
+
+    display: flex;
+    flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: start;
+}
+.btn1{
+    width: 30%;
+    padding: 0px;
+      margin: 0;
+}
+.btn2{
+    width: 30%;
+    padding: 0px;
+    margin: 0;
+}
+.btn3{
+    width: 30%;
+    padding: 0px;
+    margin: 0;
+}
+.juntos{
+    width: 100%;
+}
+
+#cuerpo::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+    opacity: 0.5;
+}
+#cuerpo::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    opacity: 0.5;
+}
+#cuerpo::-webkit-scrollbar-track {
+  
+    background-color: #F5F5F5;
+    opacity: 0.5;
+}
+
+#cuerpo1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+    opacity: 0.5;
+}
+#cuerpo1::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    opacity: 0.5;
+}
+#cuerpo1::-webkit-scrollbar-track {
+
+    background-color: #F5F5F5;
+    opacity: 0.5;
+}
+.box{
+    width: 100%;
+    height: 50px;
+    white-space: nowrap;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    behavior: 'smooth',
+}
+.new{
+    float: none;
+   
+    display: inline-block;
+    zoom: 1;
+}
+::ng-deep .mat-chip-list-wrapper {
+    flex-wrap: unset !important;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+
+
+
+  ::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/*
+  ::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar,
+  ::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-thumb {
+    width: 1px;
+    border-radius: 5px;
+    background-clip: padding-box;
+    border: 1px solid;
+  }
+  
+  ::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-thumb {        
+    box-shadow: inset 0 0 0 1px;
+  }
+*/
+/*  
+  ::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar {
+    width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-thumb {
+    width: 26px;
+    border-radius: 13px;
+    background-clip: padding-box;
+    border: 10px solid transparent;
+}
+::ng-deep .mat-chip-list-wrapper::-webkit-scrollbar-track {
+  
+    background-color: #F5F5F5 !important;;
+    opacity: 0.5 !important;;
+}
+*/
+@media only screen and (max-width: 600px) {
+    .caja_pedido{
+
+        height: 670px;
+    }
+    #cuerpo1{
+        height: 660px !important;overflow: auto !important;
+                    overflow-x:hidden!important;
+    }
+    ::ng-deep  .mat-card {
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+      padding-bottom: 0px !important;
+      padding-top: 0px !important;
+
+    }
+  
+  }
+  .flotante {
+    position: fixed;
+  
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+   
+    z-index: 1030;
+}
+.cuerpo{
+    width: 100% !important;
+    margin: 0px !important;
+}

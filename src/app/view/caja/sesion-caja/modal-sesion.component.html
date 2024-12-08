@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title" style="font-weight: bold;">
+    <i class="fa fa-comments-o"></i> !Confirmar cierre de caja¡ 
+  </h4>
+
+  </div>
+  <div class="modal-body" align="center">
+    <div class="alert alert-success" >
+      <strong class="default"> ATENCIÓN ADMINISTRADOR DE CAJA:</strong> 
+      Compruebe que los montos de cada empleado fueron entregados correctamente <br>
+      <strong class="default">DEBE DEJAR TODO EN ORDEN PARA EL PROXIMO CAJERO</strong>
+    </div>
+    <h4>
+      <b>¿Seguro desea cerrar caja?</b>
+    </h4>
+  <br>
+    <button type="button" class="btn btn-danger" (click)="modal.close(false)">Cancelar</button>   
+      <button [disabled]="button_disabled" style="margin-left: 2px;" type="button" (click)="procesar_cierre()" class="btn btn-primary" id="btn_cierrecaja" >
+     {{button_descripcion}}
+    </button>
+  </div>

@@ -1,0 +1,124 @@
+.example-stretched-tabs {
+   /* max-width: 800px;*/
+  }
+.tiempo_mesa{
+  font-size: 16px;margin-bottom: 10px;
+}
+  .example-box1 {
+    padding: 10px;
+    width: 180px;
+    height:180px !important;
+    border: solid 1px #ccc;
+    color: white;
+    background-color: #e53935;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    margin: 10px;
+    z-index: 1;
+
+  }
+  
+  .example-box {
+    padding: 10px;
+    margin: 10px;
+    width: 180px;
+    height: 180px !important;
+    border: solid 1px #ccc;
+    color: white;
+    background-color: #2e7d32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+
+    z-index: 1;
+
+  }
+  
+
+  .example-box2 {
+    margin: 10px;
+    padding: 10px;
+    width: 180px;
+    height: 180px !important;
+    border: solid 1px #ccc;
+    color: white;
+    background-color: #01579b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+
+    z-index: 1;
+
+  }
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  @media only screen and (max-width: 600px) {
+
+    .tiempo_mesa{
+      font-size: 12px;margin-bottom: 10px;
+      line-height: 10px;
+    }
+    .example-box1 {
+      padding: 10px;
+      width: 120px;
+      height:120px !important;
+      border: solid 1px #ccc;
+      color: white;
+      background-color: #e53935;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: space-between;
+      border-radius: 4px;
+      margin: 10px;
+      z-index: 1;
+  
+    }
+    
+    .example-box {
+      padding: 10px;
+      margin: 10px;
+      width: 120px;
+      height: 120px !important;
+      border: solid 1px #ccc;
+      color: white;
+      background-color: #2e7d32;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 4px;
+  
+      z-index: 1;
+  
+    }
+    
+  
+    .example-box2 {
+      margin: 10px;
+      padding: 10px;
+      width: 120px;
+      height: 120px !important;
+      border: solid 1px #ccc;
+      color: white;
+      background-color: #01579b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 4px;
+  
+      z-index: 1;
+  
+    }
+
+}

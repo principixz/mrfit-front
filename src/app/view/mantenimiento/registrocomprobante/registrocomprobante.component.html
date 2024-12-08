@@ -1,0 +1,112 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <h5 style="font-weight: bold;font-size: 25px;">{{titulo}}</h5>
+    </div>
+</div>
+<mat-card>
+  <mat-tab-group [color]="'primary'">
+    <mat-tab label="Datos de empresa">
+      <form [formGroup]="form" (submit)="onSubmit()"  class="needs-validation" novalidate>
+        <div class="col-md-12" style="margin-top: 20px;">
+           
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+
+                    <label>Razon Social</label>
+                    <input type="text" class="form-control" required="true"  autocomplete="off" formControlName="razon_social" id="razon_social">
+                    <div class="invalid-feedback">
+                      Please select a valid state.
+                    </div> 
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Direccion</label>
+                    <input type="text" class="form-control" autocomplete="off" formControlName="empresa_direccion" id="empresa_direccion">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                   <label>Telefono</label>
+                   <input type="text" class="form-control" autocomplete="off" formControlName="empresa_telefono" id="empresa_telefono">
+                 </div>
+               </div>
+
+
+               <div class="col-md-4">
+                <div class="form-group">
+                  <label>Correo</label>
+                  <input type="text" class="form-control" autocomplete="off" formControlName="empresa_correo" id="empresa_correo">
+                </div>
+              </div>
+              
+
+              <div class="col-md-4" style="display: none;">
+                <div class="form-group">
+                  <label>Abreviatura(Max. 12)</label>
+                  <input type="text" class="form-control" autocomplete="off" formControlName="empresa_abreviatura" id="empresa_abreviatura">
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="form-group">
+                 <label>Nombre Comercial</label>
+                 <input type="text" class="form-control" autocomplete="off" formControlName="empresa_nombre_comercial" id="empresa_nombre_comercial">
+               </div>
+             </div>
+             <div class="col-md-4">
+              <div class="form-group">
+                <label>Token de facturación</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="empresa_token_facturacion" id="empresa_token_facturacion"> 
+              </div>
+            </div>
+
+             <div class="col-md-4">
+              <div class="form-group">
+                <label>Icono </label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="empresa_icono" id="empresa_icono"> 
+              </div>
+            </div>
+             <div class="col-md-4">
+              <div class="form-group">
+                <label>Fondo </label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="empresa_fondo" id="empresa_fondo"> 
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Color</label>
+                <br>
+                <input type="color" id="empresa_color" formControlName="empresa_color" value="">
+              </div>
+            </div>
+         
+
+
+         
+
+         </div>  
+
+         
+
+         <div style="display: flex;
+         justify-content: center;">
+
+          <button class="btn btn-success" id="guardar_informacion" [disabled]="estado"  type="submit">{{texto_boton}}</button>
+
+         </div>
+  
+                     
+    </div>
+
+  </form>
+    </mat-tab>
+  
+  </mat-tab-group>
+</mat-card>

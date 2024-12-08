@@ -1,0 +1,31 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+    npm install --force
+    ng build --prod
+  displayName: 'npm install and build'
+
+- task: InstallSSHKey@0
+  inputs:
+    addEntryToConfig: true
+    configHostname: '209.145.58.150'
+    configUser: 'root'
+    configPort: '22'
+    sshPublicKey: 'id_rsa'
+    sshKeySecureFile: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0lACAo/Fk1spohYCtO/XmiSjUA3LWWUtU7Vh76Mad4m/kyp1soaC0bX+qJj1JsXAH6LlUQKaOjlKv8+VUEy9JI/nurgfvJFy1q/I9dAFFnS+KUfAmPXhQFohLGmiz2yiRUtEEC1mvzzRZ/61u4XCiEnwlLzWIUSvKKIMwvpzjTSggcJdJhPwHQ3zbogziNKjYIC2TTGC2jE3AezBeDZA6sRLxkoELCpn4ic6J7FCPQTPlx6AS6roJgJAnNDuYm/kLABT8bed292k2cEor9s+sicCN7CrJApbJ1IGovSfgCjkY9WaPseCSTmpjp00plSJnRNkdGsry+U36wKpHa1DqrIcUbrCNMsiKjnBbNJ3If25w3cy3QLL3QkNpRiG5c//nw7cJRyXrjGinXYlb7H7e9kiUdWJPZRSVFb3nzJZ0DzB2P65nBwT3lPFOFcHO/7gS7M4N8OKeCNMbkKU1J2LfUa7wme9z0ZFY4uO+m3BHLvE7w3OPCjfLP+0r/0LWUfpBFxg2yampe2yaXOC/9MQor55o9FT6tcJOyGBLmEBNkZipnCZvJ5LRaQpMXwjr78VfrEWIxahjmthaVf1vqyZYipDTVZ2Cq57SBauiff/XTyFqx0RwuQgUgYFpg8OJeG9xg0Sw4P7b9djUKb7nU64BrDSfemQ+C/hCTw5KHbTG2w== jimmycarbajalsanchez@gmail.com'
+    sshPassphrase: ''
+    configHostAlias: ''
+    knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0lACAo/Fk1spohYCtO/XmiSjUA3LWWUtU7Vh76Mad4m/kyp1soaC0bX+qJj1JsXAH6LlUQKaOjlKv8+VUEy9JI/nurgfvJFy1q/I9dAFFnS+KUfAmPXhQFohLGmiz2yiRUtEEC1mvzzRZ/61u4XCiEnwlLzWIUSvKKIMwvpzjTSggcJdJhPwHQ3zbogziNKjYIC2TTGC2jE3AezBeDZA6sRLxkoELCpn4ic6J7FCPQTPlx6AS6roJgJAnNDuYm/kLABT8bed292k2cEor9s+sicCN7CrJApbJ1IGovSfgCjkY9WaPseCSTmpjp00plSJnRNkdGsry+U36wKpHa1DqrIcUbrCNMsiKjnBbNJ3If25w3cy3QLL3QkNpRiG5c//nw7cJRyXrjGinXYlb7H7e9kiUdWJPZRSVFb3nzJZ0DzB2P65nBwT3lPFOFcHO/7gS7M4N8OKeCNMbkKU1J2LfUa7wme9z0ZFY4uO+m3BHLvE7w3OPCjfLP+0r/0LWUfpBFxg2yampe2yaXOC/9MQor55o9FT6tcJOyGBLmEBNkZipnCZvJ5LRaQpMXwjr78VfrEWIxahjmthaVf1vqyZYipDTVZ2Cq57SBauiff/XTyFqx0RwuQgUgYFpg8OJeG9xg0Sw4P7b9djUKb7nU64BrDSfemQ+C/hCTw5KHbTG2w== jimmycarbajalsanchez@gmail.com'

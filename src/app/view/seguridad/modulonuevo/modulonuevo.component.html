@@ -1,0 +1,78 @@
+<form [formGroup] = "form" (submit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+  <div class="row">
+      <div class="col-md-12">
+        <h5 style="font-weight: bold;font-size: 25px;">{{titulo}}</h5>
+      </div>
+     </div>
+  
+     <br>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card> 
+        <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100% !important;" appearance="outline">
+            <mat-label>Descripción del Módulo</mat-label>
+            <input matInput formControlName="descripcion"  >
+           
+            <mat-error >
+                Campo requerido
+               </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label>URL</mat-label>
+              <input matInput formControlName="url"  >
+             
+              <mat-error >
+                  Campo requerido
+                 </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field style="width: 100% !important;" appearance="outline">
+              <mat-label>Icono</mat-label>
+              <input matInput formControlName="icono"  >
+             
+              <mat-error >
+                  Campo requerido
+                 </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+     
+                <mat-form-field style="width: 100% !important;" appearance="outline">
+                  <mat-label>Tipo de Concepto</mat-label>
+                  <mat-select formControlName="modulopadre">
+                    <mat-option *ngFor="let tipo of lista_padre" [value]="tipo.modulo_id">{{tipo.modulo_nombre}}</mat-option>
+           
+                  </mat-select>
+                  <mat-error >
+                    Campo requerido
+                   </mat-error>
+                </mat-form-field>
+            
+          </div>
+          
+  
+      </div>
+      <br>
+      <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+              <button [disabled]="!form.valid || !estado"  id="basic"  style="color: white;background-color: #039be5;" type="submit" mat-button >
+               {{texto_boton}}
+              </button>
+  
+              <button id="basic"  routerLink="/principal/seguridad/modulo/lista" type="button" mat-button  style="color: white;background-color: red;">
+              Cancelar
+              </button>
+            </div>
+      </div>
+      
+      </mat-card>
+    </div>
+  </div>
+  
+  </form>

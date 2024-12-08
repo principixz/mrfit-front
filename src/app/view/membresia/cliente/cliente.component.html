@@ -1,0 +1,20 @@
+
+
+<!--titulo_modulo=Descripcion del producto -->
+<!--url_eliminar = url donde se va eliminar el producto ,recordar que el parametro de eliminicion es id-->
+<!--columnas son las columnas que tendra la tabla el id,opciones estan implicitas en el complemento-->
+<!--filasource aqui estara la informacion de la base de datos siempre debe llevar el campo id -->
+
+<!--nombrecolumna Aqui va el nombre de las columnas de la tabla id y opcion estan por defecto , aqui debe tener el mismo tamaño que columnas -->
+<app-datablematerial titulo_modulo="LISTA DE PRODUCTOS" 
+
+url_eliminar="Web_Service/eliminar_concepto" 
+
+url_nuevo="/principal/membresia/clientes/nuevo"
+url_editar="/principal/membresia/clientes/editar/"
+url_eliminar="Web_Service/eliminar_cliente" 
+[columnas]="columnas" [filasource]="dataSource" [nombrecolumna]="nombrecolumna">
+
+
+</app-datablematerial>
+  

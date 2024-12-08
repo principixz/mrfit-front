@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+<h1 mat-dialog-title>Selecionar  mesas </h1>
+<div mat-dialog-content>
+  <div class="row cuerpo_modal" *ngIf="carga_inicial; else elseBlock" >
+  <div class="col-md-12" *ngFor="let mesa of lista_datos" style="margin-top:2px;margin-bottom:2px;" >
+    <div class="form-check">
+      <mat-checkbox [value]="mesa.silla_idsilla" color="primary"  (change)="onCheckboxChange($event)" class="example-margin" >{{mesa.nombre_silla}}({{mesa.lugarmesa_descripcion}})</mat-checkbox>
+    <!--<input required="true" class="form-check-input" type="checkbox" name="mesanueva[]" id="mesanueva46" value="46">
+    <label class="form-check-label" for="mesanueva46">Mesa 6(Salon)</label>-->
+  </div>
+  </div>
+ 
+</div>
+
+<ng-template #elseBlock>
+  <div class="row">
+  <div class="col-md-12 cuerpo_modal_q"  >
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+</ng-template>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cerrar</button>
+    <button mat-button mat-button style="background-color: #2e7d32;color: white;" type="submit" [disabled]="button_estado" >{{text_boton}}</button>
+  </mat-dialog-actions>
+</form>

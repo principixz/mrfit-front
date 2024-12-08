@@ -1,0 +1,53 @@
+
+  <div style="margin: 0px !important;padding: 0px!important;" mat-dialog-content>
+    <form  novalidate  [formGroup]="formulario" (ngSubmit)="enviar(formulario)"> 
+      <div style="position: relative;">
+          <div style="z-index: 1;">
+          <img class="imagen"      (error)="onImgError1($event)"  [src]="base_url+'public/img/productos/'+producto.foto"/>
+           </div>
+           <div  mat-dialog-close class="cerrar" style="position: absolute; left: 10px; top: 10px; z-index: 3;">
+            <label style="margin: 0px;padding: 0px;font-weight: bold;cursor: pointer;"> X</label>
+               </div>
+      </div>
+      <div  class="taman titulo">
+       
+          {{producto.nombre}}
+        
+      </div>
+      <div class="taman container_stock" style="margin-top: 15px;font-size: 17px;">
+       Stock: {{producto.stock}}
+      </div>
+           
+  
+  
+  
+  
+  
+      <div style="padding:10px 10px 10px 10px;">
+          <label style="font-weight: bold;color: black;">Instrucciones especiales</label>
+          <mat-form-field style="width: 100%;margin-top: 10px;" appearance="fill"
+          FloatLabelType="Auto"
+        >
+        <input   matInput formControlName="texto"  placeholder="Agregar una nota (Ejemplo salsa, cubierto)" >
+      </mat-form-field>
+      </div>
+  
+      <div class="boton_agregar">
+         <!-- <label>1</label>-->
+         <button (click)="disminuir()" [disabled]="!estado"  type="button" style="padding: 0px;background:rgb(238, 238, 238) !important;margin-right: 5px;" 
+         class="btn   btn-circle btn-xl">
+       -       </button>
+         <label style="margin-left: 30px;margin-right: 30px;font-size: 18px;">{{cantidad}}</label>
+         <button (click)="aumentar()"  [disabled]="stock==0 || cantidad==stock"  type="button" style="padding: 0px;background:rgb(238, 238, 238) !important;" class="btn  btn-circle btn-xl">
+         +       </button>
+      </div>
+  
+      <div style="padding:10px 10px 10px 10px;">
+      <button type="submit"
+        [disabled]="stock==0"
+      class="btn btn-success btn-lg btn-block">Agregar a carrito S/  {{total | number:'1.2'}}</button>
+  
+      </div>     
+     </form>
+  </div>
+  

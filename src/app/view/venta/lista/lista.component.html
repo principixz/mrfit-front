@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-md-12">
+      <h5 style="font-weight: bold;font-size: 25px;color: black;">LISTA DE VENTAS</h5>
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <button mat-raised-button style="background-color: #039be5;color: white;">Nuevo</button>
+    </div>
+    <div class="col-md-7">
+  
+    </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+          <div class=" mat-elevation-z2">
+            <mat-card>
+                <mat-card-content>
+                    <table  datatable [dtOptions]="dtOptions" class="striper">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Glosario</th>
+                                <th>Cliente</th>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                                
+                                <th>documento</th>
+                                <th>Acciones</th>
+            
+            
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="asociado?.length != 0"> 
+                            <tr *ngFor="let asociados of asociado; let i = index">
+                                
+                                <td>{{ asociados.id }}</td>
+                                <td>{{ asociados.glosario }}</td>
+                                <td>{{ asociados.cliente }}</td>
+                                <td>{{ asociados.fecha }}</td>
+                                <td>{{ asociados.monto }}</td>
+            
+                                <td>{{ asociados.serie }}</td>
+            
+                                <td>
+            
+            
+                                  <span *ngIf="asociados.estado=='0'" class="badge badge-danger">Eliminado</span>
+                                    <button *ngIf="asociados.estado!='0'" title="descargar PDF" 
+                                    (click)="descargar_pdf(asociados.pdf)"
+                                    class="btn btn-brand btn-success">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                    </button>
+                                    <button *ngIf="asociados.estado!='0'" title="descargar XML" 
+                                    (click)="descargar_pdf(asociados.xml)" class="btn btn-brand btn-primary">
+                                        <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                    </button>
+                                    <button *ngIf="asociados.estado!='0'" title="descargar CDR"
+                                    (click)="descargar_pdf(asociados.cdr)" class="btn btn-brand btn-secondary">
+                                        <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+                                    </button>
+            
+                                    <button *ngIf="asociados.estado!='0'" title="Enviar factura al correo"
+                                    (click)="enviar_correo(asociados.id)" class="btn btn-brand btn-dark">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </button>
+            
+                                    <button *ngIf="asociados.estado!='0'" title="Eliminar comprobante de pago"
+                                    (click)="eliminar_comprobante(asociados.id)" class="btn btn-brand btn-danger">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+            
+                                    
+                                    <button *ngIf="asociados.estado!='0'" title="Imprimir comprobante"
+                                    (click)="imprimir_comprobante(asociados.id)" class="btn btn-brand btn-success">
+                                        <i class="fa fa-print" aria-hidden="true"></i>
+                                    </button>
+            
+                                    <button *ngIf="asociados.estado!='0'" title="Enviar al whatsapp" 
+                                    (click)="enviar_wtp(asociados.xml)" class="btn btn-brand btn-success">
+                                        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    </button>
+            
+                                   <!-- <button title="Enviar correo"
+                                    (click)="descargar_pdf(asociados.cdr)" class="btn btn-brand btn-warning">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </button>-->
+                                </td>
+            
+                               
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="asociado?.length == 0">
+                            <tr>
+                              <td colspan="6" class="no-data-available">No informacion!</td>
+                            </tr>
+                          </tbody>
+                    </table>
+</mat-card-content>
+</mat-card>
+
+  </div>
+  </div>
+  </div>

@@ -1,0 +1,238 @@
+<div class="row" *ngIf="!estado_mobile else elseBlock1 ">
+  <ng-container *ngTemplateOutlet="primera;"></ng-container>
+  <ng-container *ngTemplateOutlet="segunda;"></ng-container>
+</div>
+
+<ng-template #elseBlock1>
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="PEDIDO">
+      <ng-container *ngTemplateOutlet="segunda;">
+      </ng-container>
+    </mat-tab>
+    <mat-tab >
+      <ng-template matTabLabel>
+        <span [matBadge]="listadetalle.length" matBadgeOverlap="false">DETALLE PEDIDO</span>
+    </ng-template> 
+      <ng-container *ngTemplateOutlet="primera;">
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</ng-template>
+
+
+<div class="fab-container" (click)="buscador()" *ngIf="estado_mobile">
+  <button mat-fab color="primary" class="fab-toggler"
+         >
+    <i class="material-icons">search</i>
+  </button>
+</div>
+
+
+<div class="row flotante" *ngIf="mostrar_buscador" id="flotante">
+  <div class="row cuerpo" >  
+    <div class="col-xs-12 col-12 col-md-12" style="padding: 0;">
+      <mat-card >
+      <mat-form-field style="width: 100% !important;margin-bottom: 0px !important;" appearance="standard">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput #focussearch (keyup)="validar($event)"  [(ngModel)]="searchText" placeholder="BUSCAR PRODUCTOS O SERVICIOS">
+        <button mat-button  (click)="limpiar()" matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon style="font-size:20px">cancel</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #primera>
+  <div class="col-md-4"> 
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card style="padding: 10px; margin: 5px;">
+          <div class="d-flex flex-wrap align-items-center justify-content-between">
+            <div style="flex: 1; margin-right: 10px;">
+              <h6 style="margin: 0; font-weight: bold;">Membresía Seleccionada</h6>
+              <p style="margin: 0;">{{ nombreMembresia || 'Ninguna Membresía Seleccionada' }}</p>
+            </div>
+            <div style="flex: 1; margin-right: 10px;">
+              <h6 style="margin: 0; font-weight: bold;">Costo Membresía</h6>
+              <p style="margin: 0;">S/ {{ costoMembresia | number:'1.2-2' }}</p>
+            </div>
+            <div style="flex: 1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px;">
+              <button
+                mat-stroked-button
+                color="primary"
+                style="flex: 1; min-width: 120px;"
+                [disabled]="costoMembresia === 0"
+                (click)="modificarMembresia()"
+              >
+                Modificar
+              </button>
+              <button
+                mat-stroked-button
+                color="warn"
+                style="flex: 1; min-width: 120px;"
+                [disabled]="costoMembresia === 0"
+                (click)="eliminarMembresia()"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card style="padding: 10px; margin: 5px;">
+          <div *ngIf="listaClientesSeleccionados && listaClientesSeleccionados.length > 0; else noClientes">
+            <h5 style="font-weight: bold;">Lista de Clientes Seleccionados:</h5>
+            <div *ngFor="let cliente of listaClientesSeleccionados" style="padding: 10px; border-bottom: 1px solid #ccc;">
+              <p style="margin: 0;">
+                <strong>Nombre:</strong> {{ cliente.nombre }}
+              </p>
+              <p style="margin: 0;">
+                <strong>DNI:</strong> {{ cliente.documentoIdentidad }}
+              </p>
+            </div>
+          </div>
+          <ng-template #noClientes>
+            <p style="color: #9e9e9e; font-style: italic;">No hay clientes seleccionados.</p>
+          </ng-template>
+        </mat-card>
+      </div>
+    </div>
+    
+    <!--  
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card style="padding: 0px;margin:0px;">
+          <table id="posTable" class="table table-striped table-condensed table-hover list-table" style="margin:0px;"
+            data-height="100">
+            <thead>
+              <tr class="success">
+                <th style="width: 10%;"><span id="prod">CANTIDAD</span></th>
+                <th style="width: 50%;"><span id="pre">SERVICIO</span></th>
+                <th style="width: 15%;text-align:center;"><span id="cant">PRECIO</span></th>
+                <th style="width: 5%;text-align:center;" class="satu"><i class="fa fa-trash-o"></i></th>
+              </tr>
+            </thead>
+          </table>
+          <div id="cuerpo" style=" height: 400px !important;
+                    overflow: auto !important;
+                    overflow-x:hidden!important;">
+            <table class="table table-striped table-condensed table-hover list-table" style="margin:0px;"
+              data-height="100">
+              <tbody>
+
+                <tr *ngFor="let detall of listadetalle" style="padding: 0px !important;">
+                  <td style="width: 15%;text-align:center;">
+                    {{detall.cantidad}}
+                  </td>
+                  <td style="width: 50%;">
+                    <span> {{detall.nombreServicio}} 
+                    </span>
+                  </td>
+                  <td style="width:15%;text-align:center;" class="text-right">
+                    <span class="text-right " id="subtotal10159">
+                      {{detall.precioServicio}}
+                    </span>
+                  </td>
+                  <td style="width: 5%;text-align:center;" class="text-center">
+                    <i *ngIf="detall.estado=='1'" class="fa fa-trash-o tip pointer posdel"
+                      (click)="eliminar_item(detall.id)" title="Eliminar" style="color: red;cursor: pointer;"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="btn-group juntos">
+            <button type="button" class="btn btn-success " (click)=" pagar()"
+              style="margin-right: 0px !important;height: 60px;">S/ {{total_ | number:'1.2-2'}}</button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    -->
+    <br>
+    <mat-card style="padding: 0px;margin:0px;">
+      <div class="btn-group juntos">
+        <button type="button" class="btn btn-success " (click)=" pagar()"
+          style="margin-right: 0px !important;height: 60px;">S/ {{total_ | number:'1.2-2'}}</button>
+      </div>
+    </mat-card>
+  </div>
+</ng-template>
+
+<ng-template #segunda>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-2" *ngIf="!estado_mobile">
+        <br>
+        <button routerLink="/principal/venta/Venta_mesa" routerLinkActive="active" mat-stroked-button
+          style="color: #9e9e9e;"> <mat-icon>reply</mat-icon><span>REGRESAR</span></button>
+      </div>
+
+      <div class="col-md-8 d-flex justify-content-center ">
+        <h5 style="font-size: 18px;font-weight: bold;margin-top: 30px;color: #9e9e9e;" *ngIf="!estado_mobile">MR. FIT</h5>
+      </div>
+      <div class="col-md-2">
+        <br>
+        <button mat-stroked-button class="d-flex justify-content-center " *ngIf="!estado_mobile" (click)="recargar()"
+          style="color: #9e9e9e; width: 100%;">
+          <mat-icon *ngIf="!estado_carga">update</mat-icon>
+          <mat-spinner *ngIf="estado_carga" style="margin: 5px;" diameter="20"></mat-spinner>
+        </button>
+      </div>
+    </div>
+    <div style="margin-top:10px;" class="row" *ngIf="!estado_mobile">
+      <div class="col-md-12">
+        <mat-card style="padding: 5px;margin:0px;">
+          <div class="example-header" fxLayout="row" style="margin-left: 20px;margin-right: 20px;">
+            <mat-form-field style="width: 100% !important;margin-bottom: 0px !important;" appearance="standard">
+              <mat-icon matPrefix>search</mat-icon>
+              <input matInput (keyup)="validar($event)" [(ngModel)]="searchText" placeholder="BUSCAR PRODUCTOS O SERVICIOS">
+              <button mat-button *ngIf="btnlimpiar" (click)="limpiar()" matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon style="font-size:20px">cancel</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div style="margin-top:10px;" class="row">
+      <div class="col-md-12 caja_pedido">
+        <mat-card style="padding: 5px;margin:0px;" >
+          <div class="row" id="cuerpo1" >
+            <div class="col-md-3 col-6" style="margin-top: 5px; margin-bottom: 5px;"
+              *ngFor="let servicio of listarServicios | filter:searchText" [ngClass]="{'disabled-card': costoMembresia !== 0}">
+              <mat-card style="padding: 0px;margin: 0px;">
+                <div  class="photo d-flex justify-content-center"><a (click)="  agregar_plato(servicio)">
+                    <img (error)="onImgError($event)" style="width: 100%;height: 125px;"
+                      [src]="servicio.url_global+'public/img/productos/default.jpg'" class="img-responsive"
+                      alt="Product Image"> </a>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="height: 60px;">
+                    <label style="padding-right: 5px;padding-left: 5px;
+                                  font-weight: bold;font-size: 13px;">{{servicio.nombreServicio}}</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label style="padding-right: 5px;padding-left: 5px;
+                                    font-size: 13px;">S/ {{servicio.precioServicio}}</label>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</ng-template>

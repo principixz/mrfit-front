@@ -1,0 +1,63 @@
+<div style="margin-top:10px;margin-bottom: 20px;" class="row">
+    <div class="col-md-12">
+      <mat-card style="padding: 5px;margin:0px;">
+         <div class="row">
+          <div class="col-md-12">
+      
+            <div class="example-header" fxLayout="row" style="margin-left: 20px;margin-right: 20px;">
+              <mat-form-field style="width: 100% !important;margin-bottom: 0px !important;" appearance="standard">
+                <mat-icon matPrefix>search</mat-icon>
+      
+                <input matInput (keyup)="validar($event)" [(ngModel)]="searchText" placeholder="BUSCAR PLATOS">
+                <button mat-button  *ngIf="btnlimpiar" (click)="limpiar()"  matSuffix mat-icon-button aria-label="Clear">
+                    <mat-icon style="font-size:20px">cancel</mat-icon>
+                  </button>
+              </mat-form-field>
+            </div>
+       
+          </div>
+      
+         </div>
+    </mat-card>
+      </div>
+  </div>
+
+  <div class="row">
+    
+    <div style="margin-top: 10px;" class="col-md-12">
+      <mat-card style="padding: 5px;margin:0px;">
+
+        <div class="row">
+        <div *ngFor="let plato of platos|filter:searchText; let i = index" class="col-md-4 target " id="div_cuerpo_10159" style="margin-top:5px; margin-bottom:5px;">
+          <label class="buscar" style="display: none;">Causa acevichadas-10159</label>
+          <div style="border: 1px solid black !important;padding: 0px !important; margin: 0px !important;" class="box">
+            
+                    <div style="padding-top: 5px !important; padding-bottom: 5px !important;" class="box-body">
+                    <div class="row">
+                       <div style="padding:0px !important;margin:0px !important;" class="col-md-4">
+                      <img style="width: 90%;height: 100px;margin-left: 20px;"
+                     
+                       [src]="url_global+'public/img/productos/default.jpg'" 
+                       class="img-responsive" alt="Product Image">
+                     </div>
+      
+                     <div style="padding:0px !important;margin:0px !important;" class="col-md-6">
+                      <h6 class="claseproducto"
+                       style="font-size: 20px;line-height:82%;padding-top: 0px;padding-left: 0px;padding-bottom: 0px;padding-right: 0px;
+                       border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;margin-left: 10px;margin-right: 0px;"
+                       >{{plato.nombre}}</h6>
+                     </div>
+      
+                       <div class="col-md-2">
+                        <mat-slide-toggle color="primary" (change)="cambiar($event,i,plato.id)" [checked]="plato.estado"></mat-slide-toggle>       
+                                        </div>
+      
+                    </div>
+                    </div>
+                    
+                  </div>
+        </div>
+        </div>
+        </mat-card>
+      </div>
+  </div>

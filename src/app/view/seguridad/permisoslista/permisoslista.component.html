@@ -1,0 +1,59 @@
+<form   [formGroup]="formulario" novalidate (ngSubmit)="guardar()">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>SELECCIONAR PERFIL</strong>
+                   
+                </div>
+                <div class="card-body">
+                    <div class="row ">
+                    <div class="col-md-12 d-flex justify-content-center">
+                  <select2 style="width: 40% !important;" value="1" formControlName="perfil_id"  (update)="onTagChanged($event)" [placeholder]="'Seleccionar perfil'" [data]="exampleData">
+                      
+                  </select2 >
+                  </div>
+                                
+                      
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="card-title">Lista de Permisos</h5>
+                            <h6 class="card-subtitle"></h6>
+                            <div class="skin skin-square"> 
+                                    <div class="form-group" id="cuerpo_icono">
+                                        <div class="row" formArrayName="checkmodulo"  >
+                                            <div   *ngFor="let modulo of modulos; let i = index" class="col-md-3">
+                                                <label style="font-weight: bold;">{{modulo.nombre_padre}}</label>
+                                                <div class="input-group" >
+                                                    <ul  class="icheck-list" style="list-style-type: none;">
+                                                     <li     *ngFor="let mod of modulo.lista; let j = index;;" >
+                                                        <input [formControlName]="datos[i][j]"
+                                                         
+                                                         [value]="mod.id" style="cursor: pointer;" 
+                                                        id="flat-checkbox-{{mod.id}}" type="checkbox" data-checkbox="icheckbox_flat-red" 
+                                                       />
+                                                        <label style="cursor: pointer;" for="flat-checkbox-{{mod.id}}">{{mod.modulo_nombre}}</label>
+                                                     </li>
+                                                    
+                                                    </ul>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div> 
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row d-flex justify-content-center" style="margin-top: 20px;">
+                        <button type="button" [routerLink]="['/seguridad/permiso']" class="btn btn-danger">Cancelar</button> 
+                        <button  style="margin-left: 5px;" type="submit"  class="btn btn-primary">Guardar</button>
+                      
+                        
+                      </div>
+                                
+                 </div>
+            </div>
+         </div>
+     </div>
+    </form>

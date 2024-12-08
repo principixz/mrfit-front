@@ -1,0 +1,60 @@
+<form [formGroup] = "form" (submit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+<div class="modal-header" style="padding: 10px !important; ">
+    <h4 style="font-weight: bold;margin-top: 5px !important;">Nuevo Cliente</h4>
+    <button (click)="modal.dismiss('')" type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              
+                <select class="form-control" formControlName="tipo_documento">
+                      <option value="">Seleccionar Tipo</option>
+                      <option *ngFor="let tip of tipocliente" [value]="tip.tipo_cliente_id">{{tip.tipo_cliente_descripcion}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              
+             
+              <div class="input-group">
+                <input type="text"  formControlName="numero_documento" maxlength="11" autocomplete="off" name="ruc" id="ruc" class="form-control" required="required">
+          <span onclick="buscarreniec()" id="basic-addon3" class="input-group-addon btn btn-success">Buscar</span>
+          </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              
+              <input type="text" class="form-control" formControlName="razon_social" placeholder="Nombre Completo o Razón Social">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              
+              <input type="text" class="form-control" formControlName="celular" placeholder="Celular">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              
+              <input type="text" class="form-control" formControlName="direccion" placeholder="Dirección">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              
+              <input type="text" class="form-control" formControlName="correo" placeholder="Correo">
+            </div>
+        </div>
+     </div>
+  </div>
+  <div class="modal-footer">
+      <button type="submit" class="btn btn-primary"  [disabled]="estado" style="background-color: #2dada7 !important;" >{{texto_boton}}</button>
+    <button type="button" class="btn btn-light" (click)="modal.dismiss('')" >Cerrar</button>
+  </div>
+</form>

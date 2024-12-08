@@ -1,0 +1,102 @@
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Reporte ventas</h2>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="formulario" novalidate>
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <mat-form-field appearance="outline" style="width: 100% !important;">
+                            <mat-label>Tipo</mat-label>
+                            <mat-select  formControlName="seleccionar"  >
+                              <mat-option value="1">Todos</mat-option>
+                              <mat-option value="2">Activos</mat-option>
+                              <mat-option value="2">Eliminados</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                   <div class="col-md-6">
+                  <!-- <div class="form-group">
+                       <label>Rango de Fecha</label>-->
+                       <mat-form-field appearance="outline" style="width: 100% !important;">
+                        <mat-label>Rango de Fecha</mat-label>
+                    <input type="text" ngxDaterangepickerMd
+                    (datesUpdated)="datesUpdated($event)"
+                    matInput
+                    
+                    [showCustomRangeLabel]="true"
+                    [alwaysShowCalendars]="true"
+                    [ranges]="ranges"
+                    formControlName="desde"
+                    (rangeClicked)="event_seleccion($event)"
+                    opens="right"
+                    placeholder="Seleccionar rango "
+                    [locale]="{applyLabel: 'Aceptar', format: 'DD/MM/YYYY',direction: 'ltr'}"
+                    [(ngModel)]="selected"/>
+                    </mat-form-field>
+                  <!--  </div>-->
+                   </div>                   
+                   <!-- <div class="col-md-3">
+                        <div class="form-group">
+                        <label for="inputPassword" class="">Desde</label>
+                        <input type="date" formControlName="desde" class="form-control" value="{{hoydia}}" id="desde" placeholder="">
+                    </div>
+                    </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label for="inputPassword" class="">Hasta</label>
+                        <input type="date" formControlName="hasta" class="form-control" value="{{hoydia}}" id="hasta" placeholder="">
+                  
+                    </div>
+                </div>-->
+                <div class="col-md-2">
+                  <!--<button style="margin-top: 30px;" (click)="generarpdf()" class="btn btn-brand btn-info">
+                        Generar
+                    </button>-->  
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                     <div class="form-group">
+                         <label>Monto Total</label>
+                         <input [value]="total" readonly="true" class="form-control">
+                     </div>
+                    </div>
+                </div>
+                <br>
+                <table [dtOptions]="dtOptions" class="table" 
+                [dtTrigger]="dtTrigger" datatable class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Serie</th>
+                            <th scope="col">numero</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Num Doc</th>
+                            <th scope="col">Cliente</th>
+                           
+                        </tr>
+                    </thead>
+                     <tbody>
+                        <tr *ngFor="let user of lista_reporte; let i = index">
+                            <th scope="row">{{ i + 1}}</th>
+                            <td>{{ user.codigo_documento }}</td>
+                            <td>{{ user.serie}}</td>
+                            <td>{{user.documento}}</td>
+                            <td>{{ user.fecha}} {{user.hora}}</td>
+                            <td>{{ user.monto}}</td>
+                            <td>{{ user.nro_documento}}</td>
+                            <td>{{ user.cliente }}</td>
+                        </tr>
+                    </tbody> 
+                </table>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div style="margin-top:10px;margin-bottom: 20px;" class="row">
+  <div class="col-md-12">
+    <mat-card style="padding: 5px;margin:0px;">
+       <div class="row">
+        <div class="col-md-9">
+    
+          <div class="example-header" fxLayout="row" style="margin-left: 20px;margin-right: 20px;">
+            <mat-form-field style="width: 100% !important;margin-bottom: 0px !important;" appearance="standard">
+              <mat-icon matPrefix>search</mat-icon>
+    
+              <input matInput (keyup)="validar($event)" [(ngModel)]="searchText" placeholder="BUSCAR MESAS">
+              <button mat-button  *ngIf="btnlimpiar" (click)="limpiar()"  matSuffix mat-icon-button aria-label="Clear">
+                  <mat-icon style="font-size:20px">cancel</mat-icon>
+                </button>
+            </mat-form-field>
+          </div>
+     
+        </div>
+        <div class="col-md-3">
+          <mat-form-field style="width: 100%; margin-right: 20px;" appearance="fill">
+            
+            <mat-select [(ngModel)]="selectedValue" (selectionChange)="cargar_mesas()" name="food">
+              <mat-option *ngFor="let food of tipo" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+       </div>
+  </mat-card>
+    </div>
+</div>
+
+<mat-tab-group dynamicHeight mat-align-tabs="start"   class="mat-elevation-z1">
+    <mat-tab [label]="tipo.tipo.nombre" *ngFor="let tipo of listatipomesa; let i = index;"> 
+     <div >
+        <div class="row" style="height: 100% !important;padding: 20px;" >
+
+                    <div  (click)="ir_pedido(mesa.venta_idventas,mesa.mesa_id,mesa.nombre_silla)" *ngFor="let mesa of tipo.tipo.mesas |filter:searchText; let i2 = index; " class="col-md-2 col-6" 
+                     >
+                        <div long-press (onLongPress)="onLongPress( mesa.disponible,mesa.venta_idventas,mesa.mesa_id,mesa.agrupado)" 
+                         (contextmenu)="onRightClick($event, mesa.disponible,mesa.venta_idventas,mesa.mesa_id,mesa.agrupado)"
+                          [ngClass]="{'example-box': mesa.disponible==0 || mesa.disponible==4 , 'example-box1' : mesa.disponible==1, 'example-box2' : mesa.disponible==2 }" 
+                           style="padding-top: 10px;padding-bottom: 10px;cursor: pointer;">
+                            
+                             <h6 style="font-size: 17px;margin-top: 10px;"  *ngIf="mesa.disponible==1;">S/ {{mesa.venta_monto}}</h6>
+                           
+                                <h6 style="font-size: 22px ;"  >{{mesa.nombre_silla}} </h6>
+                             
+                             <h6  class="tiempo_mesa" *ngIf="mesa.disponible==1;">{{ inf[i][i2] | dfnsFormatDistanceToNow: options}}</h6>
+                          </div>
+                    </div>
+            
+                    
+            
+                   
+              
+         </div>   
+     </div> 
+    
+    </mat-tab>
+   
+ 
+  </mat-tab-group>
+
+  <div style="visibility: hidden; position: fixed;" 
+[style.left]="menuTopLeftPosition.x" 
+[style.top]="menuTopLeftPosition.y" 
+[matMenuTriggerFor]="rightMenu"></div> 
+
+<!-- standard material menu --> 
+<mat-menu #rightMenu="matMenu"> 
+    <ng-template matMenuContent let-item="item"> 
+      <button *ngFor="let cuenta of lista_opciones" mat-menu-item (click)="funcion_controlador(cuenta.id,datos_seleccionado)">{{cuenta.nombre}} </button> 
+    
+    </ng-template> 
+  </mat-menu> 

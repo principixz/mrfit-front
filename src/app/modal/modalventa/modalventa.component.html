@@ -1,0 +1,337 @@
+<style>
+
+  </style>
+  
+  <form [formGroup]="form" (submit)="onSubmit()">
+  
+    <div class="modal-body" style="margin: 0px;padding: 0px !important;">
+      <div class="row" style="margin: 0px;padding: 0px !important;">
+        <div class="col-md-1" style="margin: 0px;padding: 0px !important;background-color: #51706c;">
+          <button type="button" (click)="closeModal()" class="btn btn-danger"
+            style="width: 100%;margin-bottom: 10px;padding-top: 20px;">
+            <mat-icon>close</mat-icon>
+            <h6 style="font-size: 18px;">Cerrar</h6>
+          </button>
+          <button type="button" (click)="error_implementacion()" class="btn btn-danger"
+            style="height: 140px;border-color: #8e999d ;background-color:#8e999d ;width: 100%;margin-bottom: 10px;padding-top: 20px;">
+            <mat-icon style="font-size: 30px;">swap_horiz</mat-icon>
+            <h6 style="font-size: 18px;margin-bottom: 5px;">Dividir</h6>
+            <h6 style="font-size: 18px;margin-top: 5px;">Cuenta</h6>
+          </button>
+          <button type="button" (click)="error_implementacion()"  class="btn btn-danger"
+            style="height: 140px;border-color: #8e999d ;background-color:#8e999d ;width: 100%;margin-bottom: 10px;padding-top: 20px;">
+            <mat-icon style="font-size: 30px;">fullscreen</mat-icon>
+            <h6 style="font-size: 18px;margin-bottom: 5px;">Mover</h6>
+            <h6 style="font-size: 18px;margin-top: 5px;">pedidos</h6>
+          </button>
+          <button type="button" (click)="unir_mesas()" class="btn btn-danger"
+            style="height: 140px;border-color: #8e999d ;background-color:#8e999d ;width: 100%;margin-bottom: 10px;padding-top: 20px;">
+            <mat-icon style="font-size: 30px;">close_fullscreen</mat-icon>
+            <h6 style="font-size: 18px;margin-bottom: 5px;">Unir</h6>
+            <h6 style="font-size: 18px;margin-top: 5px;">mesas</h6>
+          </button>
+          <button type="button" (click)="error_implementacion()"  class="btn btn-danger"
+            style="height: 140px;border-color: #51706c ;background-color:#51706c ;width: 100%;margin-bottom: 10px;padding-top: 20px;">
+            <mat-icon style="font-size: 30px;">swap_horiz</mat-icon>
+            <h6 style="font-size: 18px;margin-bottom: 5px;">Pagar</h6>
+            <h6 style="font-size: 18px;margin-top: 5px;">cuentas</h6>
+          </button>
+        </div>
+        <div class="col-md-5" style="margin-left: 0px !important;margin-right: 0px !important;
+         margin-right: 0px !important;padding-right: 0px !important;padding-left: 0px !important;">
+          <div class="row" style="margin-bottom: 30px;">
+            <div class="col-md-9" style="padding-bottom: 0px;margin-bottom: 0px;">
+              <div class="input-group mb-3" style="margin-top:10px ;margin-left: 10px;margin-bottom: 0px !important;">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Cliente:</span>
+                </div>
+                <ng-select2 (valueChanged)="valueChanged($event)" [options]="options" formControlName="cliente"
+                  [placeholder]="'Seleccionar Cliente'" required="true"  [width]="'300px'"
+                  style="height: 38px !important;">
+                </ng-select2>
+  
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">X</button>
+                </div>
+              </div>
+  
+            </div>
+            <div class="col-md-3" style="margin-left:0px;padding-bottom: 0px;margin-bottom: 0px;padding-left: 5px;">
+              <button type="button" style="margin-top:10px;background-color: #2976b9 ;" class="btn btn-primary"><i
+                  class="fa fa-pencil-square-o"></i>Editar</button>
+            </div>
+  
+            <button (click)="nuevocliente()" type="button"
+              style="margin-top:0px;margin-left: 22px;background-color: #2dada7 ;" class="btn btn-success"><i
+                class="fa fa-pencil-square-o"></i>Nuevo</button>
+  
+          </div>
+          <div class="row bor" style="padding:  0px 0px 0px 5px;margin:0px;padding-top: 10px;padding-bottom: 10px;">
+  
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">Al crédito</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">Amortizacion</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">Por consumo</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2" st>PDF</label>
+            </div>
+            <Button style="padding-top: 0px;padding-bottom: 0px;" class="btn btn-success"><i
+                class="fa fa-comments"></i></Button>
+  
+          </div>
+  
+          <div class="row bor" style="padding:  0px 0px 0px 0px;margin:0px;padding-top: 0px;padding-bottom: 0px;">
+            <div class="col-md-6" style="padding:0px !important;margin: 0px !important;border-right: 1px solid black;">
+              <strong style="margin: 14px !important;"><i class="fa fa-money" aria-hidden="true"></i> Paga en efectivo
+                con:</strong>
+  
+              <div style="margin-top: 10px;padding-left: 10px;padding-right: 10px;" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <!--<span class="input-group-text">$</span>-->
+                  <select id="" class="form-control">
+                    <option>S/</option>
+                  </select>
+                </div>
+                <input (change)="calcular_total()" (keypress)="someFunc($event)" currencyMask (keyup)="calcular_total()"
+                  formControlName="efectivo" type="tel" step="0.01"  [options]="{   align: 'left', prefix: '', thousands: ',', decimal: '.' }" #search autofocus  class="form-control"
+                  aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-secondary  btn-sm"><i class="fa fa-times"
+                      aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" style="padding:0px !important;margin: 0px !important;">
+              <strong style="margin: 14px !important;"><i class="fa fa-credit-card" aria-hidden="true"></i> Paga en
+                tajeta:</strong>
+  
+  
+              <div style="height: 281px !important;
+              overflow: auto !important;
+              overflow-x:hidden!important;">
+                <div formArrayName="tarjeta" *ngFor="let addr of addressControls.controls; let i1 = index;">
+                  <div style="margin-top: 10px;padding-left: 10px;padding-right: 10px;" [formGroupName]="i1"
+                    class="input-group">
+  
+                    <div class="input-group-prepend">
+                      <select formControlName="tipo_comprobante" id="" class="form-control">
+                        <option *ngFor="let formapago of lista_formapago;" [value]="formapago.for_id">
+                          {{formapago.for_descripcion}}</option>
+                      </select>
+  
+                    </div>
+                    <input (change)="calcular_total()" (keypress)="someFunc($event)"  currencyMask [options]="{   align: 'left', prefix: '', thousands: ',', decimal: '.' }" (keyup)="calcular_total()"
+                      formControlName="monto" type="tel" step="0.01"  class="form-control">
+                    <div class="input-group-append">
+                      <button type="button" (click)="removeAddress(i1)" class="btn btn-secondary  btn-sm"><i
+                          class="fa fa-times" aria-hidden="true"></i></button>
+  
+                      <button type="button" (click)="addAddress()" class="btn btn-primary btn-sm"><i class="fa fa-plus"
+                          aria-hidden="true"></i></button>
+  
+                    </div>
+  
+                  </div>
+                </div>
+  
+  
+  
+              </div>
+  
+            </div>
+          </div>
+  
+          <div class="row bor"
+            style="background-color: #d1d1d1;padding:  0px 0px 0px 0px;margin:0px;padding-top: 0px;padding-bottom: 0px;">
+            <div class="col-md-4" style="height: 164px;">
+              <div style="text-align:center d-flex justify-content-center">
+                <!---<input (input)="onInputChange($event)" class="input" value={{value}} placeholder="Tap on the virtual keyboard to start" />-->
+                <div style="margin-top: 10px;" class="simple-keyboard"></div>
+              </div>
+            </div>
+            <div class="col-md-4" style="height: 164px;padding-top: 20px;">
+              <button class="btn btn-light pri" (click)="limpiar_datos()" type="button">Borrar todo</button>
+              <button class="btn btn-light pri" (click)="limpiar_datos()" type="button">Borrar último ingreso</button>
+            </div>
+            <div class="col-md-4" style="height: 164px;">
+              <div style="text-align:center d-flex justify-content-center">
+                <!---<input (input)="onInputChange($event)" class="input" value={{value}} placeholder="Tap on the virtual keyboard to start" />-->
+                <div style="margin-top: 10px;" class="keyboard2"></div>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="row bor" style="padding:  0px 0px 0px 0px;margin:0px;padding-top: 0px;padding-bottom: 0px;">
+            <div class="col-md-6" style="height: 76px;padding-top: 25px;">
+  
+              <div *ngIf="restante>0">
+                <label style="color: red;margin-right: 5px;font-size: 20px;">FALTA</label>
+                <label style="color: red;font-weight: bold;font-size: 20px;">S/ {{restante | number:'1.2-2'}}</label>
+              </div>
+              <div *ngIf="restante==0">
+  
+                <label style="color: #2976b9 ;font-weight: bold;font-size: 20px;">COMPLETO</label>
+              </div>
+  
+              <div *ngIf="restante<0">
+                <label style="color: #2dada7;margin-right: 5px;font-size: 20px;">VUELTO</label>
+                <label style="color: #2dada7;font-weight: bold;font-size: 20px;">S/ {{restante*-1 |
+                  number:'1.2-2'}}</label>
+              </div>
+  
+  
+            </div>
+            <div class="col-md-6 d-flex justify-content-end" style="height: 76px;padding-top: 25px;">
+  
+              <label style="color: black;margin-right: 5px;">Recibido</label>
+              <label style="color: black;font-weight: bold;font-size: 20px;">S/ {{recibido | number:'1.2-2'}}</label>
+            </div>
+          </div>
+  
+  
+  
+        </div>
+        <div class="col-md-6" style="margin-left: 0px !important;padding-left: 0px !important;padding-right: 0px !important;
+         margin-bottom: 0px !important;padding-bottom: 0px !important;">
+          <label style="color: red;font-size: 30px;margin-top: 20px;margin-bottom: 76px;">{{mesa}} </label>
+          <div class="row bor" style="padding:  0px 0px 0px 5px;margin:0px;padding-top: 10px;padding-bottom: 10px;">
+            <div class="col-md-12">
+  
+              <div>
+                <mat-button-toggle-group #group="matButtonToggleGroup" multiple="false" formControlName="tipo_comprobante"
+                  style="width: 100% !important;">
+  
+                  <mat-button-toggle *ngFor="let doc of tipo_doc" [value]="doc.tipodoc_id"
+                    style="width: 33.3% !important;height: 30px;text-align: center;padding: 0 12px !important;">
+                    <label><i class="fa fa-check-circle" aria-hidden="true"></i> {{doc.tipodoc_descripcion}}</label>
+                  </mat-button-toggle>
+                  <!-- <mat-button-toggle value="2"  style="width: 33.3% !important;height: 30px;text-align: center;" >
+                      <label><i class="fa fa-check-circle" aria-hidden="true"></i> Boleta</label></mat-button-toggle>
+                    <mat-button-toggle value="3"  style="width: 33.3% !important;height: 30px;text-align: center;" >
+                      <label ><i class="fa fa-check-circle" aria-hidden="true"></i> Factura</label></mat-button-toggle>-->
+  
+                </mat-button-toggle-group>
+              </div>
+  
+            </div>
+            <div class="col-md-12">
+              <table id="posTable" class="table table-striped table-condensed table-hover list-table" style="margin:0px;"
+                data-height="100">
+                <thead>
+                  <tr class="success">
+                    <th style="width: 15%;"><span id="prod">Cant.</span></th>
+                    <th style="width: 50%;"><span id="pre">Descripcíon</span></th>
+                    <th style="width: 20%;text-align:center;"><span id="cant">importe</span></th>
+  
+  
+                  </tr>
+                </thead>
+              </table>
+  
+              <div id="cuerpo" style=" height: 250px !important;
+                      overflow: auto !important;
+                      overflow-x:hidden!important;">
+                <table class="table table-striped table-condensed table-hover list-table" style="margin:0px;"
+                  data-height="100">
+                  <tbody>
+  
+                    <tr *ngFor="let detall of listadetalle" style="padding: 0px !important;">
+                      <td style="width: 15%;text-align:center;">
+                        {{detall.cantidad}}
+                      </td>
+                      <td style="width: 50%;">
+                        <span> {{detall.nombre}}
+                        </span>
+                      </td>
+                      <td style="width:20%;text-align:center;" class="text-right">
+                        <span class="text-right " id="subtotal10159">
+                          {{detall.cantidad*detall.precio | number:'1.2-2'}}
+                        </span>
+                      </td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row bor" style="margin:0px !important;padding-left: 0px !important;padding-right: 0px;
+            padding-top: 0px;padding-bottom: 0px;">
+            <div style="padding:0px;" class="col-md-6">
+              <i style="font-size: 30px;padding: 10px;color: #d6e1e1 ;" class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+            <div style="padding:0px;" class="col-md-6 d-flex justify-content-end">
+              <div style="padding: 10px;">
+                <label>Subtotal</label>
+                <label style="font-weight: bold;font-size: 20px;margin-left: 10px;"> S/ {{subtotal |
+                  number:'1.2-2'}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="row bor" style="margin:0px !important;padding-left: 0px !important;padding-right: 0px;
+            padding-top: 0px;padding-bottom: 0px;">
+            <div style="padding:0px;" class="col-md-4">
+              <i style="font-size: 30px;padding: 10px;color: #d6e1e1 ;" class="fa fa-minus" aria-hidden="true"></i>
+            </div>
+            <div style="padding:0px;" class="col-md-8 d-flex justify-content-end">
+              <div style="padding: 10px;">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="inlineCheckbox2" style="margin-right: 10px;">Aplicar un descuento
+                  </label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  
+                </div>
+                <button type="button" class="btn btn-warning btn-sm" style="color: white;"><i class="fa fa-ticket"
+                    aria-hidden="true"></i> Usar cupón descuento</button>
+              </div>
+            </div>
+          </div>
+          <div class="row bor" style="margin:0px !important;padding-left: 0px !important;padding-right: 0px;
+            padding-top: 0px;padding-bottom: 0px;">
+            <div style="padding:0px;" class="col-md-6">
+              <i style="font-size: 30px;padding: 12px;color: #d6e1e1 ;" class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+            <div style="padding:0px;" class="col-md-6 d-flex justify-content-end">
+              <div style="padding: 10px;">
+                <div class="input-group mb-3" style="padding: 0px !important;margin: 0px !important;">
+                  <label style="margin-top: 5px;margin-right: 15px;font-weight: bold;"> Precio de delivery </label>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">S/</span>
+                  </div>
+                  <input type="number" min="0" (keypress)="someFunc($event)" [readonly]="estado_delivery"
+                    formControlName="delivery" (keyup)="calcular_total()" step="0.01" class="form-control">
+                </div>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="row bor" style="background-color: #3d4745 ;margin:0px !important;padding-left: 0px !important;padding-right: 0px;
+            padding-top: 0px;padding-bottom: 0px;">
+            <div style="padding:0px;" class="col-md-9">
+              <button type="submit" [disabled]="recibido<total || !boton_validado"
+                style="margin:15px;background-color: #2dada7 ;width: 100%;" class="btn btn-success"><i class="fa fa-money"
+                  aria-hidden="true"></i> PAGAR(CTRL + ENTER)</button>
+            </div>
+            <div style="padding:23px;" class="col-md-3">
+              <label style="color: white;margin-right: 5px;">Total</label>
+              <label style="color: white;font-weight: bold;font-size: 20px;">S/ {{total | number:'1.2-2'}}</label>
+            </div>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </form>

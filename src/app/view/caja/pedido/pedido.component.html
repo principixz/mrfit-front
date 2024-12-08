@@ -1,0 +1,241 @@
+<form [formGroup]="formulario">
+<div class="row">
+<div class="col-md-5">
+  <mat-card>
+  <div class="col-md-12">
+    <mat-button-toggle-group formControlName="tipo_mesa" style="width: 100% !important;"  name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle   style="width: 50% !important;height: 30px;text-align: center;"  value="1"> 
+        <label ><i class="fa fa-check-circle" aria-hidden="true"></i> Salones
+           <label style="margin-left: 10px;" [matBadge]="cantidad_pedido" MatBadgeSize="large" MatBadgePosition="above" matBadgeColor="warn"></label>  </label></mat-button-toggle>
+      <mat-button-toggle  style="width: 50% !important;height: 30px;text-align: center;"  value="2"> 
+        <label><i class="fa fa-check-circle" aria-hidden="true"></i> Delivery   <label style="margin-left: 10px;" [matBadge]="0" MatBadgeSize="large" MatBadgePosition="above" matBadgeColor="warn"></label></label></mat-button-toggle>
+
+    </mat-button-toggle-group>
+  </div>
+  
+  <mat-divider style="margin-top: 10px;margin-bottom: 10px;padding-left: 20px !important;padding-right: 20px !important;"></mat-divider>
+   <div *ngIf="listatipomesa.length==0" class="row">
+    <div class="col-md-12 flex_imagen">
+     
+        <img class="imagen_emty" src="../../../../assets/no-fast-food.png"/>
+      <br>
+      <h3 class="texto_empty">No tiene pedidos disponibles</h3>
+    </div>
+   
+   </div>
+  <div  *ngIf="listatipomesa.length!=0" class="col-md-12" style="margin-top: 20px;margin-bottom: 20px;">
+    <ul   ngbNav #nav="ngbNav" [(activeId)]="active"  class="nav-tabs">
+      <li [ngbNavItem]="(i+1)"   *ngFor="let tipo of listatipomesa; let i = index;">
+        <a ngbNavLink>{{tipo.tipo.nombre}}</a>
+          <ng-template ngbNavContent>
+            <div class="col-md-12">
+              <div class="cuerpo_lista" style="padding: 15px;height: 450px !important;overflow-y: scroll;overflow-x: hidden;width: 100% !important;">
+              <div class="row " >
+
+                <div  style="height: 130px;"  class="col-md-4 col-6  "
+                 (click)="ver_pedido(mesa.venta_idventas,mesa.mesa_id,mesa.nombre_silla,
+                 tipo.tipo.nombre,mesa.venta_monto,inf[i][i2]['fecha'],i,i2)" *ngFor="let mesa of tipo.tipo.mesas; let i2 = index; ">
+                    <div  
+                       style="padding-top: 10px;padding-bottom: 10px;cursor: pointer;"
+                       class="seleccionar"
+                       [ngClass]="{'example-box': mesa.disponible==0 , 'example-box1' : mesa.disponible==1 || mesa.disponible==4,
+                        'example-box2' : mesa.disponible==2,'seleccionar':inf[i][i2]['estado']==1 }" >
+                        
+                       <h6 style="font-size: 15px;margin-top: 10px;"  *ngIf="mesa.disponible==1 || mesa.disponible==4;">S/ {{mesa.venta_monto}}</h6>
+                           
+                       <h6 style="font-size: 18px ;"  >{{mesa.nombre_silla}} </h6>
+                    
+                    <h6 style="font-size: 10px;margin-bottom: 10px;line-height: 10px;" *ngIf="mesa.disponible==1 || mesa.disponible==4;">{{ inf[i][i2]["fecha"] | dfnsFormatDistanceToNow: options}}</h6>
+               
+                      </div>
+                </div>
+                
+        
+              </div>
+              </div>
+              
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+      
+      <div [ngbNavOutlet]="nav" style="border: 1px;" class="mt-2">
+      hola</div>
+      
+      <!--<pre>Active: {{ active }}</pre>-->
+      </div>
+   
+
+
+      </mat-card>
+
+
+
+</div>
+<div class="col-md-7">
+  <div *ngIf="!cargarmesa" class="row justify-content-center">
+      
+      <div style="margin-top: 40px;" class="col-md-12 d-flex justify-content-center " >
+           
+          <h3 style="font-weight: bold;font-size: 20px;display: block;margin-bottom: 0px;color: black;">Seleccionar una mesa</h3>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+          <h3 style="display: block;margin-bottom: 0px;"><i style="font-size: 50px;" class="fa fa-long-arrow-left" aria-hidden="true"></i></h3>
+          </div>
+          <div class="col-md-12 d-flex justify-content-center">
+          <h3 style="font-weight: bold;font-size: 17px;display: block;margin-bottom: 0px;">Navega por la lista de salones y selecciona una de las mesas</h3>
+          </div>
+          <div class="col-md-12 d-flex justify-content-center">
+          <h5 style="font-size: 12px;display: block;margin-bottom: 0px;">Aquí podrás ver la oferta que tenemos para tus clientes y armar su pedido</h5>
+          </div>
+
+          
+     
+  </div>
+  <mat-card *ngIf="cargarmesa">
+   <div class="row">
+    <div class="col-md-12">
+     <label style="font-weight: bold;font-size: 15px;margin-right: 10px;">{{nombre_mesa}}</label><label> Busca un producto</label>
+      <mat-divider style="margin-top: 10px;margin-bottom: 10px;padding-left: 20px !important;padding-right: 20px !important;"></mat-divider>
+    </div>
+    <div class="col-md-12" style="margin-top: 20px;margin-bottom: 20px;">
+      <ul   ngbNav #nav1="ngbNav" [(activeId)]="activado"  class="nav-tabs">
+       <!-- <li [ngbNavItem]="1">
+          <a ngbNavLink>Pedidos</a>
+          <ng-template ngbNavContent>
+            <div class="col-md-12">
+            <p></p>
+              </div>
+          </ng-template>
+        </li>-->
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Cuenta</a>
+          <ng-template ngbNavContent>
+            <div class="col-md-12">
+              <table id="posTable" class="table table-striped table-condensed table-hover list-table" style="margin:0px;" data-height="100">
+                <thead>
+                  <tr class="success">
+                    <th style="width: 10%;"><span id="prod">Cant.</span></th>
+                    <th style="width: 50%;"><span id="pre">Descripción</span></th>
+                    <th style="width: 15%;text-align:center;"><span id="cant">P.U</span></th>
+                    <th style="width: 15%;text-align:center;"><span id="cant">Importe</span></th>
+
+
+                    <th style="width: 5%;text-align:center;" class="satu">Acciones</th>
+                  </tr>
+                </thead>
+              </table>
+
+              
+              <div *ngIf="!estado_carga" id="cuerpo" style=" height: 250px !important;
+                    overflow: auto !important;
+                    overflow-x:hidden!important;">
+                    <table class="table table-striped table-condensed table-hover list-table" style="margin:0px;" data-height="100">
+                      <tbody >
+                        <tr *ngFor="let detall of listadetalle; let i = index" style="padding: 0px !important;">
+                          <td style="width: 15%;text-align:center;">
+                               {{detall.cantidad}}
+                          </td>
+                          <td style="width: 35%;">
+                             <span>  {{detall.nombre}}
+                              <span class="badge bg-success" *ngIf="detall.comentario !=''" style="color: white;font-size: 13px;">{{detall.comentario}}</span>
+                             </span>
+                           </td>
+                           <td style="width:15%;text-align:center;" class="text-right">
+                                <span class="text-right " id="subtotal10159">
+                                  {{detall.precio | number:'1.2-2'}}
+                                </span>
+                          </td>
+                          <td style="width:15%;text-align:center;" class="text-right">
+                              <span class="text-right " id="subtotal10159">
+                                {{detall.cantidad*detall.precio | number:'1.2-2'}}
+                              </span>
+                         </td>
+                         <td style="width: 5%;text-align:center;" class="text-center">
+                                 <button [matMenuTriggerFor]="menu" class="btn btn-primary" style="    background-color: #f4f4f4;color: #455a64;border-color: #ddd;">
+                                 <i  class="fa fa-cog tip pointer posdel"
+                                       title="opciones"  style="color: black;cursor: pointer;">
+                                 </i>
+                                </button>
+
+                                <mat-menu #menu="matMenu">
+                                  <button mat-menu-item (click)="eliminar(detall.iddetalle,i)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Eliminar</span>
+                                  </button>
+                                  <button mat-menu-item (click)="editar(detall.iddetalle,detall.precio,detall.cantidad,detall.nombre,i)" >
+                                    <mat-icon>edit</mat-icon>
+                                    <span>Editar</span>
+                                  </button>
+                                  <button mat-menu-item (click)="canje(detall.iddetalle,detall.precio,detall.cantidad,detall.nombre,i)" >
+                                    <mat-icon>redeem</mat-icon>
+                                    <span>Canje</span>
+                                  </button>
+                                </mat-menu>
+                          </td>        
+                      </tr>
+                   </tbody>
+                   </table>
+                   </div>
+                   <div *ngIf="estado_carga" style=" height: 250px !important;" class="row d-flex justify-content-center">
+                    <mat-spinner [diameter]="50" ></mat-spinner>
+                   </div>
+              </div>
+               <mat-divider ></mat-divider>
+              <div class="col-md-12" style="margin-top: 10px;">
+                 <div style="display: flex;  flex-direction: row;justify-content:space-between">
+                  <div style="padding-top: 35px;">
+                    <button (click)="precuenta()" type="button" class="btn btn-success btn-sm" style="color: white;background-color: #2dada7 ;"><i class="fa fa-print"
+                      aria-hidden="true"></i> Precuenta</button>
+                      <!--<button type="button" class="btn btn-warning btn-sm" style="color: white;"><i class="fa fa-print"
+                        aria-hidden="true"></i> Agrupar Pedido</button>-->
+                        <button type="button" (click)="eliminar_pedido()" class="btn btn-danger btn-sm" style="color: white;background-color: red ;"><i class="fa fa-trash"
+                          aria-hidden="true"></i> Eliminar Pedido</button>
+                  </div>
+                      <div>
+                        <div class="row" style="text-align:end !important;">
+                          <div class="col-md-12 text-center" style="margin: 5px !important;">
+                            <label class="text-right" style="margin-right: 10px;color: #2dada7 ;font-size: 17px;">Total :S/ {{monto_total}}</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <button (click)="pagar()" type="button" 
+                          style="margin:0px;background-color: #2dada7 ;width:40  px;" class="btn btn-success"><i class="fa fa-money"
+                            aria-hidden="true"></i> PAGAR(CTRL + ENTER)</button>
+                        </div>
+                 
+                      </div>
+                 </div>
+              </div>
+              <div class="col-md-12">
+                <div style="display: flex;  flex-direction: row;justify-content:space-between">
+                  <div class="">
+                          <div class="bar">
+                      <div class="icon"><i style="font-size: 50px;" class="fa fa-clock-o"></i></div>
+                      <div class="text"><b>{{tiempo}}<br>ocupada</b></div>
+                    </div>
+                  </div>
+                  <div >
+                    <div class="bar">
+                      <div class="icon"><i style="font-size: 50px;" class="fa fa-file-text-o"></i></div>
+                      <div class="text"><b>{{total_cantidad}} <br>Pedidos</b></div>
+                    </div>
+                  </div>
+                  <div class="">      
+                    <div class="bar">
+                      <div class="icon"><i style="font-size: 50px;" class="fa fa-money"></i></div>
+                      <div class="text"><b> S/ {{monto_total}}<br>por pagar</b></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav1" style="border: 1px;" class="mt-2"></div>
+      </div>
+   </div>
+  </mat-card>
+</div>
+</div>
+</form>

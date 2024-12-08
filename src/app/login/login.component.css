@@ -1,0 +1,226 @@
+.logo {
+   width: 128px !important;
+   margin-bottom: 32px !important;
+   height: 169px !important;
+}
+
+
+#login {
+   width: 100%;
+   overflow: hidden;
+   background: url('/assets/dark-material-bg.jpg') no-repeat;
+   background-size: cover;
+   height: 100% !important;
+
+}
+
+.description {
+   color: #fff;
+}
+
+#login-intro {
+   padding: 128px !important;
+}
+
+#login-intro .logo {
+   width: 128px !important;
+   margin-bottom: 32px !important;
+}
+
+#login #login-intro .title {
+   font-size: 42px;
+   font-weight: 300;
+   line-height: 1;
+}
+
+#login #login-intro .description {
+   padding-top: 16px;
+   font-size: 14px;
+   max-width: 600px;
+}
+
+#login #login-form-wrapper {
+   width: 400px;
+   min-width: 400px;
+   max-width: 400px;
+   overflow: auto;
+   float: right;
+
+}
+
+#login #login-form-wrapper #login-form {
+   padding: 128px 48px 48px 48px;
+}
+
+#login #login-form-wrapper #login-form .logo {
+   width: 128px;
+   margin: 32px auto;
+}
+
+#login #login-form-wrapper #login-form .title {
+   font-size: 21px;
+}
+
+#login #login-form-wrapper #login-form .description {
+   padding-top: 8px;
+}
+
+#login #login-form-wrapper #login-form form {
+   width: 100%;
+   padding-top: 32px;
+}
+
+#login #login-form-wrapper #login-form form mat-form-field {
+   width: 100%;
+}
+
+#login #login-form-wrapper #login-form form mat-checkbox {
+   margin: 0;
+}
+
+#login #login-form-wrapper #login-form form .remember-forgot-password {
+   font-size: 13px;
+   margin-top: 8px;
+}
+
+#login #login-form-wrapper #login-form form .remember-forgot-password .remember-me {
+   margin-bottom: 16px;
+}
+
+#login #login-form-wrapper #login-form form .remember-forgot-password .forgot-password {
+   font-size: 13px;
+   font-weight: 600;
+   margin-bottom: 16px;
+}
+
+#login #login-form-wrapper #login-form form .submit-button {
+   width: 100%;
+   margin: 16px auto;
+   display: block;
+}
+
+#login #login-form-wrapper #login-form .separator {
+   font-size: 15px;
+   font-weight: 600;
+   margin: 24px auto;
+   position: relative;
+   overflow: hidden;
+   width: 100px;
+   text-align: center;
+}
+
+#login-form-wrapper #login-form .separator .text {
+   display: inline-flex;
+   position: relative;
+   padding: 0 8px;
+   z-index: 9999;
+}
+
+#login-form-wrapper #login-form .separator .text:before,
+#login #login-form-wrapper #login-form .separator .text:after {
+   content: '';
+   display: block;
+   width: 30px;
+   position: absolute;
+   top: 10px;
+   border-top: 1px solid;
+}
+
+#login-form-wrapper #login-form .separator .text:before {
+   right: 100%;
+}
+
+#login-form-wrapper #login-form .separator .text:after {
+   left: 100%;
+}
+
+#login-form-wrapper #login-form button.google,
+#login #login-form-wrapper #login-form button.facebook {
+   width: 70%;
+   text-transform: none;
+   color: #fff;
+   font-size: 13px;
+}
+
+#login-form-wrapper #login-form button.google mat-icon,
+#login #login-form-wrapper #login-form button.facebook mat-icon {
+   color: #fff;
+   margin: 0 8px 0 0;
+}
+
+#login-form-wrapper #login-form button.google {
+   background-color: #d73d32;
+   margin-bottom: 8px;
+}
+
+#login-form-wrapper #login-form button.facebook {
+   background-color: #3f5c9a;
+}
+
+#login-form-wrapper #login-form .register {
+   margin: 32px auto 24px auto;
+   width: 250px;
+   font-weight: 600;
+}
+
+#login-form-wrapper #login-form .register .text {
+   margin-right: 8px;
+}
+
+#login-form-wrapper {
+   background: #fff !important;
+   height: 100% !important;
+   margin: 0px !important;
+
+}
+
+.title {
+   color: #fff;
+}
+
+.title_1 {
+   color: black;
+   font-size: 21px;
+}
+
+
+@media only screen and (max-width: 600px) {
+   .cabecera {
+
+      display: none;
+   }
+
+   #login #login-form-wrapper {
+      width: 90%;
+      min-width: 90%;
+      max-width: 90%;
+      overflow: auto;
+
+
+   }
+
+   #login-form-wrapper {
+      background: #fff !important;
+      height: 70% !important;
+      margin: 0px !important;
+      margin-top: 30% !important;
+
+   }
+
+   .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+   }
+
+   #login #login-form-wrapper #login-form {
+      padding: 20px 48px 48px 48px;
+      text-align: center;
+   }
+
+   #login #login-form-wrapper #login-form form {
+      width: 100%;
+      padding-top: 32px;
+   }
+}

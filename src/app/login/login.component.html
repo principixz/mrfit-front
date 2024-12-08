@@ -1,0 +1,63 @@
+<ngx-loading-bar height="6px" color="#43a047"></ngx-loading-bar>
+<div id="login">
+  <div class="row" style="height: 100% !important;margin: 0px !important;padding: 0px !important;">
+    <div class="col-md-8 cabecera">
+      <div id="login-intro">
+        <div class="logo">
+          <img style="width: 128px !important;height: 163.531px !important;" src="../assets/icon.png">
+        </div>
+        <div class="title">
+          JJ INGENIEROS
+        </div>
+        <div class="description">
+          Administrar tu negocio nunca fue tan fácil
+          Software de venta y facturación en la nube con todas las herramientas necesarias para gestionar y hacer crecer
+          su negocio.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 box " style="padding: 0px !important;">
+      <mat-card class="mat-elevation-z10" id="login-form-wrapper">
+        <div id="login-form">
+          <h1>INICIAR SESION</h1>
+          <form [formGroup]="loginform" (submit)="onSubmit()">
+
+            <p class="text-muted"></p>
+            <div class="input-group mb-2">
+
+              <mat-form-field appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="usuario">
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <mat-error>
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="input-group mb-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="clave">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-error>
+                  Campo requerido
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" [disabled]="loginform.invalid || !boton_disabled" mat-button
+                  style="background-color: #039be5;color:white; width: 100%;">{{boton_texto}}</button>
+                <br><br>
+                <a href="https://wa.me/51933122626" target="_blank">
+                  <button type="button" mat-button style="background-color: #00BB2D;color:white; width: 100%;">
+                    <i class="fa fa-whatsapp"></i> Contactanos</button></a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

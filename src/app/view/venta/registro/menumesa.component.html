@@ -1,0 +1,11 @@
+<mat-nav-list>
+  
+  
+    <a *ngFor="let da of lista_opciones" mat-list-item (click)="openLink($event,da.id)">
+      <span mat-line>{{da.nombre  }}</span>
+    
+    </a>
+
+
+
+  </mat-nav-list>

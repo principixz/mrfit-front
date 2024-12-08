@@ -1,0 +1,19 @@
+.text-center {
+    text-align: center;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  
+  .flex-item {
+    flex: 1 1 calc(33.333% - 10px); /* Tres elementos por fila */
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .flex-item:last-child {
+    margin-right: 0;
+  }

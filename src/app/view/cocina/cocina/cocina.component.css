@@ -1,0 +1,27 @@
+.button-icon-text1{
+margin-left: 150px;
+}
+::ng-deep .mat-card-header-text {
+    
+    width: 100% !important;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    @media only screen and (max-width: 600px) {
+
+        .button-icon-text1{
+            margin-left: 100px;
+            }
+            
+    .seleccionar_tipo_cocina{
+        width: 
+        100% !important;
+    }
+    .container-flx{
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important; /* Can be changed in the live sample */
+    }
+   
+    }

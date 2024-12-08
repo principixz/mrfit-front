@@ -1,0 +1,109 @@
+<div style="margin: 0px !important" mat-dialog-content>
+  <form novalidate [formGroup]="formulario">
+    <!-- Cerrar Modal -->
+    <div style="position: relative;">
+      <div
+        mat-dialog-close
+        class="cerrar"
+        style="position: absolute; left: 10px; top: 10px; z-index: 3;"
+      >
+        <label
+          style="margin: 0px; padding: 0px; font-weight: bold; cursor: pointer;"
+        >
+          X
+        </label>
+      </div>
+    </div>
+
+    <!-- Título -->
+    <div class="taman titulo text-center" style="margin-top: 15px; font-size: 20px; font-weight: bold;">
+      Buscar Clientes
+    </div>
+
+    <!-- Input Cliente y Botones -->
+    <div class="row align-items-center justify-content-center mb-4">
+      <div class="col-md-4" style="padding-right: 5px;">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Cliente:</span>
+          </div>
+          <ng-select2
+            (valueChanged)="onClienteSeleccionado($event)"
+            [options]="options"
+            formControlName="cliente"
+            [placeholder]="'Seleccionar Cliente'"
+            required="true"
+            [width]="'100%'"
+          ></ng-select2> 
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">X</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2" style="padding-left: 5px; padding-right: 5px;">
+        <button type="button" class="btn btn-primary btn-block" style="background-color: #2976b9;">
+          <i class="fa fa-pencil-square-o"></i> Editar
+        </button>
+      </div>
+      <div class="col-md-2" style="padding-left: 5px;">
+        <button
+          (click)="nuevocliente()"
+          type="button"
+          class="btn btn-success btn-block"
+          style="background-color: #2dada7;"
+        >
+          <i class="fa fa-plus-circle"></i> Nuevo
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabla de Clientes Seleccionados -->
+    <div class="card shadow-sm" style="padding: 20px; overflow: hidden;">
+        <div 
+          class="card-header text-center text-dark font-weight-bold"
+          [ngStyle]="{
+            'background-color': obtenerColorFondo(),
+            'color': 'white'
+          }"
+        >
+          <h5 style="font-size : medium">{{ nombreMembresia }} - {{ clientesSeleccionados.data.length }}/{{ data.cantidadRegistros }}</h5>
+        </div> 
+      <div class="card-body">
+        <table mat-table [dataSource]="clientesSeleccionados" class="mat-elevation-z8" style="width: 100%;">
+          <ng-container matColumnDef="documentoIdentidad">
+            <th mat-header-cell *matHeaderCellDef> DNI </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.documentoIdentidad }} </td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.nombre }} </td>
+          </ng-container>
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef> Acción </th>
+            <td mat-cell *matCellDef="let cliente">
+              <button mat-button color="warn" (click)="eliminarCliente(cliente)">Eliminar</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Botón Confirmar -->
+    <div class="row mt-4">
+      <div class="col text-center">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="enviar()"
+          [disabled]="clientesSeleccionados.data.length !== data.cantidadRegistros"
+          style="padding: 10px 20px; font-size: 16px;"
+        >
+          Confirmar Selección
+        </button>
+      </div>
+    </div> 
+  </form>
+</div>

@@ -1,0 +1,20 @@
+.cuerpo_modal{
+    height: 400px;width:400px
+}
+.cuerpo_modal_q{
+    height: 400px;width:400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media only screen and (max-width: 600px) {
+    .cuerpo_modal{
+        height: 400px;width:200px
+    }
+    .cuerpo_modal_q{
+        height: 400px;width:200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }
