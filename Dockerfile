@@ -1,5 +1,5 @@
 # Etapa 1: Construcción de la aplicación Angular
-FROM node:20 AS build
+FROM node:16 AS build
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -7,17 +7,10 @@ WORKDIR /app
 # Copiar los archivos necesarios para instalar dependencias
 COPY package.json package-lock.json ./
 
-# Instalar Angular CLI versión 13 globalmente (según tu entorno)
-RUN npm install -g @angular/cli@13.3.11
+# Instalar Angular CLI versión 12 globalmente
+RUN npm install -g @angular/cli@12.2.12
 
-# Establecer las versiones específicas de paquetes necesarios
-RUN npm install @angular-devkit/build-angular@13.3.11 --save-dev && \
-    npm install @angular/cli@13.3.11 --save-dev && \
-    npm install @angular/core@13.4.0 @angular/common@13.4.0 @angular/animations@13.4.0 \
-               @angular/router@13.4.0 --legacy-peer-deps && \
-    npm audit fix --force
-
-# Instalar las dependencias del proyecto
+# Instalar las dependencias del proyecto con compatibilidad forzada
 RUN npm install --legacy-peer-deps
 
 # Copiar el resto de los archivos del proyecto
@@ -29,7 +22,7 @@ RUN ng build --configuration production --output-path=dist/mrfit-front
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:1.21
 
-# Copiar la configuración personalizada de Nginx (asegúrate de que nginx.conf exista)
+# Copiar la configuración personalizada de Nginx (asegúrate de que nginx.conf exista si necesitas modificarlo)
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar los archivos construidos al directorio Nginx configurado
