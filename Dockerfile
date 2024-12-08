@@ -11,13 +11,13 @@ COPY package.json package-lock.json ./
 RUN npm install -g @angular/cli@12.2.12
 
 # Instalar las dependencias del proyecto con compatibilidad forzada
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --force
+
+# Instalar select2 manualmente (forzando compatibilidad)
+RUN npm install select2 --legacy-peer-deps --force
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
-
-# Instalar select2 manualmente (si no se instala automáticamente con npm install)
-RUN npm install select2
 
 # Construir la aplicación Angular en modo producción
 RUN ng build --configuration production --output-path=dist/mrfit-front
@@ -25,7 +25,7 @@ RUN ng build --configuration production --output-path=dist/mrfit-front
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:1.21
 
-# Copiar la configuración personalizada de Nginx (asegúrate de que nginx.conf exista si necesitas modificarlo)
+# Copiar la configuración personalizada de Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar los archivos construidos al directorio Nginx configurado
