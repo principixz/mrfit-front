@@ -10,8 +10,15 @@ COPY package.json package-lock.json ./
 # Instalar Angular CLI versión 13 globalmente (según tu entorno)
 RUN npm install -g @angular/cli@13.3.11
 
-# Instalar las dependencias del proyecto (forzando compatibilidad si es necesario)
-RUN npm install --legacy-peer-deps && npm audit fix --force
+# Establecer las versiones específicas de paquetes necesarios
+RUN npm install @angular-devkit/build-angular@13.3.11 --save-dev && \
+    npm install @angular/cli@13.3.11 --save-dev && \
+    npm install @angular/core@13.4.0 @angular/common@13.4.0 @angular/animations@13.4.0 \
+               @angular/router@13.4.0 --legacy-peer-deps && \
+    npm audit fix --force
+
+# Instalar las dependencias del proyecto
+RUN npm install --legacy-peer-deps
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
