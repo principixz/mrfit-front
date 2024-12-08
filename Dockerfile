@@ -1,5 +1,5 @@
 # Etapa 1: Construcción de la aplicación Angular
-FROM node:16 AS build
+FROM node:20 AS build
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -7,11 +7,11 @@ WORKDIR /app
 # Copiar los archivos necesarios para instalar dependencias
 COPY package.json package-lock.json ./
 
-# Instalar Angular CLI versión 12 globalmente
-RUN npm install -g @angular/cli@12
+# Instalar Angular CLI versión 13 globalmente (según tu entorno)
+RUN npm install -g @angular/cli@13.3.11
 
-# Instalar las dependencias del proyecto
-RUN npm install --legacy-peer-deps && npm audit fix
+# Instalar las dependencias del proyecto (forzando compatibilidad si es necesario)
+RUN npm install --legacy-peer-deps && npm audit fix --force
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
