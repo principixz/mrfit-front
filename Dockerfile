@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Construir la aplicación Angular para producción
-RUN npm run build -- --output-path=dist/frontrestaurante --configuration production
+RUN npm run build -- --output-path=dist/mrfit-front --configuration production
 
 # Etapa 2: Copiar los archivos a un servidor Nginx configurado
 FROM nginx:1.21
@@ -23,7 +23,7 @@ FROM nginx:1.21
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar los archivos de construcción al directorio Nginx configurado
-COPY --from=build /app/dist/frontrestaurante /usr/share/nginx/html
+COPY --from=build /app/dist/mrfit-front /usr/share/nginx/html
 
 # Exponer el puerto 80
 EXPOSE 80
