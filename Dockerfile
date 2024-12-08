@@ -10,8 +10,8 @@ COPY package.json package-lock.json ./
 # Instalar Angular CLI versión 12 globalmente
 RUN npm install -g @angular/cli@12.2.12
 
-# Instalar las dependencias del proyecto con compatibilidad forzada
-RUN npm install --legacy-peer-deps && npm install select2
+# Forzar la instalación de las dependencias del proyecto
+RUN npm install --legacy-peer-deps --force
 
 # Copiar el resto de los archivos del proyecto
 COPY . .
