@@ -1,0 +1,22 @@
+.action-insert {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .action-update {
+    color: blue;
+    font-weight: bold;
+  }
+  
+  .action-delete {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .log-container {
+    margin: 20px;
+  }
+  
+  .mat-elevation-z8 {
+    border-radius: 8px;
+  }

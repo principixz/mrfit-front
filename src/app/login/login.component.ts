@@ -41,7 +41,7 @@ export class LoginComponent {
      if (this.authenticationService.currentUserValue) { 
       let info:any;
       info=this.authenticationService.currentUserValue;
-      console.log(info);
+      console.log(info); 
      let url=info["url_inicial"];
      this.router.navigate([url]);
    }

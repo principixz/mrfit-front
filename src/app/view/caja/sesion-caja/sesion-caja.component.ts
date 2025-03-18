@@ -144,12 +144,12 @@ export class SesionCajaComponent implements OnInit {
     let usuario:any =  this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
    const token = usuario['Token'].toString();
-  this.servicio.enviar_seguro('Web_service/ws_informacion_caja',  {}  , token,2).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/ws_informacion_caja',  {}  , token,2).pipe().subscribe(
     (data:any)  =>  {
       _this.cargar_caja_fisica(data["caja2"],data["caja1"]);
       _this.fecha_actual=data["fecha_dia"];
       _this.mov_f=data["movif"];
-      _this.mov_v=data["moviv"];
+      _this.mov_v=data["moviv"]; 
       _this.estadosesioncaja=parseInt(data["estadosesioncaja"]);
       _this.estado_caja=parseInt(data["estado_caja"]);
       _this.pagos_mov=data["array_formapago"];
@@ -161,7 +161,7 @@ export class SesionCajaComponent implements OnInit {
       _this.saldoinicialf=parseFloat(data["saldoinicialf"]);
       _this.saldoinicialv=parseFloat(data["saldoinicialv"]);
       _this.cajafisica= (_this.saldoinicialf + _this.cajaingf) - _this.cajaegrf;
-      _this.cajavirtual=( _this.cajaegrv + _this.cajaingv) - _this.cajaegrv;
+      _this.cajavirtual=( _this.saldoinicialv + _this.cajaingv) - _this.cajaegrv;
       _this.pagos_mov.forEach(element => {
         _this.total+=parseFloat(element["total"]);
       });
@@ -179,7 +179,7 @@ export class SesionCajaComponent implements OnInit {
    request["cajafisica"]=id_caja_fisica;
    request["cajavirtual"]=id_caja_virtaul;
      //alert(id_caja_virtaul);
-  this.servicio.enviar_seguro('Web_service/ws_sesion_traerfisica',  request  , token).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/ws_sesion_traerfisica',  request  , token).pipe().subscribe(
     (data:any)  =>  {
       console.log(data)
       _this.chart = new Chart({
@@ -239,7 +239,7 @@ export class SesionCajaComponent implements OnInit {
     request["cajafisica"]=id_caja_fisica;
     request["cajavirtual"]=id_caja_virtaul;
       //alert(id_caja_virtaul);
-   this.servicio.enviar_seguro('Web_service/ws_sesion_traervirtual',  request  , token).pipe().subscribe(
+   this.servicio.enviar_seguro('web_service/ws_sesion_traervirtual',  request  , token).pipe().subscribe(
      (data:any)  =>  {
        console.log(data)
        _this.chart1 = new Chart({
@@ -335,7 +335,7 @@ export class NgbdModalContent implements OnInit  {
 
    request["ingresosf"]=parseFloat(_this.info["ingresosf"]);
    request["ingresosv"]=parseFloat(_this.info["ingresosv"]);
-  this.servicio.enviar_seguro('Web_service/ws_cerrar_sesion_caja',  request , token,2).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/ws_cerrar_sesion_caja',  request , token,2).pipe().subscribe(
     (data:any)  =>  {
       if(data["estado"]){
         this._snackBar.open("Se cerro correctamente caja",'',{duration: 1 * 1000,});
@@ -390,7 +390,7 @@ export class NgbdModalContent1 implements OnInit  {
 
   // request["ingresosf"]=parseFloat(_this.info["ingresosf"]);
    //request["ingresosv"]=parseFloat(_this.info["ingresosv"]);
-  this.servicio.enviar_seguro('Web_service/ws_cerrar_sesion_apertura_caja',  this.form.value , token,2).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/ws_cerrar_sesion_apertura_caja',  this.form.value , token,2).pipe().subscribe(
     (data:any)  =>  {
       if(data["estado"]){
         this._snackBar.open("Se abrio correctamente caja",'',{duration: 1 * 1000,});

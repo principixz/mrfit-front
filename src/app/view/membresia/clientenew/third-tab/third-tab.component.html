@@ -1,0 +1,64 @@
+<div class="log-container">
+    <mat-card>
+      <mat-card-title>Log de Transacciones</mat-card-title>
+      <mat-card-content>
+        <!-- Filtro -->
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Buscar</mat-label>
+          <input matInput (input)="applyFilter($event)" placeholder="Filtrar resultados" />
+        </mat-form-field>
+  
+        <!-- Tabla -->
+        <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+          <!-- Campo Modificado -->
+          <ng-container matColumnDef="campo_modificado">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Campo Modificado </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.campo_modificado }} </mat-cell>
+          </ng-container>
+  
+          <!-- Detalles -->
+          <ng-container matColumnDef="detalles">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div [innerHTML]="element.detalles"></div>
+            </mat-cell>
+          </ng-container>
+  
+          <!-- Acción -->
+          <ng-container matColumnDef="accion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Acción </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="getActionClass(element.accion)">
+              {{ element.accion }}
+            </mat-cell>
+          </ng-container>
+  
+          <!-- Nombre Empleado -->
+          <ng-container matColumnDef="empleado_nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Empleado </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.empleado_nombre }} </mat-cell>
+          </ng-container>
+  
+          <!-- Apellido Empleado -->
+          <ng-container matColumnDef="empleado_apellido">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Motivo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.empleado_apellido }} </mat-cell>
+          </ng-container>
+  
+          <!-- Fecha -->
+          <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.fecha }} </mat-cell>
+          </ng-container>
+  
+          <!-- Cabecera -->
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  
+          <!-- Filas -->
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+  
+        <!-- Paginador -->
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" aria-label="Seleccionar página"></mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>

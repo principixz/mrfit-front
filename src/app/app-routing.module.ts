@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {PrincipalComponent} from './principal/principal.component';
-import { MembresiaModule } from './view/membresia/membresia.module';
+import { MembresiaModule } from './view/membresia/membresia.module'; 
+import { DashboardModule } from './view/dashboard/dashboard.module';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -64,9 +65,14 @@ const routes: Routes = [
     {
       path: 'membresia',
       loadChildren: () => import('./view/membresia/membresia.module').then(m  =>  m.MembresiaModule ),
-    }
+    },
+    {
+      path: 'dashboard',
+      loadChildren: () => import('./view/dashboard/dashboard.module').then(m  =>  m.DashboardModule ),
+    },
   ]
 },
+  { path: 'dashboard', loadChildren: () => import('./view/dashboard/dashboard.module').then(m => m.DashboardModule) },
 
 
 

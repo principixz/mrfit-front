@@ -238,7 +238,7 @@ export class NuevaventaMembresiaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
     
-    this.servicio.enviar_seguro('Web_service/procesar_pedido', request, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/procesar_pedido', request, token).pipe().subscribe(
       (data: any) => {
         __this.ngxUiLoaderService.stop();
         if (data["estado"]) {
@@ -297,10 +297,13 @@ export class NuevaventaMembresiaComponent implements OnInit {
         this.listaClientesSeleccionados = [];
         clientes.forEach(cliente => {
           if (!this.listaClientesSeleccionados.some(item => item.id === cliente.idplato)) { 
+            console.log('xxxxxx')
+            console.log(cliente)
             this.listaClientesSeleccionados.push({
               id: cliente.idplato,
               nombre: cliente.nombre,
               documentoIdentidad: cliente.documentoIdentidad || cliente.comentario, // Asegúrate de que estás usando el campo correcto
+              membresiaActual : cliente.iddetalle
             });
           }
         });

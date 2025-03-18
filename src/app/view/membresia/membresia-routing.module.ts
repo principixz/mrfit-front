@@ -1,5 +1,5 @@
 import { NgModule, Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router'; 
 import { TipoMembresiaComponent } from './tipo-membresia/listamembresia/tipo-membresia.component';
 import { NuevamembresiaComponent } from './tipo-membresia/nuevamembresia/nuevamembresia.component';
 import { NuevaventaMembresiaComponent } from './ventaservicio/nuevaventa-membresia/nuevaventa-membresia.component';

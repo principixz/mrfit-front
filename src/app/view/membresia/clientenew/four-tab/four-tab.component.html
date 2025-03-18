@@ -1,0 +1,53 @@
+<br>
+<div class="row">
+  
+  <div class="col-md-12">
+      <h5 style="font-weight: bold; font-size: 25px;">{{nombreCliente}}</h5>
+  </div>
+</div>
+
+<div class="row mb-4">
+
+
+  <div class="col-md-6">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Mes</mat-label>
+      <mat-select [(ngModel)]="selectedMonth" (selectionChange)="onSelectionChange()">
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{ month.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-6">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Año</mat-label>
+      <mat-select [(ngModel)]="selectedYear" (selectionChange)="onSelectionChange()">
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<table mat-table [dataSource]="filteredData" class="mat-elevation-z8 w-100">
+  <ng-container matColumnDef="fechaIngreso">
+    <th mat-header-cell *matHeaderCellDef> Fecha Ingreso </th>
+    <td mat-cell *matCellDef="let element"> {{ element.fechaIngreso }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="horaIngreso">
+    <th mat-header-cell *matHeaderCellDef> Hora Ingreso </th>
+    <td mat-cell *matCellDef="let element"> {{ element.horaIngreso }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tipoMembresia">
+    <th mat-header-cell *matHeaderCellDef> Tipo Membresía </th>
+    <td mat-cell *matCellDef="let element"> {{ element.tipoMembresia }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

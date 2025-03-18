@@ -268,7 +268,7 @@ export class PedidoComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
 
-    this.servicio.enviar_seguro('Web_service/procesar_pedido', request, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/procesar_pedido', request, token).pipe().subscribe(
       (data: any) => {
         __this.ngxUiLoaderService.stop();
         if (data["estado"]) {
@@ -359,7 +359,7 @@ export class PedidoComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/buscar_producto', request, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/buscar_producto', request, token).pipe().subscribe(
       (data: any) => {
         _this.ListaProducto = [];
         _this.ListaProducto_temp = [];
@@ -385,7 +385,7 @@ export class PedidoComponent implements OnInit {
        // _this.total();
 
       });
-    this.servicio.enviar_seguro('Web_service/cargar_categoria_producto', {}, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/cargar_categoria_producto', {}, token).pipe().subscribe(
       (data: any) => {
         _this.Lista_categoria = data;
       });
@@ -442,7 +442,7 @@ export class PedidoComponent implements OnInit {
         _this.total();
 
       });
-    this.servicio.enviar_seguro('Web_service/cargar_categoria_producto', {}, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/cargar_categoria_producto', {}, token).pipe().subscribe(
       (data: any) => {
         _this.Lista_categoria = data;
       });

@@ -53,7 +53,7 @@ export class NuevamembresiaComponent implements OnInit, OnDestroy {
   tipoPeriodoSubscription:  Subscription | null = null;
   categoriaMembresiaSubscription: Subscription | null = null;
   minDate: string;
-
+  estadoTrotadora:boolean = false;  
   constructor(
     private fb: FormBuilder,
     private servicio: Servicio,
@@ -74,7 +74,8 @@ export class NuevamembresiaComponent implements OnInit, OnDestroy {
       fecha_fin: [{ value: '', disabled: true }, Validators.required],
       categoria_membresia: ['01'],
       cantidad_personas: [1],
-      estado: ['1', Validators.required]
+      estado: ['1', Validators.required],
+      estadoTrotadora: [false]
     }, { validators: fechaFinPosteriorAFechaInicio() });
     this.minDate = new Date().toISOString().split('T')[0];
   }
@@ -106,7 +107,8 @@ export class NuevamembresiaComponent implements OnInit, OnDestroy {
                 _this.form.get('fecha_fin')!.setValue(new Date(response['tipomembresia'][0]['tipo_membresia_fechafin'] + 'T00:00:00'));
                 _this.form.get('categoria_membresia')!.setValue(response['tipomembresia'][0]['tipo_membresia_categoriamembresia']);
                 _this.form.get('cantidad_personas')!.setValue(response['tipomembresia'][0]['tipo_membresia_cantidadpersona']);
-  
+                this.estadoTrotadora =  response['tipomembresia'][0]["estadoTrotadora"] === "1" ? true : false;
+                _this.form.get('estadoTrotadora')!.setValue(response['tipomembresia'][0]["estadoTrotadora"] === "1" ? true : false);
                 // Llamar a las funciones de actualización
                 _this.verificar();
                 _this.estadocategoria();
@@ -155,6 +157,15 @@ export class NuevamembresiaComponent implements OnInit, OnDestroy {
       this.tipoPeriodoSubscription.unsubscribe();
     }
   }
+
+  toggleFechaFin() {
+    const control = this.form.get('estadoTrotadora');
+    if (control) {
+      this.estadoTrotadora = !this.estadoTrotadora;
+      this.form.get('estadoTrotadora')!.setValue(this.estadoTrotadora); 
+    }
+  }
+  
   verificar(): void {
     if (this.form.get('tipo_periodo')!.value === '02') { // Temporal
       this.form.get('fecha_inicio')!.enable();
@@ -167,7 +178,7 @@ export class NuevamembresiaComponent implements OnInit, OnDestroy {
       this.form.get('fecha_inicio')!.disable();
       this.form.get('fecha_fin')!.disable();
       this.form.get('fecha_inicio')!.clearValidators();
-      this.form.get('fecha_fin')!.clearValidators();
+      this.form.get('fecha_fin')!.clearValidators(); 
       //this.form.get('fecha_inicio')!.updateValueAndValidity();
       //this.form.get('fecha_fin')!.updateValueAndValidity();
     }

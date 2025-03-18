@@ -1,0 +1,184 @@
+.mat-mdc-card {
+    &.daxa-card {
+        &.welcome-card {
+            z-index: 1;
+            padding: {
+                top: 40px;
+                bottom: 0;
+            };
+            .content {
+                margin-top: -10px;
+                
+                h3 {
+                    margin: {
+                        top: 7px;
+                        bottom: 7px;
+                    };
+                }
+                p {
+                    font-size: 15px;
+                    margin-bottom: 12px;
+                }
+                .chart {
+                    left: -55px;
+                    bottom: -38px;
+                    position: absolute;
+                }
+            }
+            .image {
+                text-align: right;
+
+                img {
+                    margin-bottom: -4px;
+                }
+            }
+            &::before {
+                top: 0;
+                right: 23%;
+                z-index: -1;
+                content: '';
+                width: 215.821px;
+                height: 215.821px;
+                position: absolute;
+                border-radius: 50%;
+                background: linear-gradient(180deg, #5D4FE3 0%, #8276FF 100%);
+            }
+            &.rtl-enabled {
+                .content {
+                    .chart {
+                        left: auto;
+                        right: -55px;
+                    }
+                }
+                .image {
+                    text-align: left;
+                }
+                &::before {
+                    right: auto;
+                    left: 23%;
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .mat-mdc-card {
+        &.daxa-card {
+            &.welcome-card {
+                text-align: center;
+                padding: {
+                    top: 15px;
+                    bottom: 0;
+                };
+                .content {
+                    margin-top: 0;
+                    
+                    h3 {
+                        margin: {
+                            top: 6px;
+                            bottom: 6px;
+                        };
+                    }
+                    p {
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                    }
+                    .chart {
+                        left: 0;
+                        bottom: 0;
+                        position: relative;
+                        margin: {
+                            bottom: -30px;
+                            top: -10px;
+                        };
+                    }
+                }
+                .image {
+                    text-align: center;
+                }
+                &::before {
+                    left: 0;
+                    right: 0;
+                    margin: {
+                        left: auto;
+                        right: auto;
+                    };
+                }
+                &.rtl-enabled {
+                    .content {
+                        .chart {
+                            left: auto;
+                            right: 0;
+                        }
+                    }
+                    &::before {
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+
+.welcome-card {
+    background: linear-gradient(135deg, #5c6ac4, #8e99f3);
+    padding: 20px;
+    border-radius: 15px;
+  
+    .content {
+      text-align: left;
+  
+      .text-white {
+        color: #ffffff !important;
+      }
+  
+      h3 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+  
+      .chart {
+        margin-right: 30px;
+        margin-left: 20px;
+        margin-top: 100px;
+      }
+    }
+  
+    .image {
+      text-align: center;
+      img {
+        border-radius: 15px;
+      }
+    }
+  }
+
+  #chart-container {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+}

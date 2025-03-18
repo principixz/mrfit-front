@@ -1,0 +1,77 @@
+<mat-card class="daxa-card recent-leads-card mb-25 border-radius bg-white border-none d-block" style="width: 100%;">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="title">
+          <h5 class="text-dark">Membresias Renovadas</h5>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-form-field appearance="outline">
+          <mat-label>Filtrar por Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" (dateChange)="applyDateFilter($event)" placeholder="Seleccione una fecha">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <button mat-raised-button (click)="clearFilter()">Limpiar Filtro</button>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let row"> {{ row.id }} </td>
+          </ng-container>
+  
+          <!-- Nombre Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let row"> {{ row.nombre }} </td>
+          </ng-container> 
+  
+          <!-- DNI Column -->
+          <ng-container matColumnDef="dni">
+            <th mat-header-cell *matHeaderCellDef> DNI </th>
+            <td mat-cell *matCellDef="let row"> {{ row.dni }} </td>
+          </ng-container>
+  
+          <!-- Tipo Membresía Column -->
+          <ng-container matColumnDef="tipo_membresia">
+            <th mat-header-cell *matHeaderCellDef> Membresía </th>
+            <td mat-cell *matCellDef="let row"> {{ row.tipo_membresia }} </td>
+          </ng-container>
+  
+          <!-- Fecha Vencimiento Column -->
+          <ng-container matColumnDef="fecha_vencimiento">
+            <th mat-header-cell *matHeaderCellDef> Fecha Vencimiento </th>
+            <td mat-cell *matCellDef="let row"> {{ row.fecha_vencimiento }} </td>
+          </ng-container>
+  
+          <!-- Días para Vencimiento Column -->
+          <ng-container matColumnDef="descripcion_cambio">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let row"><span [innerHTML]="row.descripcion_cambio"></span> </td>
+          </ng-container>
+  
+ 
+          <ng-container matColumnDef="fecha_modificacion">
+            <th mat-header-cell *matHeaderCellDef> Fecha Modificación </th>
+            <td mat-cell *matCellDef="let row"> {{ row.fecha_modificacion}} </td>
+          </ng-container>
+
+          <!-- Header and Rows -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+  
+      <!-- Paginator -->
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons
+        aria-label="Select number of items per page">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>

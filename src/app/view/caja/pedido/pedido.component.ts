@@ -243,7 +243,7 @@ export class PedidoComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
     _this.cantidad_pedido = 0;
-    this.servicio.enviar_seguro('Web_service/cargar_mesas', { "tipo": 3 }, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/cargar_mesas', { "tipo": 3 }, token, 2).pipe().subscribe(
       (data: any) => {
 
         console.log(data);
@@ -328,7 +328,7 @@ export class PedidoComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
     _this.listadetalle = [];
-    this.servicio.enviar_seguro('Web_service/buscar_producto', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/buscar_producto', request, token, 2).pipe().subscribe(
       (data: any) => {
         _this.ListaProducto = [];
         //  _this.listadetalle=[];
@@ -383,7 +383,7 @@ export class PedidoComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
     _this.listadetalle = [];
-    this.servicio.enviar_seguro('Web_service/buscar_producto', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/buscar_producto', request, token, 2).pipe().subscribe(
       (data: any) => {
         _this.ListaProducto = [];
         //  _this.listadetalle=[];
@@ -491,7 +491,7 @@ export class EliminarPedidoModalComponent {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/ws_eliminar_pedido', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/ws_eliminar_pedido', request, token, 2).pipe().subscribe(
       (data: any) => {
         if (data["estado"]) {
 
@@ -540,7 +540,7 @@ export class EditarPedidoModalComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/ws_estock_actualizar', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/ws_estock_actualizar', request, token, 2).pipe().subscribe(
       (data: any) => {
         this.formulario_eliminar.get("stock_producto")?.setValue(data["stock"]);
         _this.valor_maximo = parseInt(data["stock"]);
@@ -593,7 +593,7 @@ export class EditarPedidoModalComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/ws_editar_datos_detalle', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/ws_editar_datos_detalle', request, token, 2).pipe().subscribe(
       (data: any) => {
         if (data["estado"]) {
 
@@ -688,7 +688,7 @@ export class EliminarDetalleModalComponent {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/ws_eliminar_pedido_detalle', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/ws_eliminar_pedido_detalle', request, token, 2).pipe().subscribe(
       (data: any) => {
         if (data["estado"]) {
 
@@ -852,7 +852,7 @@ export class CanjePedidoModalComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/ws_editar_canje_parte', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/ws_editar_canje_parte', request, token, 2).pipe().subscribe(
       (data: any) => {
         if (data["estado"]) {
 

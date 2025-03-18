@@ -33,7 +33,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(this.servicio.url_global +    'Web_service/LoginUsuarioWeb', { 'usuario':username,'clave': password })
+        return this.http.post<any>(this.servicio.url_global +    'web_service/LoginUsuarioWeb', { 'usuario':username,'clave': password })
             .pipe(map(user => {
                 console.log(user.Token);
                 if (user && user.Token) {
@@ -60,7 +60,7 @@ export class AuthenticationService {
     }
 
     consultar(expediente: string, correo: string) {
-        return this.http.post<any>(this.servicio.url_global +    '/Web_service/ConsultarExpediente', { expediente, correo })
+        return this.http.post<any>(this.servicio.url_global +    '/web_service/ConsultarExpediente', { expediente, correo })
             .pipe(map((user) => {
                 console.log(user.Token1);
                 if (user && user.Token1) {

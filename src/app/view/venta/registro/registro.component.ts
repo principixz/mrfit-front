@@ -193,7 +193,7 @@ export class RegistroComponent implements OnInit {
     let request:any={};
    request["idsilla"]=data["mesa_id"];
    request["opcion"]=2;
-    this.servicio.enviar_seguro('Web_service/reserva', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/reserva', request, token, 2).pipe().subscribe(
       (data: any) => {
         _this.ngxUiLoaderService.stop();
         _this._snackBar.open("SE PROCESO CORRECTAMENTE", '', {
@@ -230,7 +230,7 @@ export class RegistroComponent implements OnInit {
     const token = usuario['Token'].toString();
     let request:any={};
    request["idsilla"]=data["mesa_id"];
-    this.servicio.enviar_seguro('Web_service/anular_mesaagrupar', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/anular_mesaagrupar', request, token, 2).pipe().subscribe(
       (data: any) => {
         _this.ngxUiLoaderService.stop();
         _this._snackBar.open("SE ANULO CORRECTAMENTE", '', {
@@ -248,7 +248,7 @@ export class RegistroComponent implements OnInit {
     const token = usuario['Token'].toString();
     let request:any={};
    request["idsilla"]=data["mesa_id"];
-    this.servicio.enviar_seguro('Web_service/anularpedido', request, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/anularpedido', request, token, 2).pipe().subscribe(
       (data: any) => {
         _this.ngxUiLoaderService.stop();
         _this._snackBar.open("SE ANULO CORRECTAMENTE", '', {
@@ -280,7 +280,7 @@ export class RegistroComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/cargar_mesas', { "tipo": this.selectedValue }, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/cargar_mesas', { "tipo": this.selectedValue }, token, 2).pipe().subscribe(
       (data: any) => {
         console.log(data);
         _this.listatipomesa = data;

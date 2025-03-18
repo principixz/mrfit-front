@@ -27,7 +27,7 @@ export class ListaunidadmedidaComponent implements OnInit {
     let usuario:any =  this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
    const token = usuario['Token'].toString();
-  this.servicio.enviar_seguro('Web_service/lista_unidad_medida',  {}  , token).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/lista_unidad_medida',  {}  , token).pipe().subscribe(
     (data:any)  =>  {
 
       _this.dataSource = new MatTableDataSource(data["lista"]);

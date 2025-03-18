@@ -10,7 +10,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import{MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
-import { DatablematerialComponent } from '../../componente/datablematerial/datablematerial.component';
+import { DatablematerialComponent } from '../../componente/datablematerial/datablematerial.component'; 
 import {PrincipalModule} from '../principal.module';
 
 import {MatSelectModule} from '@angular/material/select';
@@ -57,6 +57,11 @@ import { ModalServicioCliente } from './ventaservicio/nuevaventa-membresia/modal
 import { ClientenewComponent } from './clientenew/clientenew.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ValidarAsistenciaComponent } from './validar-asistencia/validar-asistencia.component';
+import { FirstTabComponent } from './clientenew/first-tab/first-tab.component';
+import { SecondTabComponent } from './clientenew/second-tab/second-tab.component';
+import { ThirdTabComponent } from './clientenew/third-tab/third-tab.component';
+import { FourTabComponent } from './clientenew/four-tab/four-tab.component';
+import { ModalVerificacionComponent } from './clientenew/modal-verificacion/modal-verificacion.component'; 
 
 @NgModule({
     imports: [FormsModule, ReactiveFormsModule, MatCardModule, PrincipalModule, MatButtonModule, MatSelectModule, MatIconModule, MatInputModule, CommonModule,
@@ -81,7 +86,12 @@ import { ValidarAsistenciaComponent } from './validar-asistencia/validar-asisten
     ModalServicioCliente,
     ClientenewComponent,
     ClienteComponent,
-    ValidarAsistenciaComponent
+    ValidarAsistenciaComponent,
+    FirstTabComponent,
+    SecondTabComponent,
+    ThirdTabComponent,
+    FourTabComponent,
+    ModalVerificacionComponent
   ]
 })
 export class MembresiaModule { }

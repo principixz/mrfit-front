@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Chart } from 'angular-highcharts';
+//import { Chart } from 'angular-highcharts';
 import * as moment from 'moment';
 import { Select2Data } from 'ng-select2-component';
  
@@ -62,7 +62,7 @@ update(event:any){
   }
   mostrar(datos:any)
   {
-   this.chart.destroy();
+   /*this.chart.destroy();
    this.chart= new Chart({
     chart: {
       
@@ -103,10 +103,10 @@ update(event:any){
         type:'line'
       }
     ]
-  });
+  });*/
   }
 
-  chart = new Chart({
+  /*chart = new Chart({
     chart: {
       
       type: 'line',
@@ -145,10 +145,10 @@ update(event:any){
         type:'line'
       }
     ]
-  });
+  });*/
   //HeatmapObject: Highcharts.Chart = null;
   add() {
-    this.chart.addPoint(Math.floor(Math.random() * 10));
+    //this.chart.addPoint(Math.floor(Math.random() * 10));
   }
   public  hoydia!: string;
   constructor(public toastr: ToastrService, public ngxUiLoaderService: NgxUiLoaderService, 

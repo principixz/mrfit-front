@@ -1,0 +1,97 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+    <div class="row">
+        <div class="col-md-12">
+            <h5 style="font-weight: bold; font-size: 25px;">{{titulo}}</h5>
+        </div>
+    </div>
+  
+    <br> 
+    <div class="row">
+        <div class="col-md-12"> 
+            <mat-card>
+                <div class="row">
+                    <div class="col-md-4">
+                      <mat-form-field style="width: 100% !important;" appearance="outline">
+                          <mat-label>D.N.I/R.U.C</mat-label>
+                          <input matInput formControlName="dni" (input)="buscarCliente()" maxlength="11">
+                          <mat-error *ngIf="form.get('dni')?.hasError('required')">
+                            Campo requerido
+                          </mat-error>
+                          <mat-error *ngIf="form.get('dni')?.hasError('pattern')">
+                            Debe ingresar un DNI (8 dígitos) o un RUC (11 dígitos) válido.
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field style="width: 100% !important;" appearance="outline">
+                            <mat-label>NOMBRE Y APELLIDOS</mat-label>
+                            <input matInput formControlName="nombres">
+                            <mat-error>Campo requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field style="width: 100% !important;" appearance="outline">
+                            <mat-label>DIRECCIÓN</mat-label>
+                            <input matInput formControlName="direccion">
+                            <mat-error>Campo requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field style="width: 100% !important;" appearance="outline">
+                            <mat-label>CORREO</mat-label>
+                            <input matInput formControlName="correo">
+                            <mat-error>Campo requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4"> 
+                        <mat-form-field style="width: 100% !important;" appearance="outline">
+                            <mat-label>TELEFONO</mat-label>
+                            <input matInput formControlName="telefono">
+                            <mat-error>Campo requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+  
+                    <div class="col-md-4 d-flex align-items-center">
+                        <mat-form-field style="width: 100% !important; margin-right: 10px;" appearance="outline">
+                            <mat-label>FECHA FIN MEMBRESÍA</mat-label>
+                            <input
+                              matInput
+                              [matDatepicker]="picker"
+                              formControlName="fechaFinMembresia"
+                              [disabled]="!form.get('habilitarFechaFin')?.value"
+                              placeholder="Si habilita el botón, se tomará como referencia la fecha fin."
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error>Campo requerido</mat-error>
+                        </mat-form-field>
+                        <mat-checkbox [checked]="habilitarFechaFin" formControlName="habilitarFechaFin"  (change)="toggleFechaFin()">Habilitar</mat-checkbox>
+                    </div>
+  
+                    <div class="col-md-4">
+                        <mat-form-field style="width: 100% !important;" appearance="outline">
+                            <mat-label>MEMBRESÍA</mat-label>
+                            <mat-select formControlName="tipoMembresia">
+                                <mat-option *ngFor="let tipo of tiposMembresia" [value]="tipo.id">{{ tipo.nombre }}</mat-option>
+                            </mat-select>
+                            <mat-error>Campo requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <button [disabled]="!form.valid || !estado" id="basic" style="color: white; background-color: #039be5;" type="button" mat-button (click)="openModal()">
+                            {{texto_boton}}
+                          </button>
+  
+                        <button id="basic" routerLink="/principal/membresia/clientes" type="button" mat-button style="color: white; background-color: red;">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+  </form>

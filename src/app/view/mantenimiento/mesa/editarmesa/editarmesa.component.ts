@@ -63,7 +63,7 @@ export class EditarmesaComponent implements OnInit {
         this.route.paramMap.subscribe((params: ParamMap)  => {
           if  (params.get('id') !=  null  ) {
             _this.form.get('id')!.setValue(params.get('id'));
-            _this.servicio.enviar_seguro('Web_service/cargar_uno_mesa', {  'id':  params.get('id')  },  token).pipe().subscribe(
+            _this.servicio.enviar_seguro('web_service/cargar_uno_mesa', {  'id':  params.get('id')  },  token).pipe().subscribe(
               (response:any) =>  {
               _this.form.get('descripcion')!.setValue(response['mesa_numero']);
                 _this.form.get('lista')!.setValue(response['mesa_id_lugar']);
@@ -86,7 +86,7 @@ export class EditarmesaComponent implements OnInit {
    const token = usuario['Token'].toString();
    
 
-   _this.servicio.enviar_seguro('Web_service/lista_lugar_mesas', { },  token).pipe().subscribe(
+   _this.servicio.enviar_seguro('web_service/lista_lugar_mesas', { },  token).pipe().subscribe(
     (response:any) =>  {
       _this.lista_lugar=response["lista"];
     }
@@ -104,7 +104,7 @@ export class EditarmesaComponent implements OnInit {
       const user:any  = this.authenticationService.currentUserValue;
       // tslint:disable-next-line: no-string-literal
       const token = user['Token'];
-      this.servicio.enviar_seguro('Web_service/guardar_mesa', datos , token).pipe().subscribe(
+      this.servicio.enviar_seguro('web_service/guardar_mesa', datos , token).pipe().subscribe(
         (response:any)  =>  {
 
           _this._snackBar.open(response["mensaje"],'',{

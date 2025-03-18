@@ -56,7 +56,7 @@ export class CocinaComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/ws_mostrar_cocina', {}, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/ws_mostrar_cocina', {}, token, 2).pipe().subscribe(
       (data: any) => {
         let temp = _this.tam;
         _this.tam = data.length;
@@ -94,14 +94,14 @@ export class CocinaComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/actividad_venta', { 'id': venta_id }, token, 2).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/actividad_venta', { 'id': venta_id }, token, 2).pipe().subscribe(
       (data: any) => {
         let snackBarRef = this._snackBar.open(data["mensaje"], 'DESHACER', {
           duration: 4 * 1000,
         });
         snackBarRef.onAction().subscribe(() => {
   
-          _this.servicio.enviar_seguro('Web_service/deshacer_preparar', { 'id': venta_id }, token, 2).pipe().subscribe(
+          _this.servicio.enviar_seguro('web_service/deshacer_preparar', { 'id': venta_id }, token, 2).pipe().subscribe(
             (data: any) => {
             });
         });

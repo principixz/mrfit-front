@@ -24,7 +24,7 @@
     <div class="row align-items-center justify-content-center mb-4">
       <div class="col-md-4" style="padding-right: 5px;">
         <div class="input-group">
-          <div class="input-group-prepend">
+          <div class="input-group-prepend"> 
             <span class="input-group-text">Cliente:</span>
           </div>
           <ng-select2
@@ -32,7 +32,8 @@
             [options]="options"
             formControlName="cliente"
             [placeholder]="'Seleccionar Cliente'"
-            required="true"
+            
+            [required]="true"
             [width]="'100%'"
           ></ng-select2> 
           <div class="input-group-append">
@@ -77,6 +78,10 @@
           <ng-container matColumnDef="nombre">
             <th mat-header-cell *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let cliente"> {{ cliente.nombre }} </td>
+          </ng-container>
+          <ng-container matColumnDef="membresiaActual">
+            <th mat-header-cell *matHeaderCellDef> Membresia Actual </th>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.direccion }} </td>
           </ng-container>
           <ng-container matColumnDef="accion">
             <th mat-header-cell *matHeaderCellDef> Acción </th>

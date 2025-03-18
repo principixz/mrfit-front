@@ -66,7 +66,7 @@ cambiar(event:any,index:any,id_:Number)
   let usuario:any =  this.authenticationService.currentUserValue;
   console.log(usuario['Token']);
  const token = usuario['Token'].toString();
-this.servicio.enviar_seguro('Web_service/ws_habilitar_prender_producto',  {"id":id_,"estado":estado}  , token,2).pipe().subscribe(
+this.servicio.enviar_seguro('web_service/ws_habilitar_prender_producto',  {"id":id_,"estado":estado}  , token,2).pipe().subscribe(
   (data:any)  =>  {
      this._snackBar.open(data["mensaje"], 'LISTO',{
       duration: 4 * 1000,
@@ -82,7 +82,7 @@ cargar_info()
   let usuario:any =  this.authenticationService.currentUserValue;
   console.log(usuario['Token']);
  const token = usuario['Token'].toString();
-this.servicio.enviar_seguro('Web_service/ws_cargar_platos',  {}  , token,2).pipe().subscribe(
+this.servicio.enviar_seguro('web_service/ws_cargar_platos',  {}  , token,2).pipe().subscribe(
   (data:any)  =>  {
       console.log(data);
       data.forEach((val:any)=>{

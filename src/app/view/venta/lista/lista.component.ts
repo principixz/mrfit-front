@@ -229,7 +229,7 @@ export class ListaComponent implements OnInit {
 
   imprimir_comprobante(id:any)
   {
-    var url=this.conexion.url_global+"Comprobante/mostrar_comprobante/"+id;
+    var url=this.conexion.url_global+"Ventas/mostrar_comprobante/"+id;
     var a = document.createElement("a");
     a.target = "_blank";
     a.href = url;

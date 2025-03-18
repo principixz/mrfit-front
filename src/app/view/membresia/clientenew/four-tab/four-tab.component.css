@@ -1,0 +1,26 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .mat-form-field {
+    margin-bottom: 16px;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+  }
+  
+  .mat-elevation-z8 {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .mat-row {
+    font-size: 14px;
+  }

@@ -71,7 +71,7 @@ export class ModalMesa implements OnInit {
    const token = usuario['Token'].toString();
    console.log(this.data);
    
-  this.servicio.enviar_seguro('Web_service/buscar_mesas_agrupar',  {"idsilla":this.data["mesa_id"]}  , token,2).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/buscar_mesas_agrupar',  {"idsilla":this.data["mesa_id"]}  , token,2).pipe().subscribe(
     (response:any)  =>  {
       _this.carga_inicial=true;
       _this.lista_datos=response;
@@ -90,7 +90,7 @@ export class ModalMesa implements OnInit {
     console.log(usuario['Token']);
    const token = usuario['Token'].toString();
    console.log(this.data);
-  this.servicio.enviar_seguro('Web_service/guardar_mesa_agrupar',  {"idsilla":this.data["mesa_id"],"mesanueva":this.form.value["arraymesas"]}  , token,2).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/guardar_mesa_agrupar',  {"idsilla":this.data["mesa_id"],"mesanueva":this.form.value["arraymesas"]}  , token,2).pipe().subscribe(
     (response:any)  =>  {
       //_this.lista_datos=response;
       _this._snackBar.open(response["mensaje"],'',{

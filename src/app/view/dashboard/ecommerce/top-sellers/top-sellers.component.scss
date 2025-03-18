@@ -1,0 +1,180 @@
+.period-buttons {
+    .btn-link {
+      text-decoration: none;
+      color: #6c757d;
+      font-size: 0.875rem;
+      padding: 0.25rem 0.5rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+  
+      &:hover {
+        color: #007bff;
+      }
+  
+      &.active {
+        font-weight: bold;
+        color: #007bff;
+      }
+    }
+  }
+  
+  .top-sellers-card {
+    .top-sellers-table {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+  
+      .position {
+        width: 40px;
+        text-align: center;
+        vertical-align: middle;
+      }
+  
+      .info {
+        display: flex;
+        align-items: center;
+  
+        .image {
+          display: inline-block;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          margin-right: 10px;
+        }
+  
+        .details {
+          h6 {
+            margin: 0;
+            font-weight: normal;
+          }
+  
+          span {
+            font-size: 0.85rem;
+            color: #6c757d;
+          }
+        }
+      }
+  
+      .rating {
+        font-size: 0.85rem;
+  
+        i {
+          color: #ffc107; /* Color amarillo para estrellas */
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+
+  .daxa-card {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    .title {
+      h5 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+  
+      .number {
+        font-size: 24px;
+        color: #007bff; // Azul principal
+      }
+    }
+  
+    .icon-container {
+      .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #007bff; // Azul principal
+        color: #fff;
+        font-size: 24px;
+        border-radius: 50%;
+      }
+    }
+
+    .icon-containerDanger {
+        .icon {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #dc3545; // Azul principal
+          color: #fff;
+          font-size: 24px;
+          border-radius: 50%;
+        }
+      }
+  
+    .icon-containerSuccess {
+        .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 24px;
+        border-radius: 50%;
+        background-color: #28a745; // Verde para success
+        }
+    }
+    
+    .icon-containerWarning {
+        .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 24px;
+        border-radius: 50%;
+        background-color: #ffc107; // Amarillo para warning
+        }
+    }
+    .info {
+      .sub-title {
+        font-size: 14px;
+        color: #7d6c71; // Gris claro
+      }
+  
+      .badge {
+        font-size: 14px;
+        background-color: #28a745; // Verde éxito
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+  
+        .material-symbols-outlined {
+          font-size: 18px;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .badge-success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 16px;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 16px;
+  }

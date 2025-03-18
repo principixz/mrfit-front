@@ -1,0 +1,11 @@
+/* Estilo para Snackbar de éxito */
+.mat-snack-bar-container.success-snackbar {
+    background-color: #4caf50; /* Verde */
+    color: white; /* Texto blanco */
+  }
+  
+  /* Estilo para Snackbar de error */
+  .mat-snack-bar-container.error-snackbar {
+    background-color: #f44336; /* Rojo */
+    color: white; /* Texto blanco */
+  }

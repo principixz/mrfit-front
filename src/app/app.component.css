@@ -1,0 +1,3 @@
+::ng-deep .modal-backdrop {
+    z-index: 1045 !important;
+}

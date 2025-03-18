@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header> 
+      <mat-card-subtitle>
+        <mat-form-field appearance="outline">
+          <mat-label>Visualización</mat-label>
+          <mat-select [(value)]="selectedView" (selectionChange)="onSelectionChange()">
+            <mat-option value="daily">Por día</mat-option>
+            <mat-option value="hourly">Por hora</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content> 
+      <div class="chart-container">
+        <highcharts-chart
+          [Highcharts]="Highcharts"
+          [options]="chartOptions">
+        </highcharts-chart>
+      </div>
+
+      <div class="export-buttons">
+        <button mat-raised-button color="primary" (click)="downloadChart('png')">Descargar PNG</button>
+        <button mat-raised-button color="accent" (click)="downloadChart('pdf')">Descargar PDF</button>
+        <button mat-raised-button color="warn" (click)="downloadChart('csv')">Descargar CSV</button>
+      </div>
+    </mat-card-content>
+  </mat-card>

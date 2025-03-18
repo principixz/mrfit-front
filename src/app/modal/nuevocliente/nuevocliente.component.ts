@@ -25,7 +25,7 @@ export class NuevoClienteModal implements OnInit {
       //  console.log(usuario['Token']);
        const token = usuario['Token'].toString();
 
-       _this.servicio.enviar_seguro('Web_service/ws_cargar_tipo_documento', {   },  token).pipe().subscribe(
+       _this.servicio.enviar_seguro('web_service/ws_cargar_tipo_documento', {   },  token).pipe().subscribe(
         (response:any) =>  {
           _this.tipocliente=response;
       
@@ -74,7 +74,7 @@ export class NuevoClienteModal implements OnInit {
           const user:any  = this.authenticationService.currentUserValue;
           // tslint:disable-next-line: no-string-literal
           const token = user['Token'];
-          this.servicio.enviar_seguro('Web_service/ws_guardar_cliente', datos , token).pipe().subscribe(
+          this.servicio.enviar_seguro('web_service/ws_guardar_cliente', datos , token).pipe().subscribe(
             (response:any)  =>  {
               _this.texto_boton="Guardar";
               _this.estado=false;
@@ -116,7 +116,7 @@ export class NuevoClienteModal implements OnInit {
       return false;
     }
     this.botonname = 'Buscando...';
-    this.servicio.enviar_seguro('Web_service/' + urlv,  { 'formulario' : valform } , dat).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/' + urlv,  { 'formulario' : valform } , dat).pipe().subscribe(
       (response:any)  =>  {
         this.ngxUiLoaderService.stop();
         const datos = (JSON.parse(response['datos']));

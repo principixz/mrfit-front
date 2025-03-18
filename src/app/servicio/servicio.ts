@@ -14,9 +14,9 @@ export class Servicio {
 
  
  
-//public url_global =  'http://localhost/facturacion_backend/';
-public url_global =  'http://172.20.10.3/restaurante_backend/';
-//public url_global =  'https://jjingenieros.selvafood.com/facturacion_backend/';
+//public url_global =  'http://localhost/restaurante_backend/';
+//public url_global =  'http://172.20.10.3/restaurante_backend/';
+public url_global =  'https://apimrfitt.akamedev.dev/';
 //public url_global= urls["url"];
 
 
@@ -29,7 +29,7 @@ public url_global =  'http://172.20.10.3/restaurante_backend/';
     //       "Content-type":"application/json"
     //     }
     //   );
-    return  this.http.post('Web_service/LoginUsuario' , json).subscribe((data) => {
+    return  this.http.post('web_service/LoginUsuario' , json).subscribe((data) => {
     console.log(data);
     });
 

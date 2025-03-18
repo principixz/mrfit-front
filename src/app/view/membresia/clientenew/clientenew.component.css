@@ -1,0 +1,52 @@
+::ng-deep .custom-tab-group {
+    background-color: #f7f9fc; /* Fondo claro para los tabs */
+    border: 1px solid #dee2e6; /* Borde del grupo de tabs */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 16px;
+  }
+  
+  ::ng-deep .mat-tab-label {
+    font-weight: bold; /* Texto en negrita */
+    font-size: 16px; /* Tamaño del texto */
+    color: #495057; /* Color del texto de las pestañas */
+    padding: 12px; /* Espaciado interno */
+    text-transform: uppercase; /* Convertir texto a mayúsculas */
+  }
+  
+  ::ng-deep .mat-tab-label-active {
+    color: #007bff; /* Color azul para el tab activo */
+    border-bottom: 2px solid #007bff; /* Línea en el tab activo */
+  }
+  
+  ::ng-deep .mat-tab-label:hover {
+    color: #0056b3; /* Cambia el color al pasar el mouse */
+    cursor: pointer; /* Mostrar un puntero de clic */
+  }
+  
+  ::ng-deep .mat-ink-bar {
+    background-color: transparent; /* Desactiva la barra de selección por defecto */
+  }
+  
+  ::ng-deep .mat-tab-body {
+    padding: 16px;
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    border-top: 1px solid #dee2e6; /* Separador superior */
+    border-radius: 0 0 8px 8px; /* Bordes redondeados en la parte inferior */
+  }
+  
+  ::ng-deep .mat-tab-group {
+    margin-top: 16px; /* Espaciado superior */
+  }
+  
+  ::ng-deep button {
+    border-radius: 4px; /* Bordes redondeados para botones */
+  }
+  
+  ::ng-deep button[mat-button] {
+    font-size: 14px;
+    text-transform: none; /* Desactiva las mayúsculas automáticas */
+  }
+  .mat-card-container {
+    height: auto; /* Evita que se genere un scroll innecesario */
+    overflow-y: hidden; /* Desactiva el scroll vertical */
+  }

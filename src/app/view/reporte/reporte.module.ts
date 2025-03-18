@@ -17,7 +17,7 @@ import { Select2Module } from 'ng-select2-component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { ReporteRoutingModule } from './reporte-routing.module';
 import { ReporteVentaComponent } from './reporte-venta/reporte-venta.component';
-import { ChartModule } from 'angular-highcharts';
+//import { ChartModule } from 'angular-highcharts';
 import { TablaVentaComponent } from './tabla-venta/tabla-venta.component';
 import { DataTablesModule } from "angular-datatables";
 import * as moment from 'moment';
@@ -34,7 +34,7 @@ moment.locale('es');
             monthNames: moment.monthsShort(),
             firstDay: moment.localeData().firstDayOfWeek(),
           }),
-        ChartModule
+        //ChartModule
     ],
     providers: [
         CurrencyPipe,

@@ -172,7 +172,7 @@ export class PermisoslistaComponent implements OnInit {
 
     let usuario:any =  this.authenticationService.currentUserValue;
      let token=usuario["Token"];
-     this.conexion.enviar_seguro("Web_service/ws_cargar_perfil",{},token).pipe().subscribe(
+     this.conexion.enviar_seguro("web_service/ws_cargar_perfil",{},token).pipe().subscribe(
        response=>{
          console.log(response);
         this.exampleData=response;

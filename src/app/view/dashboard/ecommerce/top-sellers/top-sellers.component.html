@@ -1,0 +1,38 @@
+<mat-card
+  class="daxa-card top-sellers-card mb-25 border-radius bg-white border-none d-block shadow-sm"
+  style="max-height: 400px; overflow: hidden;"
+>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="title">
+      <h5 class="mb-0 text-primary fw-bold">Vencidos Hoy</h5>
+    </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="max-height: 300px; overflow-y: auto;">
+    <div class="top-sellers-table">
+      <table class="table table-borderless">
+        <tbody>
+          <tr *ngFor="let seller of sellers; let i = index" class="align-middle border-bottom">
+            <td class="position text-body fw-bold text-center align-middle" style="color: #5a5a5a;">
+              {{ i + 1 }}.
+            </td>
+            <td>
+              <div class="info d-flex align-items-center">
+                <div class="details ms-3">
+                  <h6 class="fw-semibold mb-1 text-dark">{{ seller.name }}</h6>
+                  <span class="d-block text-secondary">D.N.I #{{ seller.dni }}</span>
+                </div>
+              </div>
+            </td>
+            <td class="text-end">
+              <span class="badge rounded px-2 py-1" style="background-color: #d56083; color: #fff;">
+                {{ seller.fecha }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

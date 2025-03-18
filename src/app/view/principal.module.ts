@@ -1,7 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { CommonModule } from '@angular/common'; 
 import { NgModule } from '@angular/core';
-import {DatablematerialComponent} from '../componente/datablematerial/datablematerial.component';
+import {DatablematerialComponent} from '../componente/datablematerial/datablematerial.component'; 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
@@ -24,7 +24,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { Modalboleta } from '../modal/modalventa/modalventa.component';
 
 import { SafePipe } from '../modal/modalventa/modalventa.component';
-import { ModalServicio } from '../modal/modalServicio/modalServicio.component';
+import { ModalServicio } from '../modal/modalServicio/modalServicio.component'; 
 
 @NgModule({
     declarations: [DatablematerialComponent, ModalVenta, NuevoClienteModal, ModalMesa, Modalboleta, SafePipe, ModalServicio],

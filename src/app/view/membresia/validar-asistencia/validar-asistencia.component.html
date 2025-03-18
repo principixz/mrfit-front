@@ -1,109 +1,110 @@
- 
-    <div class="container-fluid" id="cuerpo_pagina_vista">
-        <div class="row page-titles">
-          <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Asistencia de Clientes</h3>
+<div class="card" id="cardPrincipal">
+  <div class="card-body" id="cuerpo_pagina">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="form-group d-flex align-items-start">
+          <div class="flex-grow-1">
+            <label for="dni" class="form-label">Buscar con DNI</label>
+            <input
+              type="text"
+              class="form-control"
+              id="dni" 
+              [(ngModel)]="dni"
+              name="dni"
+              autocomplete="off"  
+              pattern="^[0-9]{8}$"
+              maxlength="8"  
+              (focus)="onInputFocus()" 
+              (keydown.enter)="dniInput.valid && buscar()"
+              #dniInput="ngModel"
+              required
+            />
+            <div
+            *ngIf="dniInput.invalid && dniInput.touched"
+            class="text-danger position-absolute mt-1"
+            style="top: 80%; left: 1.5%;"
+          >
+            <small *ngIf="dniInput.errors?.required">El DNI es obligatorio.</small>
+            <small *ngIf="dniInput.errors?.pattern">Debe ser un número de 8 dígitos.</small>
           </div>
+          </div>
+          <button
+            id="boton"
+            type="button"
+            class="btn btn-primary ml-2 align-self-end"
+            [disabled]="dniInput.invalid"
+            (click)="buscar()"
+          >
+            Buscar
+          </button>
         </div>
-      
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body" id="cuerpo_pagina">
-                <div class="row">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="dni">Buscar con DNI</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="dni"
-                        [(ngModel)]="dni"
-                        name="dni"
-                        autocomplete="off"
-                        autofocus="true"
-                        pattern="^[0-9]{8}$"
-                        maxlength="8"
-                        (keypress)="onKeyPress($event)"
-                        #dniInput="ngModel"
-                        required
-                      />
-                      <div
-                        *ngIf="dniInput.invalid && dniInput.touched"
-                        class="text-danger mt-2"
-                      >
-                        <small *ngIf="dniInput.errors?.required">El DNI es obligatorio.</small>
-                        <small *ngIf="dniInput.errors?.pattern">Debe ser un número de 8 dígitos.</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <br />
-                    <button
-                      id="boton"
-                      type="button"
-                      class="btn btn-primary"
-                      [disabled]="dniInput.invalid"
-                      (click)="buscar()"
-                    >
-                      Buscar
-                    </button>
-                  </div>
-                </div>
-      
-                <div class="row">
-                  <div class="col-md-3"></div>
-                  <div class="col-md-6">
-                    <div
-                      id="cuerpo_total"
-                      class="card"
-                      [ngClass]="{
-                        'card-outline-danger': estado === 'error',
-                        'card-outline-warning': estado === 'info',
-                        'card-outline-success': estado === 'success'
-                      }"
-                    >
-                      <div class="card-header">
-                        <h4
-                          id="mensaje"
-                          class="m-b-0"
-                          [ngStyle]="{ color: 'black' }"
-                        >
-                          {{ mensaje }}
-                        </h4>
-                        <h4
-                          id="mensaje1"
-                          class="m-b-0"
-                          [ngStyle]="{ color: 'black' }"
-                        >
-                          {{ estado !== 'error' ? 'Días restantes: ' + diasRestantes : '' }}
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <h3
-                          id="nombre"
-                          class="card-title"
-                          [ngStyle]="{ fontWeight: 'bold', fontSize: '1.5rem' }"
-                        >
-                          {{ nombreCliente }}
-                        </h3>
-                        <p class="card-text" *ngIf="estado !== 'error'">
-                          <strong>Fecha de Vencimiento:</strong> {{ fechaVencimiento }}
-                        </p>
-                        <p class="card-text">
-                          <strong>Mensaje:</strong> {{ mensajeVencimiento }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-      
-              </div>
-            </div>
+      </div>
+    </div>
+
+    <div *ngIf="mostrarCardPrincipal" class="row justify-content-center mt-4">
+      <div class="col-10">
+        <div
+          id="cuerpo_total"
+          class="card">
+          <div class="card-header" [ngClass]="{
+            'card-outline-danger': estado === 'error',
+            'card-outline-warning': estado === 'info',
+            'card-outline-success': estado === 'success'
+          }">
+            <h4
+              id="mensaje"
+              [innerHTML]="mensaje"
+              class="m-b-0"
+              [ngStyle]="{ color: 'black' }"
+            >
+            </h4>
+            <h4
+              id="mensaje1"
+              class="m-b-0"
+              [ngStyle]="{ color: 'black' }"
+            >
+              {{ estado !== 'error' ? 'Días restantes: ' + diasRestantes : '' }}
+            </h4>
+          </div>
+          <div class="card-body" [ngClass]="{
+            'card-outline-danger': estadoVencimiento === 'error',
+            'card-outline-warning': estadoVencimiento === 'info',
+            'card-outline-success': estadoVencimiento === 'success'
+          }">
+            <h3
+              id="nombre"
+              [innerHTML]="nombreCliente"
+              class="card-title"
+              [ngStyle]="{ fontWeight: 'bold', fontSize: '1.5rem' }"
+            > 
+            </h3>
+            <p class="card-text" *ngIf="estado !== 'error'">
+              <strong>Fecha de Vencimiento:</strong> {{ fechaVencimiento }}
+            </p>
+            <p class="card-text" [innerHTML]="mensajeVencimiento" [ngStyle]="{ fontWeight: 'bold', fontSize: '1rem', color: '#007bff' }">
+ 
+            </p>
+            <p class="card-text" [innerHTML]="mensajeTrotadora" [ngStyle]="{ fontWeight: 'bold', fontSize: '1rem', color: '#28a745' }">
+            </p>
           </div>
         </div>
       </div>
+    </div>
 
+    <div *ngIf="mostrarCardRegistro" class="row justify-content-center mt-4">
+      <div class="col-10">
+        <div class="card text-center p-4">
+          <h1 class="text-primary">REGISTRA TU ASISTENCIA Y CONOCE TU FECHA DE VENCIMIENTO :-)</h1>
+        </div>
+      </div>
+    </div>
 
-  
+   <!-- <button
+    class="btn btn-primary btn-floating"
+    (click)="toggleFullScreen()"
+    title="{{ isFullScreen ? 'Salir de pantalla completa' : 'Pantalla completa' }}"
+  >
+    <i class="fa" [ngClass]="isFullScreen ? 'fa-compress' : 'fa-expand'"></i>
+  </button> -->
+  </div>
+</div>

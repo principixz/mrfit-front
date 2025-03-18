@@ -116,7 +116,7 @@ export class ModalServicio implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     const token = usuario['Token'].toString();
     
-    this.servicio.enviar_seguro('Web_service/cargar_tipo_documento', {}, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/cargar_tipo_documento', {}, token).pipe().subscribe(
       (data: any) => {
         this.tipo_doc = data["tipo_documento"];
         this.lista_formapago = data["formapago"];
@@ -138,7 +138,7 @@ export class ModalServicio implements OnInit {
   
       let usuario: any = this.authenticationService.currentUserValue;
       const token = usuario['Token'].toString(); 
-      this.servicio.enviar_seguro('Web_service/procesar_venta_pago', request, token).pipe().subscribe(
+      this.servicio.enviar_seguro('web_service/procesar_venta_pago', request, token).pipe().subscribe(
         (data: any) => {
           try {
             this.ngxUiLoaderService.stop();

@@ -14,16 +14,7 @@
     flex-direction: column-reverse;
     align-items: center;
   
-    > div {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      margin-bottom: 5px;
-  
-      button {
-        margin-bottom: 17px;
-      }
-    }
+ 
   }
   ::ng-deep ngb-modal-backdrop {
     z-index: 1050 !important;

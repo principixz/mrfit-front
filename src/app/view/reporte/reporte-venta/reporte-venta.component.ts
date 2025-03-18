@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Chart } from 'angular-highcharts';
+//import { Chart } from 'angular-highcharts';
 import * as moment from 'moment';
  
 import { ToastrService } from 'ngx-toastr';
@@ -55,7 +55,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_dia",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_dia",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -76,7 +76,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_dia",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_dia",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -96,7 +96,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_semana",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_semana",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -116,7 +116,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_semana",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_semana",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -136,7 +136,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_mes",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_mes",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -156,7 +156,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_mes",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_mes",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -176,7 +176,7 @@ export class ReporteVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
        let _this=this;
-      this.conexion.enviar_seguro("Web_service/venta_anio",request,token).pipe().subscribe(
+      this.conexion.enviar_seguro("web_service/venta_anio",request,token).pipe().subscribe(
        response=>{
           console.log(response);
           _this.mostrar(response);
@@ -204,7 +204,7 @@ export class ReporteVentaComponent implements OnInit {
      const token = usuario['Token'].toString();
        let _this=this;
     
-       this.conexion.enviar_seguro("Web_service/venta_mes",request,token).pipe().subscribe(
+       this.conexion.enviar_seguro("web_service/venta_mes",request,token).pipe().subscribe(
         response=>{
            console.log(response);
            _this.mostrar(response);
@@ -235,9 +235,8 @@ export class ReporteVentaComponent implements OnInit {
  /// this.cargar_reporte(event);
 
   }
-  mostrar(datos:any)
-  {
-   this.chart.destroy();
+  mostrar(datos:any){
+ /*  this.chart.destroy();
    this.chart= new Chart({
     chart: {
       
@@ -278,10 +277,10 @@ export class ReporteVentaComponent implements OnInit {
         type:'line'
       }
     ]
-  });
+  }); */
   }
 
-  chart = new Chart({
+  /*chart = new Chart({
     chart: {
       
       type: 'line',
@@ -320,10 +319,10 @@ export class ReporteVentaComponent implements OnInit {
         type:'line'
       }
     ]
-  });
+  });*/
   //HeatmapObject: Highcharts.Chart = null;
   add() {
-    this.chart.addPoint(Math.floor(Math.random() * 10));
+    //this.chart.addPoint(Math.floor(Math.random() * 10));
   }
   public  hoydia!: string;
   constructor(public toastr: ToastrService, public ngxUiLoaderService: NgxUiLoaderService, 

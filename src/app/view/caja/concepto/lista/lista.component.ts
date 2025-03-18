@@ -30,7 +30,7 @@ export class ListaComponent implements OnInit {
     let usuario:any =  this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
    const token = usuario['Token'].toString();
-  this.servicio.enviar_seguro('Web_service/lista_concepto',  {}  , token).pipe().subscribe(
+  this.servicio.enviar_seguro('web_service/lista_concepto',  {}  , token).pipe().subscribe(
     (data:any)  =>  {
 
       _this.dataSource = new MatTableDataSource(data["lista_concepto"]);

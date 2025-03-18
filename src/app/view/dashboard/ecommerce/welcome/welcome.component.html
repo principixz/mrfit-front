@@ -1,0 +1,44 @@
+<mat-card
+  class="daxa-card welcome-card mb-25 border-radius position-relative bg-gradient border-none d-block"
+   
+>
+  <mat-card-content>
+    <div class="row">
+      <!-- Columna Izquierda -->
+      <div class="col-lg-6 col-md-12">
+        <div class="content">
+          <!-- Fecha -->
+          <span class="d-block text-white mb-2">
+            {{ currentDate }}
+          </span>
+          <!-- Título -->
+          <h3 class="text-white fw-bold">
+            Bienvenido a Mr. Fit
+          </h3>
+          <!-- Descripción -->
+          <p class="text-white">
+            Panel Administrativo Mr. Fit.
+          </p>
+          <!-- Subtítulo -->
+          <span class="d-block text-white fw-medium mb-3">
+            Buen día
+          </span>
+          <!-- Gráfico -->
+
+        </div>
+      </div>
+      <!-- Columna Derecha -->
+      <div class="col-lg-6 col-md-12">
+        <div class="chart">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [plotOptions]="chartOptions.plotOptions"
+            [fill]="chartOptions.fill"
+            [dataLabels]="chartOptions.dataLabels"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

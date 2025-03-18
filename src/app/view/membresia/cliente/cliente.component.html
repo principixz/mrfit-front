@@ -1,20 +1,135 @@
 
 
 <!--titulo_modulo=Descripcion del producto -->
-<!--url_eliminar = url donde se va eliminar el producto ,recordar que el parametro de eliminicion es id-->
-<!--columnas son las columnas que tendra la tabla el id,opciones estan implicitas en el complemento-->
-<!--filasource aqui estara la informacion de la base de datos siempre debe llevar el campo id -->
+<div class="row">
+    <div class="col-md-12">
+      <h5 style="font-weight: bold;font-size: 25px;color: black;">LISTA DE VENTAS</h5>
+    </div>
+  </div>
+  <br>
 
-<!--nombrecolumna Aqui va el nombre de las columnas de la tabla id y opcion estan por defecto , aqui debe tener el mismo tamaño que columnas -->
-<app-datablematerial titulo_modulo="LISTA DE PRODUCTOS" 
+  <div class="row">
 
-url_eliminar="Web_Service/eliminar_concepto" 
-
-url_nuevo="/principal/membresia/clientes/nuevo"
-url_editar="/principal/membresia/clientes/editar/"
-url_eliminar="Web_Service/eliminar_cliente" 
-[columnas]="columnas" [filasource]="dataSource" [nombrecolumna]="nombrecolumna">
-
-
-</app-datablematerial>
+    <div class="col-md-3">
+      <button mat-raised-button (click)="editarboton()" style="background-color: #039be5;color: white;">Nuevo</button>
+    </div>
+    <div class="col-md-7">
   
+    </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+          <div class=" mat-elevation-z2">
+            <mat-card>
+                <mat-card-content>
+                    <table  id="miTabla" datatable [dtOptions]="dtOptions" class="striper">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>DNI</th>
+                                <th>NOMBRE</th>
+                                <th>MEMBRESÍA</th>
+                                <th>FECHA VENCIMIENTO</th>
+                                
+                                <th>ESTADO OPCIÓN</th>
+                                <th>Acciones</th>
+             
+            
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="asociado?.length != 0"> 
+                            <tr *ngFor="let asociados of asociado; let i = index">
+                                
+                                <td>{{ asociados.id }}</td>
+                                <td>{{ asociados.dni }}</td>
+                                <td>{{ asociados.nombre }}</td>
+                                <td>{{ asociados.membresia }}</td>
+                                <td>{{ asociados.fecha_vencimiento }}</td>
+            
+                                <td>{{ asociados.estado_opcion }}</td>
+            
+                                <td>
+            
+            
+                                  <span *ngIf="asociados.estado=='0'" class="badge badge-danger">Eliminado</span>
+                                    <button   *ngIf="asociados.estado!='0'" title="Renovar Membresía" 
+                                    (click)="renovarMembresia(asociados.id, asociados.nombre, asociados.dni, asociados.tipomembresiaid)"
+                                    class="btn btn-brand btn-success">
+                                    <i class="fa fa-refresh"></i>
+                                    </button>
+                                    <button   *ngIf="asociados.estado!='0'" title="Editar Cliente" 
+                                    (click)="editarboton(asociados.id)"
+                                    class="btn btn-brand btn-primary">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    </button>
+
+                                    <button *ngIf="asociados.estado!='0'" title="Eliminar Cliente"
+                                    (click)="eliminar_comprobante(asociados.id)" class="btn btn-brand btn-danger">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                   
+                                    <button *ngIf="asociados.estado!='0'" title="Mostrar Membresias"
+                                    (click)="mostrarTablaMembresias(asociados.id, asociados.nombre)" class="btn btn-brand btn-warning">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </button>
+                                    <!-- <button *ngIf="asociados.estado!='0'" title="Enviar Comprobante al whatsapp" 
+                                    (click)="enviar_wtp(asociados.xml)" class="btn btn-brand btn-success">
+                                        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    </button>
+                                    <button *ngIf="asociados.estado!='0'" title="descargar PDF" 
+                                    (click)="descargar_pdf(asociados.pdf)"
+                                    class="btn btn-brand btn-success">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                    </button>
+
+
+
+                                    <button *ngIf="asociados.estado!='0'" title="descargar XML" 
+                                    (click)="descargar_pdf(asociados.xml)" class="btn btn-brand btn-primary">
+                                        <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                    </button>
+                                    <button *ngIf="asociados.estado!='0'" title="descargar CDR"
+                                    (click)="descargar_pdf(asociados.cdr)" class="btn btn-brand btn-secondary">
+                                        <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+                                    </button>
+            
+                                    <button *ngIf="asociados.estado!='0'" title="Enviar factura al correo"
+                                    (click)="enviar_correo(asociados.id)" class="btn btn-brand btn-dark">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </button>
+            
+                                    <button *ngIf="asociados.estado!='0'" title="Eliminar comprobante de pago"
+                                    (click)="eliminar_comprobante(asociados.id)" class="btn btn-brand btn-danger">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+            
+                                    
+                                    <button *ngIf="asociados.estado!='0'" title="Imprimir comprobante"
+                                    (click)="imprimir_comprobante(asociados.id)" class="btn btn-brand btn-success">
+                                        <i class="fa fa-print" aria-hidden="true"></i>
+                                    </button>
+            
+
+            
+                                   <button title="Enviar correo"
+                                    (click)="descargar_pdf(asociados.cdr)" class="btn btn-brand btn-warning">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </button>-->
+                                </td>
+            
+                               
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="asociado?.length == 0">
+                            <tr>
+                              <td colspan="6" class="no-data-available">No informacion!</td>
+                            </tr>
+                          </tbody>
+                    </table>
+</mat-card-content>
+</mat-card>
+
+  </div>
+  </div>
+  </div>

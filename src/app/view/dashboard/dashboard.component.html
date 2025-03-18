@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-4 col-xxxl-4">
+        <app-welcome></app-welcome>
+        <app-top-sellers></app-top-sellers>
+    </div>
+    <div class="col-lg-3 col-xxxl-3">
+        <app-total-orders
+        title="Usuarios Activos"
+        icon="account_circle"
+        iconColor="icon-containerSuccess" 
+        badgeType="success">
+      </app-total-orders>
+        <app-total-orders
+        title="Usuarios Inactivos"
+        icon="pause_circle_outline" 
+        iconColor="icon-containerDanger"
+        badgeType="danger">
+        </app-total-orders>
+      <app-total-orders
+        title="Vencidos Hoy"
+        icon="cancel"
+        iconColor="icon-containerDanger" 
+        badgeType="success">
+      </app-total-orders>
+      <app-total-orders
+        title="Ingresos del Día"
+        icon="attach_money"
+        iconColor="icon-containerWarning"
+        subtitle="7.80% increase in new customers"
+        badgeType="success">
+      </app-total-orders>
+    </div>
+
+    <br>
+    <div class="col-lg-5 col-xxxl-5">
+        <app-total-sales></app-total-sales>
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-xxxl-12">
+    <app-recent-leads></app-recent-leads>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-xxxl-12">
+    <app-renovados-today></app-renovados-today>
+  </div>
+</div>

@@ -5,26 +5,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  .fab-container {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-    
-      > div {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        margin-bottom: 5px;
-    
-        button {
-          margin-bottom: 17px;
-        }
-      }
-    }
+ 
     ::ng-deep ngb-modal-backdrop {
       z-index: 1050 !important;
     }

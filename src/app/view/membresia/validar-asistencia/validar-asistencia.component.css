@@ -89,3 +89,73 @@
     border-color: #28a745;
     background-color: #d4edda;
   }
+
+  #cuerpo_pagina {
+    width: 100%;
+    max-width: 1200px; /* Ajusta el ancho máximo */
+    margin: 0 auto; /* Centra el contenido */
+  }
+  
+  .card {
+    border-radius: 10px; /* Bordes más suaves */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  }
+  
+  #cuerpo_total {
+    margin-top: 20px;
+    padding: 15px;
+  }
+  .btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-floating:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-floating i {
+    font-size: 1.2rem;
+  }
+
+/* Estilo para el card en pantalla completa */
+#cardPrincipal.fullscreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Ajusta según tus necesidades */
+  height: auto;
+  z-index: 1000;
+  background-color: #fff; /* Opcional: Asegúrate de que tenga un fondo claro */
+  overflow-y: auto;
+}
+
+/* Centra dinámicamente los elementos dentro del card */
+#cardPrincipal.fullscreen .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  height: 100%;
+}
+
+/* Ajustes adicionales para el input */
+#cardPrincipal.fullscreen .form-group {
+  margin-bottom: 1rem;
+  width: 80%; /* Ajusta según tus necesidades */
+}

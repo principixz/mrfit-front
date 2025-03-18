@@ -1,0 +1,418 @@
+.mat-mdc-card {
+    &.daxa-card {
+        &.recent-leads-card {
+            .mat-mdc-card-content {
+                margin: {
+                    left: -20px;
+                    right: -20px;
+                };
+                .recent-leads-table {
+                    .mat-mdc-table {
+                        .mat-mdc-header-cell {
+                            padding: {
+                                top: 18px;
+                                bottom: 18px;
+                            };
+                            &:last-child {
+                                text-align: right;
+                            }
+                        }
+                        .mat-mdc-cell {
+                            padding: {
+                                top: 16.5px;
+                                bottom: 16.5px;
+                            };
+                            &:last-child {
+                                text-align: right;
+                            }
+                        }
+                        .info {
+                            .image {
+                                width: 50px;
+                                line-height: .01;
+                                margin-right: 12px;
+
+                                img {
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.rtl-enabled {
+                .mat-mdc-card-content {
+                    .recent-leads-table {
+                        .mat-mdc-table {
+                            .mat-mdc-header-cell {
+                                &:last-child {
+                                    text-align: left;
+                                }
+                            }
+                            .mat-mdc-cell {
+                                &:last-child {
+                                    text-align: left;
+                                }
+                            }
+                            .info {
+                                .image {
+                                    margin: {
+                                        right: 0;
+                                        left: 12px;
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+::ng-deep {
+    .mat-mdc-card {
+        &.daxa-card {
+            &.recent-leads-card {
+                .mat-mdc-card-content {
+                    .recent-leads-table {
+                        .mat-mdc-paginator {
+                            padding: {
+                                top: 15px;
+                                left: 20px;
+                                right: 20px;
+                            };
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .mat-mdc-card {
+        &.daxa-card {
+            &.recent-leads-card {
+                .mat-mdc-card-content {
+                    margin: {
+                        left: -15px;
+                        right: -15px;
+                    };
+                    .recent-leads-table {
+                        .mat-mdc-table {
+                            .mat-mdc-checkbox {
+                                top: -1px;
+                            }
+                            .mat-mdc-header-cell {
+                                padding: {
+                                    top: 10px;
+                                    bottom: 10px;
+                                };
+                            }
+                            .mat-mdc-cell {
+                                padding: {
+                                    top: 10px;
+                                    bottom: 10px;
+                                };
+                            }
+                            .info {
+                                .image {
+                                    width: 40px;
+                                    margin-right: 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.rtl-enabled {
+                    .mat-mdc-card-content {
+                        .recent-leads-table {
+                            .mat-mdc-table {
+                                .info {
+                                    .image {
+                                        margin: {
+                                            right: 0;
+                                            left: 8px;
+                                        };
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ::ng-deep {
+        .mat-mdc-card {
+            &.daxa-card {
+                &.recent-leads-card {
+                    .mat-mdc-card-content {
+                        .recent-leads-table {
+                            .mat-mdc-paginator {
+                                padding: {
+                                    top: 10px;
+                                    left: 15px;
+                                    right: 15px;
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {
+
+    .mat-mdc-card {
+        &.daxa-card {
+            &.recent-leads-card {
+                .mat-mdc-card-content {
+                    margin: {
+                        left: -20px;
+                        right: -20px;
+                    };
+                }
+            }
+        }
+    }
+    ::ng-deep {
+        .mat-mdc-card {
+            &.daxa-card {
+                &.recent-leads-card {
+                    .mat-mdc-card-content {
+                        .recent-leads-table {
+                            .mat-mdc-paginator {
+                                padding: {
+                                    left: 20px;
+                                    right: 20px;
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+
+.recent-leads-card {
+    .mat-header-cell {
+      background-color: #f8f9fa;
+      color: #495057;
+      font-weight: 600;
+      text-align: left;
+      padding: 12px;
+    }
+  
+    .mat-cell {
+      padding: 16px 12px;
+      color: #495057;
+      vertical-align: middle;
+    }
+  
+    .info {
+      display: flex;
+      align-items: center;
+  
+      .image img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #dee2e6;
+      }
+  
+      .details {
+        margin-left: 10px;
+  
+        h6 {
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0;
+          color: #343a40;
+        }
+  
+        span {
+          font-size: 12px;
+          color: #6c757d;
+        }
+      }
+    }
+  
+    .badge {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+  
+      &.badge-new {
+        background-color: #28a745;
+        color: #ffffff;
+      }
+  
+      &.badge-won {
+        background-color: #007bff;
+        color: #ffffff;
+      }
+  
+      &.badge-in-progress {
+        background-color: #ffc107;
+        color: #ffffff;
+      }
+  
+      &.badge-lost {
+        background-color: #dc3545;
+        color: #ffffff;
+      }
+    }
+  
+    button {
+      mat-icon {
+        font-size: 20px;
+      }
+    }
+  
+    mat-paginator {
+      margin-top: 20px;
+    }
+  }
+
+  .table-responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .mat-card {
+    width: 100%;
+  }
+
+  .daxa-card {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    .title {
+      h5 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+  
+      .number {
+        font-size: 24px;
+        color: #007bff; // Azul principal
+      }
+    }
+  
+    .icon-container {
+      .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #007bff; // Azul principal
+        color: #fff;
+        font-size: 24px;
+        border-radius: 50%;
+      }
+    }
+
+    .icon-containerDanger {
+        .icon {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #dc3545; // Azul principal
+          color: #fff;
+          font-size: 24px;
+          border-radius: 50%;
+        }
+      }
+  
+    .icon-containerSuccess {
+        .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 24px;
+        border-radius: 50%;
+        background-color: #28a745; // Verde para success
+        }
+    }
+    
+    .icon-containerWarning {
+        .icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 24px;
+        border-radius: 50%;
+        background-color: #ffc107; // Amarillo para warning
+        }
+    }
+    .info {
+      .sub-title {
+        font-size: 14px;
+        color: #6c757d; // Gris claro
+      }
+  
+      .badge {
+        font-size: 14px;
+        background-color: #28a745; // Verde éxito
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+  
+        .material-symbols-outlined {
+          font-size: 18px;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .badge-success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 16px;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 16px;
+  }

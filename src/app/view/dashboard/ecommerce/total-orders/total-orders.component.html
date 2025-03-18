@@ -1,0 +1,32 @@
+<mat-card class="daxa-card total-orders-card mb-25 border-radius bg-white border-none d-block">
+    <mat-card-content>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="title">
+          <h5 class="text-dark">
+            {{ title }}
+          </h5>
+          <div class="number fw-medium lh-1 text-primary">
+            {{ total | number }}
+          </div>
+        </div>
+        <div [ngClass]="iconColor">
+          <div class="icon text-center rounded-circle text-white">
+            <i class="material-symbols-outlined">
+              {{ icon }}
+            </i>
+          </div>
+        </div>
+      </div>
+      <div class="info d-flex align-items-center justify-content-between mt-3">
+        <span class="sub-title text-muted">
+          {{ subtitle }}
+        </span>
+        <span class="badge" [ngClass]="{'badge-success': badgeType === 'success', 'badge-danger': badgeType === 'danger'}">
+          <i class="material-symbols-outlined me-1">
+            trending_up
+          </i>
+          {{ badgeValue }}
+        </span>
+      </div>
+    </mat-card-content>
+  </mat-card>

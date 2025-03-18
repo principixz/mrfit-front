@@ -127,7 +127,7 @@ export class ModalVenta implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
 
-    this.servicio.enviar_seguro('Web_service/procesar_venta_pago', request, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/procesar_venta_pago', request, token).pipe().subscribe(
       (data: any) => {
         this.ngxUiLoaderService.stop();
         this.activeModal.close(data);
@@ -221,7 +221,7 @@ export class ModalVenta implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     //console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('Web_service/cargar_tipo_documento', {}, token).pipe().subscribe(
+    this.servicio.enviar_seguro('web_service/cargar_tipo_documento', {}, token).pipe().subscribe(
       (data: any) => {
 
         _this.tipo_doc = data["tipo_documento"];

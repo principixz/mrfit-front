@@ -99,7 +99,7 @@ export class RegistrarPlatonewComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
 
-    _this.servicio.enviar_seguro('Web_service/lista_tipo_moneda', {}, token).pipe().subscribe(
+    _this.servicio.enviar_seguro('web_service/lista_tipo_moneda', {}, token).pipe().subscribe(
       (response: any) => {
         _this.lista_moneda = response["lista"];
       });
@@ -110,7 +110,7 @@ export class RegistrarPlatonewComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
 
-    _this.servicio.enviar_seguro('Web_service/lista_unidad_medida', {}, token).pipe().subscribe(
+    _this.servicio.enviar_seguro('web_service/lista_unidad_medida', {}, token).pipe().subscribe(
       (response: any) => {
         _this.lista_unidad_medida = response["lista"];
       });
@@ -120,7 +120,7 @@ export class RegistrarPlatonewComponent implements OnInit {
     let usuario: any = this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
-    _this.servicio.enviar_seguro('Web_service/cargar_categoria_producto', {}, token).pipe().subscribe(
+    _this.servicio.enviar_seguro('web_service/cargar_categoria_producto', {}, token).pipe().subscribe(
       (response: any) => {
         _this.lista_categoria = response;
       });
@@ -141,7 +141,7 @@ export class RegistrarPlatonewComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       if (params.get('id') != null) {
         _this.form.get('id')!.setValue(params.get('id'));
-        _this.servicio.enviar_seguro('Web_service/cargar_cliente_uno', { 'id': params.get('id') }, token).pipe().subscribe(
+        _this.servicio.enviar_seguro('web_service/cargar_cliente_uno', { 'id': params.get('id') }, token).pipe().subscribe(
           (response: any) => {
             _this.form.get('nombres')!.setValue(response['cliente_nombres']);
             _this.form.get('dni')!.setValue(response['cliente_dni']);
@@ -184,7 +184,7 @@ export class RegistrarPlatonewComponent implements OnInit {
       const headers = new HttpHeaders({
         'Authorization': token,
       });
-      this.http.post(this.servicio.url_global+'Web_service/ws_guardar_plato', formData,{headers}).subscribe(
+      this.http.post(this.servicio.url_global+'web_service/ws_guardar_plato', formData,{headers}).subscribe(
         (response:any) => {
           // Handle success
           console.log('Image uploaded successfully', response);
@@ -200,7 +200,7 @@ export class RegistrarPlatonewComponent implements OnInit {
           console.error('Image upload failed', error);
         }
       );
-    /*  this.servicio.enviar_seguro('Web_service/guardar_cliente', datos, token).pipe().subscribe(
+    /*  this.servicio.enviar_seguro('web_service/guardar_cliente', datos, token).pipe().subscribe(
         (response: any) => {
           _this._snackBar.open(response["mensaje"], '', {
             duration: 2 * 1000,

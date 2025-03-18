@@ -59,7 +59,7 @@ export class NuevaunidadmedidaComponent implements OnInit {
         this.route.paramMap.subscribe((params: ParamMap)  => {
           if  (params.get('id') !=  null  ) {
             _this.form.get('id')!.setValue(params.get('id'));
-            _this.servicio.enviar_seguro('Web_service/cargar_uno_unidad_medida', {  'id':  params.get('id')  },  token).pipe().subscribe(
+            _this.servicio.enviar_seguro('web_service/cargar_uno_unidad_medida', {  'id':  params.get('id')  },  token).pipe().subscribe(
               (response:any) =>  {
               _this.form.get('descripcion')!.setValue(response['unidad_medida_descripcion']);
               _this.form.get('sunat')!.setValue(response['descripcion_sunat']);
@@ -84,7 +84,7 @@ export class NuevaunidadmedidaComponent implements OnInit {
       const user:any  = this.authenticationService.currentUserValue;
       // tslint:disable-next-line: no-string-literal
       const token = user['Token'];
-      this.servicio.enviar_seguro('Web_service/guardar_unidad_medida', datos , token).pipe().subscribe(
+      this.servicio.enviar_seguro('web_service/guardar_unidad_medida', datos , token).pipe().subscribe(
         (response:any)  =>  {
 
           _this._snackBar.open(response["mensaje"],'',{

@@ -18,8 +18,9 @@ import { Servicio } from 'src/app/servicio/servicio';
   formulario!: FormGroup; 
   nombreMembresia: any = "";
   clientesSeleccionados = new MatTableDataSource<any>([]);
-  
-  displayedColumns: string[] = ['documentoIdentidad','nombre',  'accion'];
+  private isProcessingCliente: boolean = false;
+
+  displayedColumns: string[] = ['documentoIdentidad','nombre', 'membresiaActual', 'accion'];
   public ajaxOptions: any;
   form: FormGroup;
   public formControl = new FormControl();
@@ -189,7 +190,18 @@ enviar(): void {
   }
 
   onClienteSeleccionado(event: any): void {
+    console.log('Evento valueChanged detectado:', event);
+  
+    if (this.isProcessingCliente) {
+      console.log('Ignorando el evento porque ya está en proceso.');
+      return;
+    }
+  
+    this.isProcessingCliente = true;
+  
     if (event && event.length > 0) {
+      console.log('Procesando evento con datos:', event);
+  
       const partes = event.split('/');
       if (partes.length >= 5) {
         const clienteSeleccionado = {
@@ -197,28 +209,28 @@ enviar(): void {
           documentoIdentidad: partes[1],
           nombre: partes[2],
           campoNuevo: partes[3],
-          direccion: partes.slice(4).join('/'),
+          membresiaActual: partes.slice(4).join('/'),
         };
   
-        // Verificar si ya se alcanzó el máximo de clientes seleccionados
+        console.log('Cliente seleccionado:', clienteSeleccionado);
+  
         if (this.clientesSeleccionados.data.length >= this.data.cantidadRegistros) {
           alert(`Solo se permiten seleccionar hasta ${this.data.cantidadRegistros} clientes.`);
-          return;
-        }
-  
-        // Verificar duplicados y agregar al data source
-        if (!this.clientesSeleccionados.data.some((cliente) => cliente.id === clienteSeleccionado.id)) {
+        } else if (!this.clientesSeleccionados.data.some((cliente) => cliente.id === clienteSeleccionado.id)) {
           this.clientesSeleccionados.data = [
             ...this.clientesSeleccionados.data,
             clienteSeleccionado,
           ];
+          console.log('Cliente agregado exitosamente.');
         } else {
           alert('El cliente ya está seleccionado.');
         }
       }
     }
+  
+    this.isProcessingCliente = false;
+    console.log('Evento valueChanged procesado.');
   }
-
 
   obtenerColorFondo(): string {
     const seleccionados = this.clientesSeleccionados.data.length;

@@ -88,7 +88,7 @@ this. cargardatos();
    const token = usuario['Token'].toString();
    
 
-   _this.servicio.enviar_seguro('Web_service/ws_cargar_empresa', { },  token).pipe().subscribe(
+   _this.servicio.enviar_seguro('web_service/ws_cargar_empresa', { },  token).pipe().subscribe(
     (response:any) =>  {
       _this.form.get('razon_social')!.setValue(response[0]['empresa_razon_social']);
       _this.form.get('empresa_direccion')!.setValue(response[0]['empresa_direccion']);
@@ -123,7 +123,7 @@ this. cargardatos();
 
       _this.texto_boton="Guardando...";
       _this.estado=true;
-      this.servicio.enviar_seguro('Web_service/ws_guardar_empresa', datos , token).pipe().subscribe(
+      this.servicio.enviar_seguro('web_service/ws_guardar_empresa', datos , token).pipe().subscribe(
         (response:any)  =>  {
 
           _this._snackBar.open(response["mensaje"],'',{

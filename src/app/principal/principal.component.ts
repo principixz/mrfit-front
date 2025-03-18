@@ -90,15 +90,14 @@ export class PrincipalComponent implements OnInit {
 
     
     this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-          // Show loading indicator
+      if (event instanceof NavigationStart) { 
           console.log(event);
 
       }
 
       if (event instanceof NavigationEnd) {
           // Hide loading indicator
-          console.log(event);
+          console.log(event); 
           _this.deviceInfo = _this.deviceService.getDeviceInfo();
           const isMobile = _this.deviceService.isMobile();
           const isTablet = _this.deviceService.isTablet();
@@ -138,9 +137,8 @@ export class PrincipalComponent implements OnInit {
     let _this=this;
     let usuario:any =  this.authenticationService.currentUserValue;
     console.log(usuario['Token']);
-   const token = usuario['Token'].toString();
-    this.servicio.enviar_seguro('web_service/cargar_menu',{},token).pipe().subscribe((response)=>{
-     // console.log(response);
+    const token = usuario['Token'].toString();
+    this.servicio.enviar_seguro('web_service/cargar_menu',{},token).pipe().subscribe((response)=>{ 
       this.menu1=response;
       
       

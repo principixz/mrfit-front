@@ -42,7 +42,9 @@ import { GestionmovimientoComponent } from './gestionmovimiento/gestionmovimient
 import { HistorialcajaComponent } from './historialcaja/historialcaja.component';
 registerLocaleData(localeEsPe, 'es-Pe');
 @NgModule({
-    imports: [MatDialogModule, MatSnackBarModule, DateFnsModule.forRoot(), ChartModule, HighchartsChartModule, MatButtonToggleModule, NgbModule, RouterModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatCardModule, CajaRoutingModule, PrincipalModule, MatButtonModule, MatIconModule, MatInputModule, CommonModule,
+    imports: [MatDialogModule, MatSnackBarModule, DateFnsModule.forRoot(), 
+        ChartModule, HighchartsChartModule, 
+        MatButtonToggleModule, NgbModule, RouterModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatCardModule, CajaRoutingModule, PrincipalModule, MatButtonModule, MatIconModule, MatInputModule, CommonModule,
         MatFormFieldModule, MatSortModule, MatPaginatorModule, MatTableModule, MatDividerModule, MatProgressSpinnerModule, MatMenuModule, MatBadgeModule
     ],
     providers: [

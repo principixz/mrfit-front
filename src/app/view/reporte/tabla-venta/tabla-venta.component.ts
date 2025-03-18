@@ -58,7 +58,7 @@ export class TablaVentaComponent implements OnInit {
     console.log(usuario['Token']);
     const token = usuario['Token'].toString();
     let _this = this;
-    this.conexion.enviar_seguro("Web_service/cargar_reporte_venta", request, token).pipe().subscribe(
+    this.conexion.enviar_seguro("web_service/cargar_reporte_venta", request, token).pipe().subscribe(
       response => {
         console.log(response);
         _this.lista_reporte = response;

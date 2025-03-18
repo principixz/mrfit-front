@@ -140,6 +140,7 @@
                   <mat-option value="0">Inactivo</mat-option>
                 </mat-select>
               </mat-form-field>
+              <mat-checkbox [checked]="estadoTrotadora" formControlName="estadoTrotadora"  (change)="toggleFechaFin()">Derecho Trotadora</mat-checkbox>
             </div>
           </div>
           <!-- Fin de los campos organizados usando Flexbox -->
@@ -149,9 +150,9 @@
             <div class="col-md-12 d-flex justify-content-center">
               <button [disabled]="!form.valid || !estado"  id="basic"  style="color: white;background-color: #039be5;" type="submit" mat-button >
                {{texto_boton}}
-              </button>
+              </button> 
   
-              <button id="basic"  routerLink="/principal/mantenimiento/categoriaproducto/lista" type="button" mat-button  style="color: white;background-color: red;">
+              <button id="basic"  routerLink="/principal/membresia/tipo_membresia/lista" type="button" mat-button  style="color: white;background-color: red;">
               Cancelar
               </button>
             </div>

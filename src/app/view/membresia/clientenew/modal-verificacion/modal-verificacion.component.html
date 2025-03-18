@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Por seguridad, ingrese sus credenciales</h2>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="usuario" />
+      <mat-error *ngIf="form.get('usuario')?.hasError('required')">Campo requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Clave</mat-label>
+      <input matInput type="password" formControlName="clave" />
+      <mat-error *ngIf="form.get('clave')?.hasError('required')">Campo requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Motivo</mat-label>
+      <textarea matInput rows="3" formControlName="motivo"></textarea>
+      <mat-error *ngIf="form.get('motivo')?.hasError('required')">Campo requerido</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [disabled]="!form.valid" (click)="onSubmit()">{{texto_boton}}</button>
+</div>
